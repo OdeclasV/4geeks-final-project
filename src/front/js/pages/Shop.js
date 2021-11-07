@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import { ItemFilter } from "../component/ItemFilter";
 import { ShopItem } from "../component/ShopItem";
 
 export const Shop = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<>
 			<div className="shop-title">
@@ -11,7 +14,9 @@ export const Shop = () => {
 			<ItemFilter />
 			<div className="shop-items">
 				<ul className="d-flex justify-content-around flex-wrap">
-					<ShopItem />
+					{store.items.map(item => {
+						return <ShopItem key={item.id} item={item} />;
+					})}
 				</ul>
 			</div>
 		</>
