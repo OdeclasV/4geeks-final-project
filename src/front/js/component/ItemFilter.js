@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const ItemFilter = () => {
 	// list of dropdowns and their options to render
@@ -12,23 +12,33 @@ export const ItemFilter = () => {
 	return (
 		<div className="d-flex">
 			{dropdowns.map(dropdown => {
+				// adds state to each mapped dropdown menu
+				// so when clicked, the state of one dropdown changes
+				// and not all of them at once
+				const [dropdownMenu, setDropdownMenu] = useState(false);
+
 				return (
-					<div className="dropdown m-1" key={dropdown}>
+					<div className="dropdown m-1" key={dropdown.name}>
 						<button
 							className="btn btn-secondary dropdown-toggle"
+							onClick={() => {
+								setDropdownMenu(!dropdownMenu);
+							}}
 							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
+							id="dropdownMenuButton1"
+							data-bs-toggle="dropdown"
+							aria-expanded="false"
+							value={dropdown.name}>
 							{dropdown.name}
 						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<div
+							className={dropdownMenu ? "dropdown-menu show" : "dropdown-menu"}
+							aria-labelledby="dropdownMenuButton1">
 							{// this map is necessary to render each dropddown's options from the options
 							// inside dropdowns object, above
-							dropdown.options.map((option, index) => {
+							dropdown.options.map(option => {
 								return (
-									<a className="dropdown-item" href="#" key={index}>
+									<a className="dropdown-item" href="#" key={option}>
 										{option}
 									</a>
 								);
