@@ -16,7 +16,6 @@ export const Home = () => {
 			<Link to="/Shop">
 				<button className="btn btn-primary">Go to online store</button>
 			</Link>
-
 			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
 			<p>
 				This boilerplate comes with lots of documentation:{" "}
