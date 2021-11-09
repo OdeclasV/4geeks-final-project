@@ -17,13 +17,12 @@ export const ItemFilter = () => {
 						<button
 							className="btn btn-secondary dropdown-toggle"
 							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
+							id="dropdownMenuButton1"
+							data-bs-toggle="dropdown"
 							aria-expanded="false">
 							{dropdown.name}
 						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							{// this map is necessary to render each dropddown's options from the options
 							// inside dropdowns object, above
 							dropdown.options.map((option, index) => {

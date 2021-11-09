@@ -14,10 +14,15 @@ export const ShopItem = ({ item }) => {
 				<div className="card-body">
 					<h5 className="card-title">Awesome {item.itemType}</h5>
 					<p className="card-text item-price">${item.price}</p>
-					<a href="#" className="btn btn-primary">
+					<a
+						href="#"
+						className="btn btn-primary m-1"
+						onClick={() => {
+							console.log("clicked!");
+						}}>
 						Add to cart
 					</a>
-					<a href="#" className="btn btn-warning">
+					<a href="#" className="btn btn-warning m-1">
 						Bid
 					</a>
 				</div>

@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
+
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
@@ -8,10 +11,12 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
+			<h1>Hello, this is our Final Project</h1>
+			<h3>If you&apos;re seeing this, our homepage is under construction</h3>
+			<Link to="/Shop">
+				<button className="btn btn-primary">Go to online store</button>
+			</Link>
+
 			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
 			<p>
 				This boilerplate comes with lots of documentation:{" "}
