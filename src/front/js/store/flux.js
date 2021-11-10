@@ -54,7 +54,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					image:
 						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRNWkhhnQFio8ncl4yGYNcZ-4LKmilmF76eA&usqp=CAU"
 				}
-			]
+			],
+			shoppingCartItems: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -82,6 +83,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			addToShoppingCart: (item, price, image) => {
+				let { shoppingCartItems } = getStore();
+				let items = { name: item, price: price, image: image };
+				shoppingCartItems.push(items);
+				setStore({ shoppingCartItems: shoppingCartItems });
 			}
 		}
 	};

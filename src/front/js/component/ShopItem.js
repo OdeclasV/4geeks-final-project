@@ -7,6 +7,7 @@ import { Context } from "../store/appContext";
 // item's information is coming from the ShopItem page
 
 export const ShopItem = ({ item }) => {
+	const { store, actions } = useContext(Context);
 	return (
 		<>
 			<div className="card col-md-3 m-3" style={{ width: "18rem" }}>
@@ -18,7 +19,7 @@ export const ShopItem = ({ item }) => {
 						href="#"
 						className="btn btn-primary m-1"
 						onClick={() => {
-							console.log("clicked!");
+							actions.addToShoppingCart(item.itemType, item.price, item.image);
 						}}>
 						Add to cart
 					</a>

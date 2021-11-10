@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const [dropdown, setDropdown] = React.useState(false);
+
+	let totalCart = 0;
+	let totalItems = store.shoppingCartItems.length;
+
+	let show = "";
+	if (dropdown) {
+		show = "show";
+	}
 	return (
 		<nav className="navbar navbar-light bg-light">
-			<div className="container">
+			<div className="container-fluid">
 				<Link to="/">
 					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 				</Link>
@@ -13,61 +25,69 @@ export const Navbar = () => {
 						<button className="btn btn-primary">Check the Context in action</button>
 					</Link>
 				</div>
-				<div className="dropdown shopping-cart">
+				<div className="dropdown" style={{ marginRight: "200px" }}>
 					<button
-						className="btn btn-secondary dropdown-toggle"
+						className="nav-link dropdown-toggle btn"
+						onClick={() => {
+							setDropdown(!dropdown);
+						}}
 						type="button"
-						id="dropdownMenuButton1"
-						data-bs-toggle="dropdown"
+						id="navbarDropdownMenuLink"
+						role="button"
+						data-toggle="dropdown"
+						aria-haspopup="true"
 						aria-expanded="false">
 						<i className="fas fa-shopping-cart" />
+						<span>({totalItems})</span>
 					</button>
-					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a className="dropdown-item" href="#">
-								Action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Another action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Something else here
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div className="dropdown">
-					<a
-						className="btn btn-secondary dropdown-toggle"
-						href="#"
-						role="button"
-						id="dropdownMenuLink"
-						data-bs-toggle="dropdown"
-						aria-expanded="false">
-						<i className="fas fa-user" />
-					</a>
-
-					<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li>
-							<a className="dropdown-item" href="#">
-								Action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Another action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Something else here
-							</a>
-						</li>
-					</ul>
+					<div
+						className={dropdown ? "dropdown-menu" + show : "dropdown-menu"}
+						aria-labelledby="navbarDropdownMenuLink">
+						<div>
+							<h5>Cart ({totalItems})</h5>
+						</div>
+						<div>
+							<table className="table">
+								<thead>
+									<tr>
+										<th scope="col" colSpan="2">
+											Item
+										</th>
+										<th scope="col">Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									{store.shoppingCartItems.map(item => {
+										totalCart += item.price;
+										return (
+											<tr key={item.name}>
+												<td className="col-2">
+													<img src={item.image} style={{ width: "100%" }} />
+												</td>
+												<td>{item.name}</td>
+												<td>${item.price}</td>
+											</tr>
+										);
+									})}
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colSpan="2" style={{ textAlign: "right" }}>
+											<strong>TOTAL</strong>
+										</td>
+										<td>${totalCart}</td>
+									</tr>
+									<tr>
+										<td>
+											<button type="button" className="btn btn-success">
+												Checkout
+											</button>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</nav>
