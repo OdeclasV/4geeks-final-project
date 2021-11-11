@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { EnterModal } from "../component/EnterModal";
 import { Context } from "../store/appContext";
 
 export const Donate = () => {
@@ -6,6 +7,8 @@ export const Donate = () => {
 
 	return (
 		<>
+			{/* also add a level of use: Like New, preety good shape, pretty beat up  */}
+			{/* Get modal component to pop up when clicking donate */}
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
 					<div className="panel-heading">
@@ -20,7 +23,7 @@ export const Donate = () => {
 								</label>
 
 								<div className="col-sm-9">
-									<label className="radio-inline">
+									<label className="radio-inline m-3">
 										<input
 											type="radio"
 											name="inlineRadioOptions"
@@ -29,7 +32,7 @@ export const Donate = () => {
 										/>
 										Clothing
 									</label>
-									<label className="radio-inline">
+									<label className="radio-inline m-3">
 										<input
 											type="radio"
 											name="inlineRadioOptions"
@@ -38,7 +41,7 @@ export const Donate = () => {
 										/>
 										Furniture
 									</label>
-									<label className="radio-inline">
+									<label className="radio-inline m-3">
 										<input
 											type="radio"
 											name="inlineRadioOptions"
@@ -47,7 +50,7 @@ export const Donate = () => {
 										/>
 										Book
 									</label>
-									<label className="radio-inline">
+									<label className="radio-inline m-3">
 										<input
 											type="radio"
 											name="inlineRadioOptions"
@@ -96,12 +99,12 @@ export const Donate = () => {
 								</label>
 
 								<div className="col-sm-9">
-									<textarea className="form-control"> </textarea>
+									<textarea className="form-control" />
 								</div>
 							</div>
 
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
+								<label htmlFor="name" className="col-sm-12 control-label">
 									Upload Image (Use.jpg, .png)
 								</label>
 
