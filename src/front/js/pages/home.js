@@ -14,7 +14,10 @@ export const Home = () => {
 			<h1>Hello, this is our Final Project</h1>
 			<h3>If you&apos;re seeing this, our homepage is under construction</h3>
 			<Link to="/Shop">
-				<button className="btn btn-primary">Go to online store</button>
+				<button className="btn btn-primary m-3">Go to online store</button>
+			</Link>
+			<Link to="/donate">
+				<button className="btn btn-success">Donate</button>
 			</Link>
 			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
 			<p>
