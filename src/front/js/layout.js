@@ -11,6 +11,8 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Donate } from "./pages/donate";
+import { DonationType } from "./component/donate-form/DonationType";
+import { AuctionType } from "./component/donate-form/AuctionType";
 import { ItemFilter } from "./component/ItemFilter";
 
 //create your first component
@@ -36,6 +38,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/donate">
 							<Donate />
+						</Route>
+						<Route exact path="/donationtype">
+							<DonationType />
+						</Route>
+						<Route exact path="/auctiontype">
+							<AuctionType />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
