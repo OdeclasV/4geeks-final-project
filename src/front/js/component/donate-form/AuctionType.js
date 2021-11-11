@@ -28,7 +28,7 @@ export const AuctionType = () => {
                         <input type="currency" class="form-control" id="inputStartingBidPrice" placeholder="$500" />
                         <small id="startingBidHelp" class="form-text text-muted">The minimum amount you would like for your donation.</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Details of my Item</button>
+                    <button type="submit" class="btn btn-primary">NEXT Add Details of my Item</button>
                 </form>
             </div>
         </>

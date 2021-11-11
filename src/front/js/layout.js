@@ -37,9 +37,6 @@ const Layout = () => {
 						<Route exact path="/donate">
 							<Donate />
 						</Route>
-						<Route exact path="/DonateOrAuction">
-							<Donate />
-						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
