@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Donate = () => {
 	const { store, actions } = useContext(Context);
+	const [item, setItem] = useState("");
 
 	return (
 		<>
@@ -96,7 +97,11 @@ export const Donate = () => {
 								</label>
 
 								<div className="col-sm-9">
-									<textarea className="form-control"> </textarea>
+									<textarea
+										className="form-control"
+										onChange={e => setItem(e.target.value)}
+										value={item}
+									/>
 								</div>
 							</div>
 
