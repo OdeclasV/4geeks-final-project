@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { EnterModal } from "../component/EnterModal";
 import { Context } from "../store/appContext";
 
 export const Donate = () => {
@@ -7,8 +6,6 @@ export const Donate = () => {
 
 	return (
 		<>
-			{/* also add a level of use: Like New, preety good shape, pretty beat up  */}
-			{/* Get modal component to pop up when clicking donate */}
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
 					<div className="panel-heading">
