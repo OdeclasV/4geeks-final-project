@@ -14,6 +14,7 @@ import { Donate } from "./pages/donate";
 import { DonationType } from "./component/donate-form/DonationType";
 import { AuctionType } from "./component/donate-form/AuctionType";
 import { ItemFilter } from "./component/ItemFilter";
+import { SignInModal } from "./component/navbar-buttons/SignInSignUp";
 
 //create your first component
 const Layout = () => {
@@ -44,6 +45,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/auctiontype">
 							<AuctionType />
+						</Route>
+						<Route exact path="/signinsignup">
+							<SignInModal />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
