@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: 4,
-					category: "other",
+					category: "books",
 					saleType: "bid",
 					condition: "good",
 					itemType: "book",
