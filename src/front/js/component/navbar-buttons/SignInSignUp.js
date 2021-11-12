@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "../../../styles/index.scss";
 
-export const SignInModal = () => {
+export const SignInSignUp = () => {
 	const { store, actions } = useContext(Context);
 
 	return (

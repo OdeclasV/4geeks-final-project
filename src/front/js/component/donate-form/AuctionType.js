@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext";
 
-export const AuctionType = () => {
+export const AuctionType = ({ bid }) => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<>
 			<div className="text-center mt-5">
 				<h1>Let&apos;s Get Started!</h1>
-				<Link to="/AuctionClothingForm">
+				<Link to="/auctionclothes" state={{ from: "auctiontype" }}>
 					<button className="btn btn-primary m-3">Clothing</button>
 				</Link>
-				<Link to="/AuctionFurnitureForm">
+				<Link to="/AuctionFurnitureForm" state>
 					<button className="btn btn-primary m-3">Furniture</button>
 				</Link>
 				<Link to="/AuctionCarForm">
@@ -39,4 +40,8 @@ export const AuctionType = () => {
 			</div>
 		</>
 	);
+};
+
+AuctionType.propTypes = {
+	bid: PropTypes.string
 };
