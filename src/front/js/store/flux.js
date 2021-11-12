@@ -55,7 +55,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRNWkhhnQFio8ncl4yGYNcZ-4LKmilmF76eA&usqp=CAU"
 				}
 			],
-			shoppingCartItems: []
+			shoppingCartItems: [],
+			nonprofits: [
+				{
+					id: 1,
+					name: "good non-profit",
+					logo: "https://bit.ly/3n6N8tC",
+					description: "Good company is focused on healthy pokemon living",
+					needs: ["clothes"],
+					totalfunds: 1000.0
+				},
+				{
+					id: 2,
+					name: "gooder non-profit",
+					logo: "https://bit.ly/3n84p5W",
+					description: "Gooder company is focused on sustainability",
+					needs: [],
+					totalfunds: 0.0
+				}
+			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
