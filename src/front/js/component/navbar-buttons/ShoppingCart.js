@@ -29,7 +29,7 @@ export const ShoppingCart = () => {
 				<span>({totalItems})</span>
 			</button>
 			<div
-				className={totalItems > 0 ? "dropdown-menu" + show : "dropdown-menu"}
+				className={totalItems > 0 ? "dropdown-menu " + show : "dropdown-menu"}
 				aria-labelledby="navbarDropdownMenuLink">
 				<div>
 					<h5>Cart ({totalItems})</h5>

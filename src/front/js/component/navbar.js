@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ShoppingCart } from "./navbar-buttons/ShoppingCart";
+import { SignInModal } from "./navbar-buttons/SignInSignUp";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -18,6 +19,13 @@ export const Navbar = () => {
 					</Link>
 				</div>
 				<ShoppingCart />
+				<Link to="/signinsignup">
+					<div className="text-center">
+						<button className="btn btn-primary" data-toggle="modal" data-target="#modalLRForm">
+							Sign In / Sign Up
+						</button>
+					</div>
+				</Link>
 			</div>
 		</nav>
 	);
