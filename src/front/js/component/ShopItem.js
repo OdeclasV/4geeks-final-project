@@ -14,6 +14,7 @@ export const ShopItem = ({ item }) => {
 				<img className="card-img-top" src={item.image} alt="Card image cap" />
 				<div className="card-body">
 					<h5 className="card-title">Awesome {item.itemType}</h5>
+					<p className="card-text item-price">condition: {item.condition}</p>
 					<p className="card-text item-price">${item.price}</p>
 					<a
 						href="#"

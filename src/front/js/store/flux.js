@@ -108,6 +108,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let items = { name: item, price: price, image: image };
 				shoppingCartItems.push(items);
 				setStore({ shoppingCartItems: shoppingCartItems });
+			},
+
+			addAuctionItem: item => {
+				let { items } = getStore();
+				items.push(item);
+				setStore({ items: items });
 			}
 		}
 	};
