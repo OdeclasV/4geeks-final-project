@@ -5,8 +5,6 @@ import { Context } from "../../store/appContext";
 export const ChooseNonProfit = () => {
 	const { store, actions } = useContext(Context);
 
-	//console.log(store.nonprofits);
-
 	return (
 		<div className="nonprofits d-flex justify-content-around flex-wrap">
 			{store.nonprofits.map(nonprofit => {
