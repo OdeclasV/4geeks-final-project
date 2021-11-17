@@ -7,12 +7,18 @@ import PropTypes from "prop-types";
 export const SideBar = ({ username }) => {
 	const history = useHistory();
 
-	const [dropdown, setDropdown] = React.useState(false);
+	const [dropdown, setDropdown] = useState(false);
+	const [active, setActive] = useState(false);
 
 	let show = "";
+	let activeOption = "";
 
 	if (dropdown) {
 		show = "show";
+	}
+
+	if (active) {
+		activeOption = "active";
 	}
 
 	return (
@@ -23,10 +29,15 @@ export const SideBar = ({ username }) => {
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
-				<li>
+				<li
+					className="m-2 p-2"
+					// onClick={() => {
+					// 	setActive(!active);
+					// }}
+				>
 					<a
 						href="#"
-						className="nav-link active"
+						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						aria-current="page"
 						onClick={() => {
 							history.push("/profile/nonprofit");
@@ -35,29 +46,34 @@ export const SideBar = ({ username }) => {
 						<span className="ms-2">Home</span>
 					</a>
 				</li>
-				<li>
+				<li
+					className="m-2 p-2"
+					// onClick={() => {
+					// 	setActive(!active);
+					// }}
+				>
 					<a
 						href="#"
-						className="nav-link text-white"
+						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
 							history.push("/profile/nonprofit/dashboard");
 						}}>
-						<i className="fa fa-dashboard" />
+						<i className="fa fa-columns" />
 						<span className="ms-2">Dashboard</span>
 					</a>
 				</li>
-				<li>
+				<li className="m-2 p-2">
 					<a
 						href="#"
 						className="nav-link text-white"
 						onClick={() => {
-							history.push("/profile/nonprofit/orders");
+							history.push("/profile/nonprofit/wishlist");
 						}}>
-						<i className="fa fa-first-order" />
-						<span className="ms-2">My Orders</span>
+						<i className="fa fa-clipboard-list" />
+						<span className="ms-2">Wishlist</span>
 					</a>
 				</li>
-				<li>
+				<li className="m-2 p-2">
 					<a
 						href="#"
 						className="nav-link text-white"
@@ -68,7 +84,7 @@ export const SideBar = ({ username }) => {
 						<span className="ms-2">Settings</span>
 					</a>
 				</li>
-				<li>
+				<li className="m-2 p-2">
 					<a href="#" className="nav-link text-white">
 						<i className="fa fa-bookmark" />
 						<span className="ms-2">Bookmarks</span>
@@ -103,24 +119,6 @@ export const SideBar = ({ username }) => {
 							: "dropdown-menu dropdown-menu-dark text-small shadow"
 					}
 					aria-labelledby="dropdownUser1">
-					<li>
-						<a className="dropdown-item" href="#">
-							New project
-						</a>
-					</li>
-					<li>
-						<a className="dropdown-item" href="#">
-							Settings
-						</a>
-					</li>
-					<li>
-						<a className="dropdown-item" href="#">
-							Profile
-						</a>
-					</li>
-					<li>
-						<hr className="dropdown-divider" />
-					</li>
 					<li>
 						<a className="dropdown-item" href="#">
 							Sign out

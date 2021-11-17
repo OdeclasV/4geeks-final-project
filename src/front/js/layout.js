@@ -16,9 +16,8 @@ import { AuctionType } from "./component/donate-form/AuctionType";
 import { ChooseNonProfit } from "./component/donate-form/ChooseNonProfit";
 import { ClothingDonation } from "./component/donate-form/ClothingDonation";
 import { ClothingAuction } from "./component/donate-form/ClothingAuction";
-import { ItemFilter } from "./component/ItemFilter";
 import { SignInModal, SignInSignUp } from "./component/navbar-buttons/SignInSignUp";
-import { NonProfitProfile } from "./pages/profile-dashboards/NonProfitProfile";
+import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
 
 //create your first component
 const Layout = () => {
