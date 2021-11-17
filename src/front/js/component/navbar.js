@@ -7,25 +7,53 @@ import { SignInModal } from "./navbar-buttons/SignInSignUp";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const [dropdown, setDropdown] = React.useState(false);
+
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container-fluid">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+		<nav className="navbar navbar-expand-lg navbar-light">
+			<Link className="navbar-brand" to="/">
+				Shop To Give
+			</Link>
+
+			<button
+				className="navbar-toggler"
+				onClick={() => {
+					setDropdown(dropdown);
+				}}
+				type="button"
+				id="navbarToggler"
+				data-toggle="collapse"
+				aria-controls="navbarToggler"
+				aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span className="navbar-toggler-icon" />
+			</button>
+
+			<div className="collapse navbar-collapse d-flex justify-content-end" aria-labelledby="navbarToggler">
+				<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li className="nav-menu-item mx-2 active">
+						<Link className="nav-menu-link" to="/">
+							Home <span className="sr-only">(current)</span>
+						</Link>
+					</li>
+					<li className="nav-menu-item mx-2">
+						<Link className="nav-menu-link" to="/shop">
+							Shop
+						</Link>
+					</li>
+					<li className="nav-menu-item mx-2">
+						<Link className="nav-menu-link" to="/donate">
+							Donate
+						</Link>
+					</li>
+				</ul>
+
+				<Link className="form-inline my-2 my-lg-0 d-flex" to="/signinsignup">
+					<button className="btn btn-primary" type="button">
+						Log In
+					</button>
 				</Link>
-				<div className="ml-auto m-1">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
 				<ShoppingCart />
-				<Link to="/signinsignup">
-					<div className="text-center">
-						<button className="btn btn-primary" data-toggle="modal" data-target="#modalLRForm">
-							Sign In / Sign Up
-						</button>
-					</div>
-				</Link>
 			</div>
 		</nav>
 	);
