@@ -3,7 +3,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ShoppingCart } from "./navbar-buttons/ShoppingCart";
-import { SignInModal } from "./navbar-buttons/SignInSignUp";
+import { SignInModal } from "../pages/SignInSignUp";
+import { LoginButton } from "./navbar-buttons/LoginButton";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -47,12 +48,7 @@ export const Navbar = () => {
 						</Link>
 					</li>
 				</ul>
-
-				<Link className="form-inline my-2 my-lg-0 d-flex" to="/signinsignup">
-					<button className="btn btn-primary" type="button">
-						Log In
-					</button>
-				</Link>
+				<LoginButton />
 				<ShoppingCart />
 			</div>
 		</nav>

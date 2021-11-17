@@ -16,7 +16,7 @@ import { AuctionType } from "./component/donate-form/AuctionType";
 import { ChooseNonProfit } from "./component/donate-form/ChooseNonProfit";
 import { ClothingDonation } from "./component/donate-form/ClothingDonation";
 import { ClothingAuction } from "./component/donate-form/ClothingAuction";
-import { SignInModal, SignInSignUp } from "./component/navbar-buttons/SignInSignUp";
+import { SignInModal, SignInSignUp } from "./pages/SignInSignUp";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
 
 //create your first component
