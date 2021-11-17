@@ -106,14 +106,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addToShoppingCart: (item, price, image) => {
 				let { shoppingCartItems } = getStore();
 				let items = { name: item, price: price, image: image };
-				shoppingCartItems.push(items);
-				setStore({ shoppingCartItems: shoppingCartItems });
+				//shoppingCartItems.push(items);
+				if (!shoppingCartItems.filter(element => element.name == item).length) {
+					setStore({ shoppingCartItems: [...shoppingCartItems, items] });
+				} // change to item.id
 			},
 
 			addAuctionItem: item => {
 				let { items } = getStore();
-				items.push(item);
-				setStore({ items: items });
+				// items.push(item);
+
+				setStore({ items: [...items, item] });
 			}
 		}
 	};

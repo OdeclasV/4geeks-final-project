@@ -18,6 +18,7 @@ import { ClothingDonation } from "./component/donate-form/ClothingDonation";
 import { ClothingAuction } from "./component/donate-form/ClothingAuction";
 import { ItemFilter } from "./component/ItemFilter";
 import { SignInModal, SignInSignUp } from "./component/navbar-buttons/SignInSignUp";
+import { NonProfitProfile } from "./pages/profile-dashboards/NonProfitProfile";
 
 //create your first component
 const Layout = () => {
@@ -51,6 +52,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/choosenonprofit">
 							<ChooseNonProfit />
+						</Route>
+						<Route exact path="/profile/nonprofit">
+							<NonProfitProfile />
 						</Route>
 						<Route exact path="/donateclothes">
 							<ClothingDonation />
