@@ -28,12 +28,16 @@ export const Home = () => {
 					</p>
 
 					<div className="d-grid gap-2 d-md-flex justify-content-md-start">
-						<button type="button" className="btn btn-primary btn-lg px-4 me-md-2">
-							Donate
-						</button>
-						<button type="button" className="btn btn-outline-secondary btn-lg px-4">
-							Shop
-						</button>
+						<Link to="/donate">
+							<button type="button" className="btn btn-primary btn-lg px-4 me-md-2">
+								Donate
+							</button>
+						</Link>
+						<Link to="/shop">
+							<button type="button" className="btn btn-outline-secondary btn-lg px-4">
+								Shop
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
