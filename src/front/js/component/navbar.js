@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ShoppingCart } from "./navbar-buttons/ShoppingCart";
-import { SignInModal } from "../pages/SignInSignUp";
+import { SignInModal } from "../pages/LoginSignup";
 import { LoginButton } from "./navbar-buttons/LoginButton";
 
 export const Navbar = () => {

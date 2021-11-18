@@ -16,8 +16,9 @@ import { AuctionType } from "./component/donate-form/AuctionType";
 import { ChooseNonProfit } from "./component/donate-form/ChooseNonProfit";
 import { ClothingDonation } from "./component/donate-form/ClothingDonation";
 import { ClothingAuction } from "./component/donate-form/ClothingAuction";
-import { SignInModal, SignInSignUp } from "./pages/SignInSignUp";
+import { SignInModal, LoginSignup } from "./pages/LoginSignup";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
+import { SignUp } from "./component/donate-form/SignUp";
 
 //create your first component
 const Layout = () => {
@@ -67,8 +68,14 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route exact path="/signinsignup">
-							<SignInSignUp />
+						<Route exact path="/login">
+							<LoginSignup />
+						</Route>
+						<Route exact path="/signup">
+							<SignUp />
+						</Route>
+						<Route exact path="/loginsignup/:option">
+							<LoginSignup />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
