@@ -3,8 +3,8 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext";
 
-export const ClothingAuction = () => {
-	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
+export const AuctionFurniture = () => {
+	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
 	const { store, actions } = useContext(Context);
 
@@ -15,50 +15,47 @@ export const ClothingAuction = () => {
 
 	const [auctionItem, setAuctionItem] = useState({
 		id: generateId(999),
-		category: "clothing",
+		category: "furniture",
 		saleType: "bid",
 		condition: null,
 		itemType: null,
-		price: 250,
+		price: 50,
 		image: "https://bit.ly/3kHj3PT"
 	});
-
-	console.log(auctionItem);
-	console.log(store.items);
 
 	return (
 		<>
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h3 className="panel-title"> Add an Item to Auction </h3>
+						<h3 className="panel-title"> Add Furniture to Auction </h3>
 					</div>
 
 					<div className="panel-body">
 						<form className="form-horizontal">
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Type of Clothing
+								<label htmlFor="type of furniture" className="col-sm-3 control-label">
+									Type of Furniture
 								</label>
 
 								<select
 									className="form-select"
 									aria-label="Default select example"
-									value={typeOfClothes}
+									value={typeOfFurniture}
 									onChange={e => {
-										setTypeOfClothes(e.target.value);
+										settypeOfFurniture(e.target.value);
 										setAuctionItem({ ...auctionItem, itemType: e.target.value });
 									}}>
 									<option value="Select a value">Select a value</option>
-									<option value="t-shirt">T-shirt</option>
-									<option value="jacket">Jacket</option>
-									<option value="pants">Pants</option>
+									<option value="dining table">Dining Table</option>
+									<option value="chair">Chair</option>
+									<option value="sofa">Sofa</option>
 								</select>
 							</div>
 
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Name
+								<label htmlFor="condition" className="col-sm-3 control-label">
+									Condition
 								</label>
 
 								<select
@@ -77,16 +74,19 @@ export const ClothingAuction = () => {
 							</div>
 
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Size
+								<label htmlFor="price" className="col-sm-3 control-label">
+									Price
 								</label>
 								<div className="col-sm-9">
 									<input
 										type="text"
 										className="form-control"
-										name="name"
-										id="name"
-										placeholder="Small, Medium, Large / 72 inches x 36 inches"
+										name="price"
+										id="furniture-price"
+										value={auctionItem.price}
+										onChange={e => {
+											setAuctionItem({ ...auctionItem, price: e.target.value });
+										}}
 									/>
 								</div>
 							</div>

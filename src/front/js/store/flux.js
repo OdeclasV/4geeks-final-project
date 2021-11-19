@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: 3,
-					category: "household",
+					category: "furniture",
 					saleType: "sale",
 					condition: "good",
 					itemType: "dining table",
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: "gooder non-profit",
 					logo: "https://bit.ly/3n84p5W",
 					description: "Gooder company is focused on sustainability",
-					needs: [],
+					needs: ["furniture"],
 					totalfunds: 0.0
 				}
 			]

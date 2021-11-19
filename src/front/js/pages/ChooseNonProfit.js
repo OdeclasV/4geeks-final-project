@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Context } from "../../store/appContext";
+import { Context } from "../store/appContext";
 
 export const ChooseNonProfit = () => {
 	const { store, actions } = useContext(Context);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const ClothingDonation = () => {
+export const DonateFurniture = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 
 	return (
@@ -8,7 +8,7 @@ export const ClothingDonation = () => {
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h3 className="panel-title"> Add an Item to Donate </h3>
+						<h3 className="panel-title"> Add Furniture to Donate </h3>
 					</div>
 
 					<div className="panel-body">
