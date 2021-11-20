@@ -11,13 +11,14 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Donate } from "./pages/donate";
-import { DonationType } from "./component/donate-form/DonationType";
-import { AuctionType } from "./component/donate-form/AuctionType";
-import { ChooseNonProfit } from "./component/donate-form/ChooseNonProfit";
-import { ClothingDonation } from "./component/donate-form/ClothingDonation";
-import { ClothingAuction } from "./component/donate-form/ClothingAuction";
-import { ItemFilter } from "./component/ItemFilter";
-import { SignInModal, SignInSignUp } from "./component/navbar-buttons/SignInSignUp";
+import { DonationType } from "./pages/DonationType";
+import { AuctionType } from "./pages/AuctionType";
+import { ChooseNonProfit } from "./pages/ChooseNonProfit";
+import { DonateClothing } from "./component/donate-form/DonateClothing";
+import { AuctionClothes } from "./component/donate-form/AuctionClothes";
+import { SignInModal, LoginSignup } from "./pages/LoginSignup";
+import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
+import { SignUp } from "./component/donate-form/SignUp";
 
 //create your first component
 const Layout = () => {
@@ -46,23 +47,41 @@ const Layout = () => {
 						<Route exact path="/donationtype">
 							<DonationType />
 						</Route>
+						<Route exact path="/donationtype/:type">
+							<DonationType />
+						</Route>
 						<Route exact path="/auctiontype">
+							<AuctionType />
+						</Route>
+						<Route exact path="/auctiontype/:type">
 							<AuctionType />
 						</Route>
 						<Route exact path="/choosenonprofit">
 							<ChooseNonProfit />
 						</Route>
+						<Route exact path="/profile/nonprofit">
+							<NonProfitProfile />
+						</Route>
+						<Route exact path="/profile/nonprofit/:profileOption">
+							<NonProfitProfile />
+						</Route>
 						<Route exact path="/donateclothes">
-							<ClothingDonation />
+							<DonateClothing />
 						</Route>
 						<Route exact path="/auctionclothes">
-							<ClothingAuction />
+							<AuctionClothes />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route exact path="/signinsignup">
-							<SignInSignUp />
+						<Route exact path="/login">
+							<LoginSignup />
+						</Route>
+						<Route exact path="/signup">
+							<SignUp />
+						</Route>
+						<Route exact path="/loginsignup/:option">
+							<LoginSignup />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

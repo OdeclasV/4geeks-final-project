@@ -1,64 +1,92 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
-export const ClothingDonation = () => {
-	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
+import { Link } from "react-router-dom";
+import { Context } from "../../store/appContext";
+
+export const AuctionFurniture = () => {
+	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
+	const [condition, setCondition] = useState("Select a value");
+	const { store, actions } = useContext(Context);
+
+	const generateId = max => {
+		let newId = Math.floor(Math.random() * max);
+		return newId;
+	};
+
+	const [auctionItem, setAuctionItem] = useState({
+		id: generateId(999),
+		category: "furniture",
+		saleType: "bid",
+		condition: null,
+		itemType: null,
+		price: 50,
+		image: "https://bit.ly/3kHj3PT"
+	});
 
 	return (
 		<>
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h3 className="panel-title"> Add an Item to Donate </h3>
+						<h3 className="panel-title"> Add Furniture to Auction </h3>
 					</div>
 
 					<div className="panel-body">
 						<form className="form-horizontal">
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Type of Clothing
+								<label htmlFor="type of furniture" className="col-sm-3 control-label">
+									Type of Furniture
 								</label>
 
 								<select
 									className="form-select"
 									aria-label="Default select example"
-									value={typeOfClothes}
+									value={typeOfFurniture}
 									onChange={e => {
-										setTypeOfClothes(e.target.value);
+										settypeOfFurniture(e.target.value);
+										setAuctionItem({ ...auctionItem, itemType: e.target.value });
 									}}>
 									<option value="Select a value">Select a value</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+									<option value="dining table">Dining Table</option>
+									<option value="chair">Chair</option>
+									<option value="sofa">Sofa</option>
 								</select>
 							</div>
 
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Name
+								<label htmlFor="condition" className="col-sm-3 control-label">
+									Condition
 								</label>
 
-								<div className="col-sm-9">
-									<input
-										type="text"
-										className="form-control"
-										name="name"
-										id="name"
-										placeholder="Men's Patagonia Sweater / Dinning Table"
-									/>
-								</div>
+								<select
+									className="form-select"
+									aria-label="Default select example"
+									value={condition}
+									onChange={e => {
+										setCondition(e.target.value);
+										setAuctionItem({ ...auctionItem, condition: e.target.value });
+									}}>
+									<option value="Select a value">Select a value</option>
+									<option value="like new">Like New</option>
+									<option value="used">Used - Good</option>
+									<option value="fair">Fair</option>
+								</select>
 							</div>
 
 							<div className="form-group">
-								<label htmlFor="name" className="col-sm-3 control-label">
-									Size
+								<label htmlFor="price" className="col-sm-3 control-label">
+									Price
 								</label>
 								<div className="col-sm-9">
 									<input
 										type="text"
 										className="form-control"
-										name="name"
-										id="name"
-										placeholder="Small, Medium, Large / 72 inches x 36 inches"
+										name="price"
+										id="furniture-price"
+										value={auctionItem.price}
+										onChange={e => {
+											setAuctionItem({ ...auctionItem, price: e.target.value });
+										}}
 									/>
 								</div>
 							</div>
@@ -150,9 +178,15 @@ export const ClothingDonation = () => {
 
 							<div className="form-group">
 								<div className="col-sm-offset-3 col-sm-9">
-									<button type="submit" className="btn btn-primary">
+									<Link
+										to="/"
+										type="submit"
+										className="btn btn-primary"
+										onClick={() => {
+											actions.addAuctionItem(auctionItem);
+										}}>
 										Add Item
-									</button>
+									</Link>
 								</div>
 							</div>
 						</form>

@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: 3,
-					category: "household",
+					category: "furniture",
 					saleType: "sale",
 					condition: "good",
 					itemType: "dining table",
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: "gooder non-profit",
 					logo: "https://bit.ly/3n84p5W",
 					description: "Gooder company is focused on sustainability",
-					needs: [],
+					needs: ["furniture"],
 					totalfunds: 0.0
 				}
 			]
@@ -106,8 +106,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addToShoppingCart: (item, price, image) => {
 				let { shoppingCartItems } = getStore();
 				let items = { name: item, price: price, image: image };
-				shoppingCartItems.push(items);
-				setStore({ shoppingCartItems: shoppingCartItems });
+				//shoppingCartItems.push(items);
+				if (!shoppingCartItems.filter(element => element.name == item).length) {
+					setStore({ shoppingCartItems: [...shoppingCartItems, items] });
+				} // change to item.id
+			},
+
+			addAuctionItem: item => {
+				let { items } = getStore();
+				// items.push(item);
+
+				setStore({ items: [...items, item] });
 			}
 		}
 	};
