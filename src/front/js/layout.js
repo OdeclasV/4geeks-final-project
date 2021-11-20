@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -18,13 +18,15 @@ import { DonateClothing } from "./component/donate-form/DonateClothing";
 import { AuctionClothes } from "./component/donate-form/AuctionClothes";
 import { SignInModal, LoginSignup } from "./pages/LoginSignup";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
-import { SignUp } from "./component/donate-form/SignUp";
+import { SignUp } from "./pages/SignUp";
 
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+
+	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
 		<div className="container-fluid">

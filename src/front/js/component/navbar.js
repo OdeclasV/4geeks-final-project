@@ -3,10 +3,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { ShoppingCart } from "./navbar-buttons/ShoppingCart";
-import { SignInModal } from "../pages/LoginSignup";
 import { LoginButton } from "./navbar-buttons/LoginButton";
+import { SignUpButton } from "./navbar-buttons/SignUpButton";
+import PropTypes from "prop-types";
+import { LogoutButton } from "./navbar-buttons/LogoutButton";
 
-export const Navbar = () => {
+export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 	const [dropdown, setDropdown] = React.useState(false);
 
@@ -48,9 +50,39 @@ export const Navbar = () => {
 						</Link>
 					</li>
 				</ul>
+				<ul className="navbar-nav">
+					{props.loggedIn ? (
+						""
+					) : (
+						<li className="nav-button-1">
+							<LoginButton />
+						</li>
+					)}
+					{props.loggedIn ? (
+						""
+					) : (
+						<li className="nav-button-2">
+							<SignUpButton />
+						</li>
+					)}
+
+					{props.loggedIn ? (
+						<li className="nav-button-1">
+							<LogoutButton />
+						</li>
+					) : (
+						""
+					)}
+				</ul>
+				{/* 
 				<LoginButton />
-				<ShoppingCart />
+				<SignUpButton /> */}
 			</div>
 		</nav>
 	);
+};
+
+Navbar.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };

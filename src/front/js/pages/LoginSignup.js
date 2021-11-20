@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Proptypes from "prop-types";
 
 import "../../styles/index.scss";
-import { SignUp } from "../component/donate-form/SignUp";
+import { SignUp } from "./SignUp";
 
 export const LoginSignup = props => {
 	const { store, actions } = useContext(Context);
@@ -36,9 +36,9 @@ export const LoginSignup = props => {
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
 				<div className="card">
-					<ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-						<li className="nav-item text-center">Returning Customers</li>
-					</ul>
+					<div className="card-top nav-item text-center py-3">
+						<h2 className="">Returning Customers</h2>
+					</div>
 
 					<div className="tab-content" id="pills-tabContent">
 						<div
@@ -49,28 +49,27 @@ export const LoginSignup = props => {
 							<div className="form px-4 pt-5">
 								<input type="e-mail" className="form-control" placeholder="Email or Phone" />
 								<input type="password" className="form-control" placeholder="Password" />
-								<Link
-									to="/"
-									className={loginTab ? "nav-link active btl" : "nav-link btl"}
-									id="pills-home-tab"
-									data-toggle="pill"
-									href="#pills-home"
-									role="tab"
-									aria-controls="pills-home"
-									aria-selected="true">
-									Login
+								<Link to="/profile/nonprofit">
+									<button type="button" className="btn btn-primary btn-lg px-4 container-fluid">
+										Login
+									</button>
 								</Link>
 							</div>
 						</div>
+
+						<div className="new-users d-flex justify-content-center align-items-center py-2">
+							<h4>
+								New User? Sign up{" "}
+								<button>
+									<Link to="/signup">
+										<button type="button" className="btn btn-light btn-lg px-4">
+											here
+										</button>
+									</Link>
+								</button>
+							</h4>
+						</div>
 					</div>
-				</div>
-				<div className="new-users">
-					<h4>
-						New User? Sign up{" "}
-						<button>
-							<Link to="/signup">here</Link>
-						</button>
-					</h4>
 				</div>
 			</div>
 		</>
