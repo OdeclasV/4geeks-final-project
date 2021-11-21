@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					condition: "good",
 					itemType: "t-shirt",
 					price: 10.0,
+					endDate: "11/27/2021",
 					image: "https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
 				},
 				{
@@ -32,6 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					condition: "good",
 					itemType: "pants",
 					price: 15.0,
+					endDate: "11/26/2021",
 					image: "https://cdn.shopify.com/s/files/1/0559/6715/4340/products/360020_420x525.jpg?v=1636152457"
 				},
 				{
@@ -41,6 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					condition: "good",
 					itemType: "dining table",
 					price: 20.0,
+					endDate: "11/25/2021",
 					image:
 						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRmYIRC351z7UHKLZFAEnEEjYTv04vycQSgA&usqp=CAU"
 				},
@@ -51,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					condition: "good",
 					itemType: "book",
 					price: 5.0,
+					endDate: "11/24/2021",
 					image:
 						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRNWkhhnQFio8ncl4yGYNcZ-4LKmilmF76eA&usqp=CAU"
 				}

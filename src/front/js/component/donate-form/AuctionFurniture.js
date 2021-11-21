@@ -27,10 +27,6 @@ export const AuctionFurniture = () => {
 		<>
 			<div className="container justify-content-center d-flex">
 				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h3 className="panel-title"> Add Furniture to Auction </h3>
-					</div>
-
 					<div className="panel-body">
 						<form className="form-horizontal">
 							<div className="form-group">

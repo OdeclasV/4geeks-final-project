@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-export const Timer = () => {
+import Proptypes from "prop-types";
+
+export const Timer = ({ endDate }) => {
 	const calculateTimeLeft = () => {
 		let year = new Date().getFullYear();
-		let difference = +new Date(`11/21/${year}`) - +new Date();
+		let difference = +new Date(endDate) - +new Date();
 
 		let timeLeft = {};
 
@@ -39,4 +41,8 @@ export const Timer = () => {
 		);
 	});
 	return <div>{timerComponents.length ? timerComponents : <span>Times up!</span>}</div>;
+};
+
+Timer.propTypes = {
+	endDate: Proptypes.string
 };

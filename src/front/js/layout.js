@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -15,7 +15,7 @@ import { DonationType } from "./pages/DonationType";
 import { AuctionType } from "./pages/AuctionType";
 import { ChooseNonProfit } from "./pages/ChooseNonProfit";
 import { DonateClothing } from "./component/donate-form/DonateClothing";
-import { AuctionClothes } from "./component/donate-form/AuctionClothes";
+import { AuctionClothing } from "./component/donate-form/AuctionClothing";
 import { SignInModal, LoginSignup } from "./pages/LoginSignup";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
 import { SignUp } from "./pages/SignUp";
@@ -25,8 +25,6 @@ const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
-
-	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
 		<div className="container-fluid">
@@ -64,14 +62,14 @@ const Layout = () => {
 						<Route exact path="/profile/nonprofit">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:profileOption">
+						<Route exact path="/profile/nonprofit/:id/:profileoption">
 							<NonProfitProfile />
 						</Route>
 						<Route exact path="/donateclothes">
 							<DonateClothing />
 						</Route>
 						<Route exact path="/auctionclothes">
-							<AuctionClothes />
+							<AuctionClothing />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

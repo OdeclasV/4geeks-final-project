@@ -23,7 +23,7 @@ body {
 	}
 }
 
-
+//needed for dashboards
 .nav-link:hover {
     background-color: #525252 !important
 }
@@ -42,4 +42,14 @@ body {
 }
 .nav-menu-link:hover {
     color: #2541B2;
+}
+
+
+//bid validation ShopItems
+#bid:valid {
+	border-color: black;
+}
+
+#bid:invalid {
+	border-color: red;
 }

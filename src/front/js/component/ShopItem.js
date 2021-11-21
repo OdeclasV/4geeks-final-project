@@ -8,7 +8,10 @@ import { Timer } from "./Timer";
 // item's information is coming from the ShopItem page
 
 export const ShopItem = ({ item }) => {
-	const [bid, setBid] = useState(item.price + 1);
+	let bidIncrement = 1;
+	let itemPriceInt = parseInt(item.price, 10);
+
+	const [bid, setBid] = useState(itemPriceInt + bidIncrement); //after re-rendering, makes sure the price is a number and not a string
 	const [numberOfBids, SetNumberOfBids] = useState(0);
 	const { store, actions } = useContext(Context);
 
@@ -20,9 +23,10 @@ export const ShopItem = ({ item }) => {
 					<h5 className="card-title">Awesome {item.itemType}</h5>
 					<p className="card-text item-price">condition: {item.condition}</p>
 					<p className="card-text item-price">Highest Bid: ${item.price}</p>
+					<p className="card-text item-price">Bid Increment: ${bidIncrement}</p>
 					<p className="card-text item-price">Number of Bids: {numberOfBids}</p>
 					<label htmlFor="price" className="col-sm-3 control-label">
-						Bid
+						Minimum Bid:
 					</label>
 					<div className="col-sm-9">
 						<input
@@ -31,10 +35,8 @@ export const ShopItem = ({ item }) => {
 							name="price"
 							id="bid"
 							value={bid}
+							min={itemPriceInt + bidIncrement}
 							onChange={e => {
-								if (e.target.value <= bid) {
-									console.log("can't be lower");
-								}
 								setBid(e.target.value);
 							}}
 						/>
@@ -44,16 +46,18 @@ export const ShopItem = ({ item }) => {
 							href="#"
 							className="btn btn-warning m-1"
 							onClick={() => {
-								SetNumberOfBids(numberOfBids + 1);
-								item.price = bid;
-								setBid(parseInt(item.price, 10) + 1);
+								if (bid > itemPriceInt) {
+									SetNumberOfBids(numberOfBids + 1);
+									item.price = bid;
+									setBid(parseInt(item.price, 10) + 1); //makes sure the price is a number and not a string
+								}
 							}}>
 							Bid
 						</a>
 					</div>
 					<div>
 						Time left to bid
-						<Timer />
+						<Timer endDate={item.endDate} />
 					</div>
 				</div>
 			</div>
