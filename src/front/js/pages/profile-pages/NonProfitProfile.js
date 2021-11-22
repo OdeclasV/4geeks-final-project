@@ -7,16 +7,19 @@ import { SideBar } from "../../component/profiles/SideBar";
 import { ProfileDashboard } from "../../component/profiles/ProfileDashboard";
 import { ProfileWishlist } from "../../component/profiles/ProfileWhislist";
 import { ProfileHome } from "../../component/profiles/ProfileHome";
+import { ProfileMyAccount } from "../../component/profiles/ProfileMyAccount";
 
 export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
 	const clickedProfile = profile => {
-		if (profile == "dashboard") {
+		if (profile == "donations") {
 			return <ProfileDashboard />;
 		} else if (profile == "wishlist") {
 			return <ProfileWishlist />;
+		} else if (profile == "myaccount") {
+			return <ProfileMyAccount />;
 		} else {
 			return <ProfileHome />;
 		}
@@ -25,7 +28,7 @@ export const NonProfitProfile = props => {
 	return (
 		<div className="d-flex">
 			<SideBar username="Non-profit" />
-			{clickedProfile(params.profileOption)}
+			{clickedProfile(params.profileoption)}
 		</div>
 	);
 };

@@ -42,8 +42,7 @@ export const ShopItem = ({ item }) => {
 						/>
 					</div>
 					<div className="bid-button">
-						<a
-							href="#"
+						<button
 							className="btn btn-warning m-1"
 							onClick={() => {
 								if (bid > itemPriceInt) {
@@ -53,7 +52,7 @@ export const ShopItem = ({ item }) => {
 								}
 							}}>
 							Bid
-						</a>
+						</button>
 					</div>
 					<div>
 						Time left to bid

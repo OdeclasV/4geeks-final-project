@@ -36,16 +36,12 @@ export const LoginSignup = props => {
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
 				<div className="card">
-					<div className="card-top nav-item text-center py-3">
+					<div className="card-top text-center py-3">
 						<h2 className="">Returning Customers</h2>
 					</div>
 
 					<div className="tab-content" id="pills-tabContent">
-						<div
-							className={loginTab ? "tab-pane fade " + showLogin : "tab-pane fade"}
-							id="pills-home"
-							role="tabpanel"
-							aria-labelledby="pills-home-tab">
+						<div>
 							<div className="form px-4 pt-5">
 								<input type="e-mail" className="form-control" placeholder="Email or Phone" />
 								<input type="password" className="form-control" placeholder="Password" />
@@ -57,16 +53,14 @@ export const LoginSignup = props => {
 							</div>
 						</div>
 
-						<div className="new-users d-flex justify-content-center align-items-center py-2">
+						<div className="new-users text-center pb-3 px-4">
 							<h4>
-								New User? Sign up{" "}
-								<button>
-									<Link to="/signup">
-										<button type="button" className="btn btn-light btn-lg px-4">
-											here
-										</button>
-									</Link>
-								</button>
+								New User?
+								<Link to="/signup">
+									<button type="button" className="btn btn-success btn-lg px-4 container-fluid my-5">
+										Sign Up Here
+									</button>
+								</Link>
 							</h4>
 						</div>
 					</div>
