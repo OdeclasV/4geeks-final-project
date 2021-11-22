@@ -8,9 +8,7 @@ export const Shop = () => {
 
 	// list of dropdowns and their options to render
 	const dropdowns = [
-		{ name: "Type", options: ["clothing", "books", "furniture"] },
-		{ name: "Buy Options", options: ["Final Sale", "Bid"] },
-		{ name: "More Options", options: ["Recently Posted", "Option 1", "Option 2"] },
+		{ name: "Filter", options: ["clothing", "books", "furniture"] },
 		{ name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
 	];
 
@@ -36,7 +34,7 @@ export const Shop = () => {
 								type="button"
 								id="dropdownMenuButton1"
 								data-bs-toggle="dropdown"
-								aria-expanded="false"
+								// aria-expanded="false"
 								value={dropdown.name}>
 								{dropdown.name}
 							</button>
@@ -47,15 +45,14 @@ export const Shop = () => {
 								// inside dropdowns object, above
 								dropdown.options.map(option => {
 									return (
-										<a
+										<button
 											className="dropdown-item"
-											href="#"
 											key={option}
 											onClick={() => {
 												setfilterOption(option);
 											}}>
 											{option}
-										</a>
+										</button>
 									);
 								})}
 							</div>

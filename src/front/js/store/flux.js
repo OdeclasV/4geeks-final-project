@@ -77,7 +77,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					needs: ["furniture"],
 					totalfunds: 0.0
 				}
-			]
+			],
+			currentuser: {
+				id: 1,
+				name: "good non-profit",
+				logo: "https://bit.ly/3n6N8tC",
+				description: "Good company is focused on healthy pokemon living",
+				needs: ["clothes"],
+				totalfunds: 10000.0
+			}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

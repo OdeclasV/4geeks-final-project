@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -10,7 +10,7 @@ import { LogoutButton } from "./navbar-buttons/LogoutButton";
 
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
-	const [dropdown, setDropdown] = React.useState(false);
+	const [dropdown, setDropdown] = useState(false);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light">

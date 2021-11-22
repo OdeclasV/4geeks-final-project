@@ -62,7 +62,7 @@ const Layout = () => {
 						<Route exact path="/profile/nonprofit">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:id/:profileoption">
+						<Route exact path="/profile/nonprofit/:profileoption">
 							<NonProfitProfile />
 						</Route>
 						<Route exact path="/donateclothes">

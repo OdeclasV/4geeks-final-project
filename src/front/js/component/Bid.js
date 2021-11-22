@@ -27,8 +27,7 @@ export const Bid = ({ item, bid, numberOfBids }) => {
 				/>
 			</div>
 			<div className="bid-button">
-				<a
-					href="#"
+				<button
 					className="btn btn-warning m-1"
 					onClick={() => {
 						SetCurrentNumberOfBids(numberOfBids + 1);
@@ -37,7 +36,7 @@ export const Bid = ({ item, bid, numberOfBids }) => {
 						actions.itemBidding(item.id, currentBid);
 					}}>
 					Bid
-				</a>
+				</button>
 			</div>
 		</>
 	);
