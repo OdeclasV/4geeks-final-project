@@ -14,7 +14,7 @@ export const AuctionClothing = () => {
 
 	const [auctionItem, setAuctionItem] = useState({
 		id: generateId(999),
-		category: null,
+		category: "clothing",
 		saleType: "bid",
 		condition: null,
 		itemType: null,

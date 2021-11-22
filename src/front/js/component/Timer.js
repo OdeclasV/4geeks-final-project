@@ -4,7 +4,7 @@ import Proptypes from "prop-types";
 
 export const Timer = ({ endDate }) => {
 	const calculateTimeLeft = () => {
-		let year = new Date().getFullYear();
+		//let year = new Date().getFullYear();
 		let difference = +new Date(endDate) - +new Date();
 
 		let timeLeft = {};
