@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
+import { BarGraph } from "../graphs/BarGraph";
+import { LineGraph } from "../graphs/LineGraph";
 
 export const ProfileHome = () => {
 	const params = useParams();
@@ -17,6 +19,14 @@ export const ProfileHome = () => {
 				<p>Carousel with items or just list of items</p>
 				<h3>Wishlist items</h3>
 				<p>{store.currentuser.needs}</p>
+				<div className="graphs d-flex">
+					<div className="bargraph" style={{ width: "50%" }}>
+						<BarGraph />
+					</div>
+					<div className="linegraph" style={{ width: "50%" }}>
+						<LineGraph />
+					</div>
+				</div>
 			</div>
 		</div>
 	);
