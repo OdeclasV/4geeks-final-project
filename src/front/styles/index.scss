@@ -4,7 +4,11 @@
     width: 400px;
     border: none
 }
-
+.card-img-top {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    }
 .btr {
     border-top-right-radius: 5px !important
 }

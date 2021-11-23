@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
 
 import { useHistory } from "react-router";
 import { useParams } from "react-router";
@@ -13,6 +14,8 @@ export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
+	const { store, actions } = useContext(Context);
+
 	const clickedProfile = profile => {
 		if (profile == "donations") {
 			return <ProfileDashboard />;
@@ -26,8 +29,8 @@ export const NonProfitProfile = props => {
 	};
 
 	return (
-		<div className="d-flex">
-			<SideBar username="Non-profit" />
+		<div className="d-flex container-fluid">
+			<SideBar username={store.currentuser.name} />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

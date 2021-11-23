@@ -23,6 +23,7 @@ export const Shop = () => {
 					// so when clicked, the state of one dropdown changes
 					// and not all of them at once
 					const [dropdownMenu, setDropdownMenu] = useState(false);
+					const [open, setOpen] = React.useState(false);
 
 					return (
 						<div className="dropdown m-1" key={dropdown.name}>
@@ -34,7 +35,7 @@ export const Shop = () => {
 								type="button"
 								id="dropdownMenuButton1"
 								data-bs-toggle="dropdown"
-								// aria-expanded="false"
+								aria-expanded="false"
 								value={dropdown.name}>
 								{dropdown.name}
 							</button>
@@ -50,6 +51,7 @@ export const Shop = () => {
 											key={option}
 											onClick={() => {
 												setfilterOption(option);
+												setDropdownMenu(!dropdownMenu);
 											}}>
 											{option}
 										</button>

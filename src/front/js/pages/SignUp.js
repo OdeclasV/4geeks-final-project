@@ -10,15 +10,15 @@ export const SignUp = () => {
 				<form className="justify-content-md-center ">
 					<h1 className="text-center pb-2">Sign Up</h1>
 					<div className="mb-3">
-						<label className="form-label">Nonprofit Name</label>
+						<label className="form-label">First Name</label>
 						<input type="password" className="form-control" id="exampleInputPassword1" />
 					</div>
 					<div className="mb-3">
-						<label className="form-label">Description</label>
+						<label className="form-label">Last Name</label>
 						<input type="password" className="form-control" id="exampleInputPassword1" />
 					</div>
 					<div className="mb-3">
-						<label className="form-label">Email address</label>
+						<label className="form-label">Email</label>
 						<input
 							type="email"
 							className="form-control"
@@ -33,14 +33,11 @@ export const SignUp = () => {
 						<label className="form-label">Password</label>
 						<input type="password" className="form-control" id="exampleInputPassword1" />
 					</div>
-					<div className="mb-3 form-check">
-						<input type="checkbox" className="form-check-input" id="exampleCheck1" />
-						<label className="form-check-label">Check me out</label>
-					</div>
 					<button type="submit" className="btn btn-primary container-fluid">
 						Submit
 					</button>
 				</form>
+				<p className="pt-3">Nonprofit? Contact us to join</p>
 			</div>
 		</>
 	);

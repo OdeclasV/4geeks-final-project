@@ -43,7 +43,7 @@ export const LoginSignup = props => {
 					<div className="tab-content" id="pills-tabContent">
 						<div>
 							<div className="form px-4 pt-5">
-								<input type="e-mail" className="form-control" placeholder="Email or Phone" />
+								<input type="e-mail" className="form-control" placeholder="Email" />
 								<input type="password" className="form-control" placeholder="Password" />
 								<Link to="/profile/nonprofit">
 									<button type="button" className="btn btn-primary btn-lg px-4 container-fluid">

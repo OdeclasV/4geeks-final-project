@@ -23,7 +23,7 @@ export const SideBar = ({ username }) => {
 
 	return (
 		<div className="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style={{ width: "250px" }}>
-			<a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+			<a className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 				<svg className="bi me-2" width="40" height="32" />
 				<span className="fs-4">{username}</span>
 			</a>
@@ -56,7 +56,7 @@ export const SideBar = ({ username }) => {
 						href="#"
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
-							history.push("/profile/nonprofit/dashboard");
+							history.push("/profile/nonprofit/donations");
 						}}>
 						<i className="fa fa-columns" />
 						<span className="ms-2">Donations</span>
