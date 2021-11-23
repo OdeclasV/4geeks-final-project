@@ -31,7 +31,6 @@ export const AuctionType = props => {
 									value={category}
 									onChange={e => {
 										setCategory(e.target.value);
-										history.push(`auctiontype/${e.target.value}`);
 									}}>
 									<option value="Select a value">Select a value</option>
 									<option value="clothing">Clothes</option>

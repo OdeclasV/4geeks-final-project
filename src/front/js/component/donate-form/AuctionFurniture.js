@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext";
+import { ChooseNonProfit } from "../../pages/ChooseNonProfit";
 
 export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
@@ -105,63 +106,14 @@ export const AuctionFurniture = () => {
 					</label>
 					<input type="file" name="file_img_primary" />
 				</div>
-
-				<div className="col-sm-3">
-					<label className="control-label small" htmlFor="file_img">
-						Secondary Image(Max File size 5 MB):
-					</label>
-					<input type="file" name="file_img_secondary" />
-				</div>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="tech" className="col-sm-3 control-label">
-					Times Available For Pick Up
+				<label htmlFor="about" className="col-sm-3 control-label">
+					Choose Nonprofit
 				</label>
 
-				<div className="col-sm-3">
-					<select className="form-control">
-						<option value="pickuptimes1"> 8AM to 8PM </option>
-						<option value="pickuptimes2"> 8AM to 10AM</option>
-						<option value="pickuptimes3"> 10AM to 12PM</option>
-						<option value="pickuptimes4"> 12PM to 2PM </option>
-						<option value="pickuptimes5"> 2PM to 4PM</option>
-						<option value="pickuptimes6"> 4PM to 6PM</option>
-						<option value="pickuptimes6"> 6PM to 8PM</option>
-					</select>
-				</div>
-			</div>
-			<div className="row g-3">
-				<div className="form-group">
-					<label htmlFor="inputAddress">Address</label>
-					<input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-				</div>
-				<div className="form-group">
-					<label htmlFor="inputAddress2">Address 2</label>
-					<input
-						type="text"
-						className="form-control"
-						id="inputAddress2"
-						placeholder="Apartment, studio, or floor"
-					/>
-				</div>
-				<div className="form-row">
-					<div className="form-group col-md-6">
-						<label htmlFor="inputCity">City</label>
-						<input type="text" className="form-control" id="inputCity" />
-					</div>
-					<div className="form-group col-md-4">
-						<label htmlFor="inputState">State</label>
-						<select id="inputState" className="form-control">
-							<option>Choose...</option>
-							<option>FL</option>
-						</select>
-					</div>
-					<div className="form-group col-md-2">
-						<label htmlFor="inputZip">Zip</label>
-						<input type="text" className="form-control" id="inputZip" />
-					</div>
-				</div>
+				<ChooseNonProfit />
 			</div>
 
 			<div className="form-group">
