@@ -9,6 +9,7 @@ import { ProfileDashboard } from "../../component/profiles/ProfileDashboard";
 import { ProfileWishlist } from "../../component/profiles/ProfileWhislist";
 import { ProfileHome } from "../../component/profiles/ProfileHome";
 import { ProfileMyAccount } from "../../component/profiles/ProfileMyAccount";
+import { BarGraph } from "../../component/BarGraph";
 
 export const NonProfitProfile = props => {
 	const params = useParams();
@@ -29,8 +30,9 @@ export const NonProfitProfile = props => {
 	};
 
 	return (
-		<div className="d-flex container-fluid">
-			<SideBar username={store.currentuser.name} />
+		<div className="d-flex">
+			<SideBar username="Non-profit" />
+			<BarGraph />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

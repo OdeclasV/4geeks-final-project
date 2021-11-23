@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -7,37 +7,46 @@ import { DonateClothing } from "../component/donate-form/DonateClothing";
 import { DonateFurniture } from "../component/donate-form/DonateFurniture";
 
 export const DonationType = () => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const [category, setCategory] = useState("Select a category");
 	const history = useHistory();
-
-	const donationType = type => {
-		if (type == "clothing") {
-			return <DonateClothing />;
-		} else if (type == "furniture") {
-			return <DonateFurniture />;
-		}
-	};
-
 	return (
 		<>
-			<div className="text-center mt-5">
-				<h1>Let&apos;s Get Started!</h1>
-				<button
-					className="btn btn-primary m-3"
-					onClick={() => {
-						history.push("/donationtype/clothing");
-					}}>
-					Clothing
-				</button>
-				<button
-					className="btn btn-primary m-3"
-					onClick={() => {
-						history.push("/donationtype/furniture");
-					}}>
-					Furniture
-				</button>
-				{donationType(params.type)}
+			<div className="container justify-content-center d-flex">
+				<div className="panel panel-default">
+					<div className="panel-heading">
+						<h3 className="panel-title"> Add an Item to Donate </h3>
+					</div>
+
+					<div className="panel-body">
+						<form className="form-horizontal">
+							<div className="form-group">
+								<label htmlFor="type of clothing" className="col-sm-3 control-label">
+									Category
+								</label>
+
+								<select
+									className="form-select"
+									aria-label="Default select example"
+									value={category}
+									onChange={e => {
+										setCategory(e.target.value);
+									}}>
+									<option value="Select a value">Select a value</option>
+									<option value="clothing">Clothes</option>
+									<option value="furniture">Furniture</option>
+									<option value="art">Art</option>
+								</select>
+							</div>
+							{category == "clothing" ? (
+								<DonateClothing />
+							) : category == "furniture" ? (
+								<DonateFurniture />
+							) : (
+								<hr />
+							)}
+						</form>
+					</div>
+				</div>
 			</div>
 		</>
 	);
