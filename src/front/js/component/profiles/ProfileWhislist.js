@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 
-export const ProfileWishlist = props => {
+export const ProfileWishlist = () => {
 	const params = useParams();
+	const { store, actions } = useContext(Context);
+
 	return (
-		<div className="col-md-6 m-5">
+		<div className="container-fluid ">
 			<div className="h-100 p-5 bg-light border rounded-3">
-				<h2>Wishlist</h2>
-				<p>Theres going to be a list here with some items</p>
+				<h2>Wishlist Items</h2>
+				<p>{store.currentuser.needs}</p>
+				<button type="submit" className="btn btn-primary float-right">
+					Add Item
+				</button>
 			</div>
 		</div>
 	);

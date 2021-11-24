@@ -1,8 +1,14 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
 .card {
     width: 400px;
     border: none
 }
-
+.card-img-top {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    }
 .btr {
     border-top-right-radius: 5px !important
 }
@@ -28,7 +34,7 @@
     width: 100%
 }
 
-.nav-pills .nav-link {
+.nav-pills {
     border-radius: 0px;
     border-bottom: 1px solid #0d6efd40
 }
@@ -55,3 +61,4 @@
 .form button {
     margin-top: 20px
 }
+

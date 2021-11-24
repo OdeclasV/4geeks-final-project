@@ -7,7 +7,7 @@ export const Donate = () => {
 
 	return (
 		<>
-			<div className="text-center mt-5">
+			<div className="container text-center">
 				<h1>Donate Page</h1>
 				<DonateOrAuction />
 			</div>

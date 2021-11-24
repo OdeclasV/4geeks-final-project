@@ -8,9 +8,7 @@ export const Shop = () => {
 
 	// list of dropdowns and their options to render
 	const dropdowns = [
-		{ name: "Type", options: ["clothing", "books", "furniture"] },
-		{ name: "Buy Options", options: ["Final Sale", "Bid"] },
-		{ name: "More Options", options: ["Recently Posted", "Option 1", "Option 2"] },
+		{ name: "Filter", options: ["clothing", "books", "furniture"] },
 		{ name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
 	];
 
@@ -25,6 +23,7 @@ export const Shop = () => {
 					// so when clicked, the state of one dropdown changes
 					// and not all of them at once
 					const [dropdownMenu, setDropdownMenu] = useState(false);
+					const [open, setOpen] = React.useState(false);
 
 					return (
 						<div className="dropdown m-1" key={dropdown.name}>
@@ -47,15 +46,15 @@ export const Shop = () => {
 								// inside dropdowns object, above
 								dropdown.options.map(option => {
 									return (
-										<a
+										<button
 											className="dropdown-item"
-											href="#"
 											key={option}
 											onClick={() => {
 												setfilterOption(option);
+												setDropdownMenu(!dropdownMenu);
 											}}>
 											{option}
-										</a>
+										</button>
 									);
 								})}
 							</div>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
 
 import { useHistory } from "react-router";
 import { useParams } from "react-router";
@@ -7,16 +8,22 @@ import { SideBar } from "../../component/profiles/SideBar";
 import { ProfileDashboard } from "../../component/profiles/ProfileDashboard";
 import { ProfileWishlist } from "../../component/profiles/ProfileWhislist";
 import { ProfileHome } from "../../component/profiles/ProfileHome";
+import { ProfileMyAccount } from "../../component/profiles/ProfileMyAccount";
+import { BarGraph } from "../../component/BarGraph";
 
 export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
+	const { store, actions } = useContext(Context);
+
 	const clickedProfile = profile => {
-		if (profile == "dashboard") {
+		if (profile == "donations") {
 			return <ProfileDashboard />;
 		} else if (profile == "wishlist") {
 			return <ProfileWishlist />;
+		} else if (profile == "myaccount") {
+			return <ProfileMyAccount />;
 		} else {
 			return <ProfileHome />;
 		}
@@ -25,7 +32,8 @@ export const NonProfitProfile = props => {
 	return (
 		<div className="d-flex">
 			<SideBar username="Non-profit" />
-			{clickedProfile(params.profileOption)}
+			<BarGraph />
+			{clickedProfile(params.profileoption)}
 		</div>
 	);
 };
