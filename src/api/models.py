@@ -10,9 +10,8 @@ class User(db.Model):
     name = db.Column(db.String(250), unique=False, nullable=True)
     last_name = db.Column(db.String(250), unique=False, nullable=True)
     nonprofit_friends = db.Column(db.String(120), unique=False, nullable=True)
-    donations = db.relationship('Item', backref='user_donations', lazy=True)
-    transactions = db.relationship('Transaction', backref='user_transactions', lazy=True)
-
+    donations = db.relationship('Item', backref='user', lazy=True)
+    transactions = db.relationship('Transaction', backref='user', lazy=True)
 
     def serialize(self):
         return {
@@ -35,9 +34,8 @@ class NonProfit(db.Model):
     wish_list_items = db.Column(db.String(250), unique=False, nullable=True)
     items_received = db.Column(db.String(250), unique=False, nullable=True)
     total_profits = db.Column(db.Integer, unique=False, nullable=True)
-    donated_to = db.relationship('Item', backref='nonprofit_donated_to', lazy=True)
-    transactions = db.relationship('Transaction', backref='nonprofit_transactions', lazy=True)
-
+    donated_to = db.relationship('Item', backref='nonprofit', lazy=True)
+    transactions = db.relationship('Transaction', backref='nonprofit', lazy=True)
 
     def serialize(self):
         return {
@@ -51,7 +49,6 @@ class NonProfit(db.Model):
             "total_profits": self.total_profits
         }
 
-
 class Item(db.Model):
     __tablename__ = "item"
     id = db.Column(db.Integer, primary_key=True)
@@ -61,8 +58,8 @@ class Item(db.Model):
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     donate = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     bid_count = db.Column(db.Integer,unique=False, nullable=True)
-    bids = db.relationship('Bid', backref='item_bids', lazy=True)
-    transactions = db.relationship('Transaction', backref='item_transactions', lazy=True)
+    bids = db.relationship('Bid', backref='item', lazy=True)
+    transactions = db.relationship('Transaction', backref='item', lazy=True)
 
     def serialize(self):
         return {
@@ -78,17 +75,16 @@ class Item(db.Model):
 class Bid(db.Model):
     __tablename__ = "bid"
     id = db.Column(db.Integer, primary_key=True)
-    item = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
+    item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
     starting_price = db.Column(db.Integer, unique=False, nullable=True)
     final_price = db.Column(db.Integer, unique=False, nullable=True)
     created_date = db.Column(db.String(250), unique=False, nullable=True)
     end_date = db.Column(db.String(250), unique=False, nullable=True)
 
-
     def serialize(self):
         return {
             "id": self.id,
-            "item": self.item,
+            "item_id": self.item_id,
             "starting_price": self.starting_price,
             "final_price": self.final_price,
             "created_price": self.created_date,
@@ -98,7 +94,7 @@ class Bid(db.Model):
 class Transaction(db.Model):
     __tablename__ = "transaction"
     id = db.Column(db.Integer, primary_key=True)
-    item = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
+    item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
     price = db.Column(db.Integer, unique=False, nullable=True)
     date = db.Column(db.String(250), unique=False, nullable=True)
     transaction_type = db.Column(db.String(250), unique=False, nullable=True)
@@ -109,11 +105,10 @@ class Transaction(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "item": self.item,
+            "item_id": self.item_id,
             "price": self.price,
             "date": self.date,
             "type": self.type,
             "nonprofit": self.nonprofit,
             "donor": self.donor
         }
-
