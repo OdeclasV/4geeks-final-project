@@ -48,5 +48,5 @@ def get_nonprofits():
     response_body = {
         "db_message": "These are all the nonprofits"
     }
-
     return jsonify(response_body, all_nonprofits), 200
+

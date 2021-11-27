@@ -1,8 +1,17 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
+.login-form {
+    background-color: white;
+    border: solid 1px rgb(19, 19, 19);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .card {
-    width: 400px;
-    border: none
+    width: 30%;
+    border: solid 1px rgb(19, 19, 19);
+    margin: 5px;
+    padding: 10px;
 }
 .card-img-top {
     width: 100%;

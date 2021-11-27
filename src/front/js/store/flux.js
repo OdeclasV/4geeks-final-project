@@ -121,51 +121,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			addContact: contact => {
-				// add contact details to API
-				fetch("https://assets.breatheco.de/apis/fake/contact/", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(contact)
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch("https://assets.breatheco.de/apis/fake/contact/agenda/matthewcarpenter")
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									setStore({ contacts: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
-
-			deleteContact: id => {
-				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, {
-					method: "DELETE"
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch("https://assets.breatheco.de/apis/fake/contact/agenda/matthewcarpenter")
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									setStore({ contacts: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
-
 			editContact: contact => {
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${contact.id}`, {
 					method: "PUT",
@@ -187,6 +142,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					})
 					.catch(error => console.error(error));
+			},
+
+			addWishlistItem: item => {
+				let { items } = getStore();
+
+				setStore({ items: [...items, item] });
 			}
 		}
 	};
