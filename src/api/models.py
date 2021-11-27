@@ -42,6 +42,7 @@ class NonProfit(db.Model):
             "id": self.id,
             "email": self.email,
             "name": self.name,
+            "address": self.address,
             "description": self.description,
             "nonprofit_logo": self.nonprofit_logo,
             "wish_list_items": self.wish_list_items,
@@ -55,6 +56,7 @@ class Item(db.Model):
     item_type = db.Column(db.String(250), unique=False, nullable=True)
     category = db.Column(db.String(250), unique=False, nullable=True)
     condition = db.Column(db.String(250), unique=False, nullable=True)
+    image = db.Column(db.String(250),unique=False, nullable=True )
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     donate = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     bid_count = db.Column(db.Integer,unique=False, nullable=True)
@@ -67,8 +69,9 @@ class Item(db.Model):
             "item_type": self.item_type,
             "category": self.category,
             "condition": self.condition,
+            "image": self.image,
             "donated_by": self.donated_by,
-            "donated_to": self.donated_to,
+            "donate": self.donate,
             "bid_count": self.bid_count
         }
 
@@ -87,7 +90,7 @@ class Bid(db.Model):
             "item_id": self.item_id,
             "starting_price": self.starting_price,
             "final_price": self.final_price,
-            "created_price": self.created_date,
+            "created_date": self.created_date,
             "end_date": self.end_date
         }
 
@@ -108,7 +111,7 @@ class Transaction(db.Model):
             "item_id": self.item_id,
             "price": self.price,
             "date": self.date,
-            "type": self.type,
-            "nonprofit": self.nonprofit,
+            "transaction_type": self.transaction_type,
+            "nonprofit_id": self.nonprofit_id,
             "donor": self.donor
         }

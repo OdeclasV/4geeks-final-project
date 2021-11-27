@@ -15,12 +15,12 @@ export const AuctionFurniture = () => {
 	};
 
 	const [auctionItem, setAuctionItem] = useState({
-		id: generateId(999),
+		item_type: null,
 		category: "furniture",
-		saleType: "bid",
 		condition: null,
-		itemType: null,
-		price: 50,
+		donated_by: null,
+		donate: null,
+		bid_count: 0,
 		image: "https://bit.ly/3kHj3PT"
 	});
 
@@ -37,7 +37,7 @@ export const AuctionFurniture = () => {
 					value={typeOfFurniture}
 					onChange={e => {
 						settypeOfFurniture(e.target.value);
-						setAuctionItem({ ...auctionItem, itemType: e.target.value });
+						setAuctionItem({ ...auctionItem, item_type: e.target.value });
 					}}>
 					<option value="Select a value">Select a value</option>
 					<option value="dining table">Dining Table</option>
