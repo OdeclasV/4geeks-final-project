@@ -10,34 +10,31 @@ export const ProfileMyAccount = props => {
 
 	return (
 		<>
-			<div>
-				{/* title */}
-				<div className="">
-					<h1>My Account Profile</h1>
-				</div>
-				{/* info area */}
-				<div className="d-flex flex-wrap">
-					<div className="bg-light p-2 m-2 border rounded-3">
-						<h4>
-							<strong>Name:</strong>
-						</h4>
-						<h4>{store.currentuser.name}</h4>
-						<h4>Description:</h4>
-						<p>{store.currentuser.description}</p>
+			<div className="container-fluid ">
+				<div className="h-100 p-5 bg-light border rounded-3">
+					<div className="m-2 page-title d-flex justify-content-between">
+						{/* title */}
+						<h1 className="">My Account Profile</h1>
+						<button type="submit" className="btn btn-primary float-right">
+							Edit Profile
+						</button>
 					</div>
-
-					<div className="bg-light borderrounded-3">
-						<h4>
-							<strong>Name:</strong>
-						</h4>
-						<h4>{store.currentuser.name}</h4>
-					</div>
-
-					<div className="bg-light borderrounded-3">
-						<h4>
-							<strong>Name:</strong>
-						</h4>
-						<h4>{store.currentuser.name}</h4>
+					<div className="d-flex justify-content-between">
+						{/* info area */}
+						<div className="p-2 m-2 border rounded-3 col-9">
+							<h4>
+								<strong>Company Name:</strong>
+							</h4>
+							<h4>{store.currentuser.name}</h4>
+							<br />
+							<h4>
+								<strong>Description:</strong>
+							</h4>
+							<p>{store.currentuser.description}</p>
+						</div>
+						<div className="non-profit-logo p-2 m-2 border rounded-3">
+							<img className="card-img-top" src={store.currentuser.logo} alt="Card image cap" />
+						</div>
 					</div>
 				</div>
 			</div>

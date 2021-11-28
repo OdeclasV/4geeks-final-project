@@ -17,32 +17,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
-			getItems: () => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items")
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						console.log(data);
-						setStore({ items: data });
-					});
-			},
-			getNonprofits: () => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/nonprofit")
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						console.log(data);
-						setStore({ nonprofits: data });
-					});
-			},
+			// getItems: () => {
+			// 	fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items")
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			console.log(data);
+			// 			setStore({ items: data });
+			// 		});
+			// },
+			// getNonprofits: () => {
+			// 	fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/nonprofit")
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			console.log(data);
+			// 			setStore({ nonprofits: data });
+			// 		});
+			// },
 
 			addToShoppingCart: (item, price, image) => {
 				let { shoppingCartItems } = getStore();
@@ -53,44 +53,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} // change to item.id
 			},
 
-			addAuctionItem: item => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(item)
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items")
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									console.log(data);
-									setStore({ items: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// addAuctionItem: item => {
+			// 	fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items", {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify(item)
+			// 	})
+			// 		.then(response => {
+			// 			if (response.ok) {
+			// 				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items")
+			// 					.then(response => {
+			// 						if (!response.ok) {
+			// 							throw new Error(response.statusText);
+			// 						}
+			// 						return response.json();
+			// 					})
+			// 					.then(data => {
+			// 						console.log(data);
+			// 						setStore({ items: data });
+			// 					});
+			// 			}
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
 			// arrow functions to update contacts
-			getContacts: () => {
-				// get contacts from API
-				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/matthewcarpenter")
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						setStore({ contacts: data });
-					});
-			},
+			// getContacts: () => {
+			// 	// get contacts from API
+			// 	fetch("https://assets.breatheco.de/apis/fake/contact/agenda/matthewcarpenter")
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			setStore({ contacts: data });
+			// 		});
+			// },
 
 			editContact: contact => {
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${contact.id}`, {

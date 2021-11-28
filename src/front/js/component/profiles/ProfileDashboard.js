@@ -8,7 +8,7 @@ export const ProfileDashboard = props => {
 	return (
 		<div className="container-fluid ">
 			<div className="h-100 p-5 bg-light border rounded-3">
-				<h2>My Donations</h2>
+				<h1>My Donations</h1>
 				<table className="table">
 					<thead className="thead-dark">
 						<tr>
