@@ -71,3 +71,39 @@
     margin-top: 20px
 }
 
+//buttons
+
+.btn-one {
+    text-decoration: none! important;
+    color: #185a9d;
+    background: none;
+    border: #185a9d 1px solid;
+    
+    
+}
+
+.btn-one:hover {
+    text-decoration: none! important;
+    color: #fff;
+    background: linear-gradient(-135deg, #43cea2, #185a9d);
+	transition: transform 400ms ease-in;
+    border: none;
+}
+
+.btn-two {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(59,173,227,1);
+    background: linear-gradient(45deg,#43cea2, #185a9d);
+    border: none;
+
+    
+}
+
+.btn-two:hover {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(-135deg, #43cea2, #185a9d);
+	transition: transform 400ms ease-in;
+    border: none;
+}

@@ -25,7 +25,7 @@ export const ProfileHome = () => {
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Funds Raised:</h3>
-									<h2>{store.currentuser.totalfunds}</h2>
+									<h2>${store.currentuser.totalfunds}</h2>
 									<h4 className="text-success">
 										{" "}
 										<i className="fas fa-arrow-up" />
