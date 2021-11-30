@@ -25,26 +25,26 @@ export const ProfileMyAccount = props => {
 							<h4>
 								<strong>Company Name:</strong>
 							</h4>
-							<h4>{store.currentuser.name}</h4>
+							<h4>{store.currentnonprofit.name}</h4>
 							<br />
 							<h4>
 								<strong>Email:</strong>
 							</h4>
-							<p>{store.currentuser.email}</p>
+							<p>{store.currentnonprofit.email}</p>
 							<h4>
 								<strong>Description:</strong>
 							</h4>
-							<p>{store.currentuser.description}</p>
+							<p>{store.currentnonprofit.description}</p>
 							<h4>
 								<strong>Address:</strong>
 							</h4>
-							<p>{store.currentuser.address}</p>
+							<p>{store.currentnonprofit.address}</p>
 							<button type="submit" className="btn btn-one">
 								Change Password
 							</button>
 						</div>
 						<div className="non-profit-logo p-2 m-2 border rounded-3">
-							<img className="card-img-top" src={store.currentuser.logo} alt="Card image cap" />
+							<img className="card-img-top" src={store.currentnonprofit.logo} alt="Card image cap" />
 						</div>
 					</div>
 				</div>

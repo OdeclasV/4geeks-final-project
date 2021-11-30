@@ -60,7 +60,7 @@ export const ProfileWishlist = () => {
 		<div className="container-fluid ">
 			<div className="h-100 p-5 bg-light border rounded-3">
 				<h1>Wishlist Items</h1>
-				<p>{store.currentuser.needs}</p>
+				<p>{store.currentnonprofit.needs}</p>
 				<div className="notePad container-fluid">
 					<input
 						className="container inputfield"

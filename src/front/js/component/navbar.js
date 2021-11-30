@@ -50,6 +50,11 @@ export const Navbar = props => {
 								Donate
 							</Link>
 						</li>
+						<li className="nav-menu-item mx-2">
+							<Link className="nav-menu-link" to="/productpage">
+								Item Page
+							</Link>
+						</li>
 					</ul>
 					<ul className="navbar-nav">
 						{props.loggedIn ? (

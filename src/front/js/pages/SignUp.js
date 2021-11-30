@@ -86,7 +86,7 @@ export const SignUp = () => {
 									<input type="password" className="form-control" id="PasswordUser" />
 								</div>
 								<div className="text-center px-4">
-									<Link to="/signup">
+									<Link to="/profile/user">
 										<button type="submit" className="btn btn-two btn-lg px-4 container-fluid my-5">
 											Sign Up
 										</button>
@@ -126,7 +126,7 @@ export const SignUp = () => {
 									<input type="password" className="form-control" id="NonProfitPassword" />
 								</div>
 								<div className="text-center px-4">
-									<Link to="/signup">
+									<Link to="/profile/nonprofit">
 										<button type="submit" className="btn btn-two btn-lg px-4 container-fluid my-5">
 											Sign Up
 										</button>

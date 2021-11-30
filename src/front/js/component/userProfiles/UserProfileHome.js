@@ -22,7 +22,7 @@ export const UserProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.currentuser.name}
+								{store.currentuser.name}!
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -31,7 +31,7 @@ export const UserProfileHome = () => {
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Funds Donated:</h3>
-									<h2>{formatter.format(store.currentuser.totalfunds)}</h2>
+									<h2>{formatter.format(store.currentuser.totalfundsdonated)}</h2>
 									<h4 className="text-success">
 										{" "}
 										<i className="fas fa-arrow-up" />
@@ -54,7 +54,7 @@ export const UserProfileHome = () => {
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Non Profit Friends</h3>
-									<p>{store.currentuser.needs}</p>
+									<p>{store.currentuser.nonprofitfriends}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Donated</h3>

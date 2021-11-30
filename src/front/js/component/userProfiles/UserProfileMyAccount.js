@@ -25,15 +25,22 @@ export const UserProfileMyAccount = props => {
 							<h4>
 								<strong>Name:</strong>
 							</h4>
-							<h4>{store.currentuser.name}</h4>
+							<h4>
+								{store.currentuser.name} {store.currentuser.last_name}
+							</h4>
 							<br />
 							<h4>
-								<strong>Description:</strong>
+								<strong>Email:</strong>
 							</h4>
-							<p>{store.currentuser.description}</p>
-						</div>
-						<div className="non-profit-logo p-2 m-2 border rounded-3">
-							<img className="card-img-top" src={store.currentuser.logo} alt="Card image cap" />
+							<p>{store.currentuser.email}</p>
+							<br />
+							<h4>
+								<strong>Non Profit Friends:</strong>
+							</h4>
+							<p>{store.currentuser.nonprofitfriends}</p>
+							<button type="submit" className="btn btn-one">
+								Change Password
+							</button>
 						</div>
 					</div>
 				</div>

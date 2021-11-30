@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Context } from "../store/appContext";
 
-export const ChooseNonProfit = () => {
+export const NonProfitPartners = () => {
 	const { store, actions } = useContext(Context);
 
 	return (

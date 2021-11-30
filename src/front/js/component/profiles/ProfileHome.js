@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
+import { LineGraph } from "../Graphs/LineGraph";
 
 export const ProfileHome = () => {
 	const params = useParams();
@@ -22,7 +23,7 @@ export const ProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.currentuser.name}
+								{store.currentnonprofit.name}
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -31,7 +32,7 @@ export const ProfileHome = () => {
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Funds Raised:</h3>
-									<h2>{formatter.format(store.currentuser.totalfunds)}</h2>
+									<h2>{formatter.format(store.currentnonprofit.totalfunds)}</h2>
 									<h4 className="text-success">
 										{" "}
 										<i className="fas fa-arrow-up" />
@@ -41,7 +42,7 @@ export const ProfileHome = () => {
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Donations Recieved:</h3>
-									<h2>{store.currentuser.donations}</h2>
+									<h2>{store.currentnonprofit.donations}</h2>
 									<h4 className="text-danger">
 										{" "}
 										<i className="fas fa-arrow-down" />
@@ -51,10 +52,21 @@ export const ProfileHome = () => {
 								</div>
 							</div>
 							{/* Second Row */}
+							<div className="row-one d-flex justify-content-between">
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+									<h3>Funds Compared to last Month</h3>
+									{/* <LineGraph /> */}
+								</div>
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+									<h3>Last Weeks Donations:</h3>
+									{/* <LineGraph /> */}
+								</div>
+							</div>
+							{/* Third Row */}
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
-									<p>{store.currentuser.needs}</p>
+									<p>{store.currentnonprofit.needs}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Recieved</h3>

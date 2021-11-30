@@ -6,28 +6,24 @@ import { ChooseNonProfit } from "../../pages/ChooseNonProfit";
 export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
+	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
 	const { store, actions } = useContext(Context);
 	const [selectedImage, setSelectedImage] = useState(null);
 
-	const generateId = max => {
-		let newId = Math.floor(Math.random() * max);
-		return newId;
-	};
-
 	const [auctionItem, setAuctionItem] = useState({
-		id: generateId(999),
 		category: "clothing",
 		saleType: "bid",
 		condition: null,
 		itemType: null,
 		price: 20,
-		image: "https://bit.ly/3kHj3PT"
+		image: "https://bit.ly/3kHj3PT",
+		donate: null
 	});
 
 	return (
 		<>
 			<div className="form-group">
-				<label htmlFor="type of clothing" className="col-sm-3 control-label">
+				<label htmlFor="type of clothing" className="control-label mt-3">
 					Type of Clothing
 				</label>
 
@@ -47,7 +43,7 @@ export const AuctionClothing = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="condition" className="col-sm-3 control-label">
+				<label htmlFor="condition" className="control-label mt-3">
 					Condition
 				</label>
 
@@ -67,10 +63,10 @@ export const AuctionClothing = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="size" className="col-sm-3 control-label">
+				<label htmlFor="size" className="control-label mt-3">
 					Size
 				</label>
-				<div className="col-sm-9">
+				<div className="">
 					<input
 						type="text"
 						className="form-control"
@@ -81,11 +77,11 @@ export const AuctionClothing = () => {
 				</div>
 			</div>
 
-			<div className="form-group">
-				<label htmlFor="price" className="col-sm-3 control-label">
+			<div className="form-group mt-3">
+				<label htmlFor="price" className="control-label">
 					Price
 				</label>
-				<div className="col-sm-9">
+				<div className="">
 					<input
 						type="text"
 						className="form-control"
@@ -99,17 +95,17 @@ export const AuctionClothing = () => {
 				</div>
 			</div>
 
-			<div className="form-group">
-				<label htmlFor="description" className="col-sm-3 control-label">
+			<div className="form-group mt-3">
+				<label htmlFor="description" className="control-label">
 					Description
 				</label>
 
-				<div className="col-sm-9">
+				<div className="">
 					<textarea className="form-control" />
 				</div>
 			</div>
 
-			<div className="form-group">
+			<div className="form-group mt-1">
 				{selectedImage && (
 					<div>
 						<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
@@ -128,19 +124,32 @@ export const AuctionClothing = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="description" className="col-sm-3 control-label">
+				<label htmlFor="description" className="control-label mt-3">
 					Choose Nonprofit
 				</label>
-
-				<ChooseNonProfit />
+				<select
+					className="form-select"
+					aria-label="Default select example"
+					value={nonProfit}
+					onChange={e => {
+						setNonProfit(e.target.value);
+						setAuctionItem({ ...auctionItem, donate: e.target.value });
+					}}>
+					<option value="Select a NonProfit">Select a NonProfit</option>
+					<option value="the-cat-network">The Cat Network</option>
+					<option value="universal-aid-for-children">Universal Aid for Children</option>
+					<option value="global-empowerment-mission">Global Empowerment Mission</option>
+					<option value="camillus-house">Camillus House</option>
+				</select>
+				{/* <ChooseNonProfit /> */}
 			</div>
 
 			<div className="form-group">
-				<div className="col-sm-offset-3 col-sm-9">
+				<div className="submit-button">
 					<Link
 						to="/"
 						type="submit"
-						className="btn btn-primary"
+						className="btn btn-two container mt-3"
 						onClick={() => {
 							actions.addAuctionItem(auctionItem);
 						}}>
