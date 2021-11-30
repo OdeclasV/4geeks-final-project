@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, NonProfit, Item, Bid, Transaction
 from api.utils import generate_sitemap, APIException
+import datetime
 
 api = Blueprint('api', __name__)
 
@@ -138,6 +139,9 @@ def one_nonprofit(id):
 
 #     return jsonify(all_users), 200
 
+
+##### Item Info ##### 
+
 # get all items
 @api.route('/items', methods=['GET'])
 def get_items():
@@ -152,7 +156,13 @@ def get_items():
 def create_item():
     body = request.get_json()
 
-    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], donated_by=body["donated_by"], donate=body['donate'], bid_count=body['bid_count'])
+    created_date = datetime.datetime.now().strftime("%x")
+
+    date_1 = datetime.datetime.strptime(created_date, "%m/%d/%y")
+
+    end_date = date_1 + datetime.timedelta(days=7)
+
+    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], donated_by=body["donated_by"], donate=body['donate'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
 
     db.session.add(new_item)
     db.session.commit()
@@ -163,7 +173,97 @@ def create_item():
 
     return jsonify(all_items), 200
 
-# get all bids
+# update item
+@api.route('/items/<int:id>', methods=['PUT'])
+def update_item(id):
+    body = request.get_json()
+    item = Item.query.get(id)
+
+    if item is None:
+        raise APIException('Item not found', status_code=404)
+    
+    if "bid_count" in body:
+        item.bid_count = body["bid_count"]
+    if "category" in body:
+        item.category = body["category"]
+    if "condition" in body:
+        item.condition = body["condition"]
+    if "donate" in body:
+        item.donate = body["donate"]
+    if "donated_by" in body:
+        item.donated_by = body["donated_by"]
+    if "donation_type" in body:
+        item.donation_type = body["donation_type"]
+    if "image" in body:
+        item.image = body["image"]
+    if "name" in body:
+        item.name = body["name"]
+    if "item_type" in body:
+        item.item_type = body["item_type"]
+    if "original_price" in body:
+        item.original_price = body["original_price"]    
+    if "posted_date" in body:
+        item.posted_date = body["posted_date"]
+
+
+    db.session.commit()
+    items = Item.query.all()
+    all_items = list(map(lambda x: x.serialize(), items))
+
+    return jsonify(all_items), 200
+
+
+# get bids
+@api.route('/bid', methods=['GET'])
+def get_bids():
+
+    bids = Bid.query.all()
+    all_bids = list(map(lambda x: x.serialize(), bids))
+
+    return jsonify(all_bids), 200
+
+
+# create bid
+@api.route('/bid', methods=['POST'])
+def create_bid():
+    body = request.get_json()
+
+    created_date = datetime.datetime.now().strftime("%x")
+
+    new_bid = Bid(bid_amount=body['bid_amount'], created_date=created_date, current_price=body['current_price'], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
+    
+    db.session.add(new_bid)
+    db.session.commit()
+
+    # bids = Bid.query.all()
+    # all_bids = list(map(lambda x: x.serialize(), bids))
+
+    return (new_bid.serialize()), 200
+
+# update bid
+@api.route('/bid/<int:id>', methods=['PUT'])
+def update_bid(id):
+    body = request.get_json()
+    bid = Bid.query.get(id)
+
+    if bid is None:
+        raise APIException('Bid not found', status_code=404)
+    
+    if "item_id" in body:
+        bid.item_id = body["item_id"]
+    if "bid_amount" in body:
+        bid.bid_amount = body["bid_amount"]
+    if "num_of_bids" in body:
+        bid.num_of_bids = body["num_of_bids"]
+    if "current_price" in body:
+        bid.current_price = body["current_price"]
+
+
+    db.session.commit()
+    bids = Bid.query.all()
+    all_bids = list(map(lambda x: x.serialize(), bids))
+
+    return jsonify(all_bids), 200
 
 # delete user
 

@@ -56,10 +56,15 @@ class Item(db.Model):
     item_type = db.Column(db.String(250), unique=False, nullable=True)
     category = db.Column(db.String(250), unique=False, nullable=True)
     condition = db.Column(db.String(250), unique=False, nullable=True)
+    original_price = db.Column(db.Integer, unique=False, nullable=True)
     image = db.Column(db.String(250),unique=False, nullable=True )
+    name= db.Column(db.String(100), unique=False, nullable=True)
+    donation_type = db.Column(db.Integer, unique=False, nullable=True)
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     donate = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     bid_count = db.Column(db.Integer,unique=False, nullable=True)
+    posted_date = db.Column(db.String(250), unique=False, nullable=True)
+    end_date = db.Column(db.String(250), unique=False, nullable=True)
     bids = db.relationship('Bid', backref='item', lazy=True)
     transactions = db.relationship('Transaction', backref='item', lazy=True)
 
@@ -69,29 +74,34 @@ class Item(db.Model):
             "item_type": self.item_type,
             "category": self.category,
             "condition": self.condition,
+            "original_price": self.original_price,
             "image": self.image,
+            "name": self.name,
+            "donation_type": self.donation_type,
             "donated_by": self.donated_by,
             "donate": self.donate,
-            "bid_count": self.bid_count
+            "bid_count": self.bid_count,
+            "posted_date": self.posted_date,
+            "end_date": self.end_date
         }
 
 class Bid(db.Model):
     __tablename__ = "bid"
     id = db.Column(db.Integer, primary_key=True)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
-    starting_price = db.Column(db.Integer, unique=False, nullable=True)
-    final_price = db.Column(db.Integer, unique=False, nullable=True)
+    bid_amount = db.Column(db.Integer, unique=False, nullable=True)
     created_date = db.Column(db.String(250), unique=False, nullable=True)
-    end_date = db.Column(db.String(250), unique=False, nullable=True)
+    num_of_bids = db.Column(db.String(250), unique=False, nullable=True)
+    current_price = db.Column(db.Integer, unique=False, nullable=True)
 
     def serialize(self):
         return {
             "id": self.id,
             "item_id": self.item_id,
-            "starting_price": self.starting_price,
-            "final_price": self.final_price,
+            "bid_amount": self.bid_amount,
             "created_date": self.created_date,
-            "end_date": self.end_date
+            "num_of_bids": self.num_of_bids,
+            "current_price": self.current_price
         }
 
 class Transaction(db.Model):

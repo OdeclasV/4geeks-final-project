@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8afc4c603292
+Revision ID: 1cdcec912360
 Revises: 
-Create Date: 2021-11-25 00:17:13.014284
+Create Date: 2021-11-29 23:30:11.088002
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8afc4c603292'
+revision = '1cdcec912360'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,9 +45,14 @@ def upgrade():
     sa.Column('item_type', sa.String(length=250), nullable=True),
     sa.Column('category', sa.String(length=250), nullable=True),
     sa.Column('condition', sa.String(length=250), nullable=True),
+    sa.Column('original_price', sa.Integer(), nullable=True),
+    sa.Column('image', sa.String(length=250), nullable=True),
+    sa.Column('donation_type', sa.Integer(), nullable=True),
     sa.Column('donated_by', sa.Integer(), nullable=True),
     sa.Column('donate', sa.Integer(), nullable=True),
     sa.Column('bid_count', sa.Integer(), nullable=True),
+    sa.Column('posted_date', sa.String(length=250), nullable=True),
+    sa.Column('end_date', sa.String(length=250), nullable=True),
     sa.ForeignKeyConstraint(['donate'], ['nonprofit.id'], ),
     sa.ForeignKeyConstraint(['donated_by'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
