@@ -5,7 +5,7 @@ import Proptypes from "prop-types";
 export const Timer = ({ endDate }) => {
 	const calculateTimeLeft = () => {
 		//let year = new Date().getFullYear();
-		let difference = +new Date(endDate) - +new Date();
+		let difference = new Date(endDate) - +new Date();
 
 		let timeLeft = {};
 
@@ -41,6 +41,10 @@ export const Timer = ({ endDate }) => {
 		);
 	});
 	return <div>{timerComponents.length ? timerComponents : <span>Times up!</span>}</div>;
+	// when time is up
+	// make fecth to POST Transaction table with item's bid info?
+	// how to conditionally do that?
+	// make fetch to update Nonprofit total funds
 };
 
 Timer.propTypes = {

@@ -80,6 +80,11 @@ def get_nonprofits():
     nonprofits = NonProfit.query.all()
     all_nonprofits = list(map(lambda x: x.serialize(), nonprofits))
 
+    # response_body = {
+    #     "db_message": "These are all the nonprofits"
+    # }
+    # return jsonify(response_body, all_nonprofits), 200
+
 
     return jsonify(all_nonprofits), 200
 

@@ -9,9 +9,26 @@ import { Timer } from "./Timer";
 
 export const ShopItem = ({ item }) => {
 	let bidIncrement = 1;
-	let itemPriceInt = parseInt(item.price, 10);
+	let itemPriceInt = parseInt(item.original_price, 10);
 
-	const [bid, setBid] = useState(itemPriceInt + bidIncrement); //after re-rendering, makes sure the price is a number and not a string
+	console.log(item);
+
+	// const [bid, setBid] = useState({
+	// 	item_id: item.id,
+	// 	bid_amount: null,
+	// 	current_price: item.original_price
+	// });
+	const [bidAmount, setBidAmount] = useState(item.original_price);
+	console.log();
+	// const [currentPrice, setCurrentPrice] = useState(item.original_price);
+
+	// const bidValidation = bidAmount => {
+	// 	if (bidAmount > item.original_price) {
+	// 		;
+	// 	}
+	// };
+
+	//const [bid, setBid] = useState(itemPriceInt + bidIncrement); //after re-rendering, makes sure the price is a number and not a string
 	const [numberOfBids, SetNumberOfBids] = useState(0);
 	const { store, actions } = useContext(Context);
 
@@ -22,9 +39,9 @@ export const ShopItem = ({ item }) => {
 				<div className="card-body">
 					<h5 className="card-title">Awesome {item.itemType}</h5>
 					<p className="card-text item-price">condition: {item.condition}</p>
-					<p className="card-text item-price">Highest Bid: ${item.price}</p>
-					<p className="card-text item-price">Bid Increment: ${bidIncrement}</p>
-					<p className="card-text item-price">Number of Bids: {numberOfBids}</p>
+					<p className="card-text item-price">Highest Bid: ${item.original_price}</p>
+					{/* <p className="card-text item-price">Bid Increment: ${bidIncrement}</p> */}
+					<p className="card-text item-price">Number of Bids: {item.bid_count}</p>
 					<label htmlFor="price" className="col-sm-3 control-label">
 						Minimum Bid:
 					</label>
@@ -34,10 +51,10 @@ export const ShopItem = ({ item }) => {
 							className="form-control"
 							name="price"
 							id="bid"
-							value={bid}
-							min={itemPriceInt + bidIncrement}
+							value={bidAmount}
+							min={bidAmount + 1}
 							onChange={e => {
-								setBid(e.target.value);
+								setBidAmount(parseInt(e.target.value));
 							}}
 						/>
 					</div>
@@ -45,18 +62,21 @@ export const ShopItem = ({ item }) => {
 						<button
 							className="btn btn-warning m-1"
 							onClick={() => {
-								if (bid > itemPriceInt) {
-									SetNumberOfBids(numberOfBids + 1);
-									item.price = bid;
-									setBid(parseInt(item.price, 10) + 1); //makes sure the price is a number and not a string
-								}
+								// if (bid > itemPriceInt) {
+								// 	//SetNumberOfBids(numberOfBids + 1);
+								// 	setBid({ ...bid, num_of_bids: num_of_bids + 1 });
+								// 	item.original_price = bid;
+								// 	setBid(parseInt(item.original_price, 10) + bidIncrement); //makes sure the price is a number and not a string
+								// }
+								//bidValidation(bidAmount);
+								actions.createBid(item.id, bidAmount, item.original_price);
 							}}>
 							Bid
 						</button>
 					</div>
 					<div>
 						Time left to bid
-						<Timer endDate={item.endDate} />
+						<Timer endDate={item.end_date} />
 					</div>
 				</div>
 			</div>

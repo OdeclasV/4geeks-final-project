@@ -7,6 +7,7 @@ export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
 	const { store, actions } = useContext(Context);
+	const [selectedImage, setSelectedImage] = useState(null);
 
 	const generateId = max => {
 		let newId = Math.floor(Math.random() * max);
@@ -109,16 +110,21 @@ export const AuctionClothing = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="name" className="col-sm-12 control-label">
-					Upload Image (Use.jpg, .png)
-				</label>
-
-				<div className="col-sm-3">
-					<label className="control-label small" htmlFor="file_img">
-						Primary Image(Max File size 5 MB):
-					</label>
-					<input type="file" name="file_img_primary" />
-				</div>
+				{selectedImage && (
+					<div>
+						<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+						<br />
+						<button onClick={() => setSelectedImage(null)}>Remove</button>
+					</div>
+				)}
+				<input
+					type="file"
+					name="myImage"
+					onChange={event => {
+						console.log(event.target.files[0]);
+						setSelectedImage(event.target.files[0]);
+					}}
+				/>
 			</div>
 
 			<div className="form-group">
