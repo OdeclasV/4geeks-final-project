@@ -3,11 +3,12 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Timer } from "./Timer";
+import { Link } from "react-router-dom";
 
 // passign item as the only props of this component
 // item's information is coming from the ShopItem page
 
-export const ShopItem = ({ item }) => {
+export const ShopItem = ({ item, index }) => {
 	let bidIncrement = 1;
 	let itemPriceInt = parseInt(item.original_price, 10);
 
@@ -34,7 +35,7 @@ export const ShopItem = ({ item }) => {
 
 	return (
 		<>
-			<div className="card col-md-3 m-3" style={{ width: "18rem" }}>
+			<div className="card m-3" style={{ width: "18rem" }}>
 				<img className="card-img-top" src={item.image} alt="Card image cap" />
 				<div className="card-body">
 					<h5 className="card-title">Awesome {item.itemType}</h5>
@@ -42,10 +43,11 @@ export const ShopItem = ({ item }) => {
 					<p className="card-text item-price">Highest Bid: ${item.original_price}</p>
 					{/* <p className="card-text item-price">Bid Increment: ${bidIncrement}</p> */}
 					<p className="card-text item-price">Number of Bids: {item.bid_count}</p>
-					<label htmlFor="price" className="col-sm-3 control-label">
+
+					<label htmlFor="price" className="control-label">
 						Minimum Bid:
 					</label>
-					<div className="col-sm-9">
+					<div className="set-bid-amount">
 						<input
 							type="number"
 							className="form-control"
@@ -58,6 +60,7 @@ export const ShopItem = ({ item }) => {
 							}}
 						/>
 					</div>
+
 					<div className="bid-button">
 						<button
 							className="btn btn-warning m-1"
@@ -74,6 +77,13 @@ export const ShopItem = ({ item }) => {
 							Bid
 						</button>
 					</div>
+					<div className="text-center px-4">
+						<Link to={`/shop/${index}`}>
+							<button type="submit" className="btn btn-two btn-lg px-4 container-fluid my-5">
+								View Item
+							</button>
+						</Link>
+					</div>
 					<div>
 						Time left to bid
 						<Timer endDate={item.end_date} />
@@ -85,5 +95,6 @@ export const ShopItem = ({ item }) => {
 };
 
 ShopItem.propTypes = {
-	item: PropTypes.object
+	item: PropTypes.object,
+	index: PropTypes.number
 };

@@ -229,6 +229,7 @@ def get_bids():
 
 
 # create bid
+# check all bids for highest value
 @api.route('/bid', methods=['POST'])
 def create_bid():
     body = request.get_json()
@@ -237,13 +238,24 @@ def create_bid():
 
     new_bid = Bid(bid_amount=body['bid_amount'], created_date=created_date, current_price=body['current_price'], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
     
+    item = Item.query.get(body["item_id"]) 
+    item.current_price=body["bid_amount"]
+
+    db.session.add(item)
+
     db.session.add(new_bid)
     db.session.commit()
 
     # bids = Bid.query.all()
     # all_bids = list(map(lambda x: x.serialize(), bids))
 
-    return (new_bid.serialize()), 200
+    # return (new_bid.serialize()), 200
+
+    # return list updated
+    items = Item.query.all()
+    all_items = list(map(lambda x: x.serialize(), items))
+
+    return jsonify(all_items), 200
 
 # update bid
 @api.route('/bid/<int:id>', methods=['PUT'])

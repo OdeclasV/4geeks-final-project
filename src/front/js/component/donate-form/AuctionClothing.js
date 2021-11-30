@@ -12,10 +12,10 @@ export const AuctionClothing = () => {
 
 	const [auctionItem, setAuctionItem] = useState({
 		category: "clothing",
-		saleType: "bid",
+		donation_type: "bid",
 		condition: null,
-		itemType: null,
-		price: 20,
+		item_type: null,
+		original_price: 20,
 		image: "https://bit.ly/3kHj3PT",
 		donate: null
 	});

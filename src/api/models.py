@@ -57,6 +57,7 @@ class Item(db.Model):
     category = db.Column(db.String(250), unique=False, nullable=True)
     condition = db.Column(db.String(250), unique=False, nullable=True)
     original_price = db.Column(db.Integer, unique=False, nullable=True)
+    current_price = db.Column(db.Integer, unique=False, nullable=True)
     image = db.Column(db.String(250),unique=False, nullable=True )
     name= db.Column(db.String(100), unique=False, nullable=True)
     donation_type = db.Column(db.Integer, unique=False, nullable=True)
@@ -75,6 +76,7 @@ class Item(db.Model):
             "category": self.category,
             "condition": self.condition,
             "original_price": self.original_price,
+            "current_price": self.current_price,
             "image": self.image,
             "name": self.name,
             "donation_type": self.donation_type,

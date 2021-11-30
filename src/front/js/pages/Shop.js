@@ -74,8 +74,8 @@ export const Shop = () => {
 						.filter(item => {
 							return filterOption ? filterOption == item.category : true;
 						})
-						.map(item => {
-							return <ShopItem key={item.id} item={item} />;
+						.map((item, index) => {
+							return <ShopItem key={item.id} item={item} index={index} />;
 						})}
 				</ul>
 			</div>

@@ -207,3 +207,15 @@
     padding: 5px 10px;
     outline: none;
 }
+
+// poduct page
+
+.product-img-block {
+    width: 50%;
+    height: 30vh;
+    background-color:#FFFFFF;
+    margin-top:10px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}

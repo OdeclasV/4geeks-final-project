@@ -87,7 +87,7 @@ const Layout = () => {
 						<Route exact path="/loginsignup/:option">
 							<LoginSignup />
 						</Route>
-						<Route exact path="/productpage">
+						<Route exact path="/shop/:id">
 							<ProductPage />
 						</Route>
 						<Route>
