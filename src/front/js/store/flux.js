@@ -77,6 +77,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 
+			createBid: (id, bidAmount, price) => {
+				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/bid", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ item_id: id, bid_amount: bidAmount, current_price: price })
+				})
+					// .then(response => {
+					// 	if (response.ok) {
+					// 		fetch("https://3001-aqua-anteater-lbzo25xi.ws-us17.gitpod.io/api/items")
+					// 			.then(response => {
+					// 				if (!response.ok) {
+					// 					throw new Error(response.statusText);
+					// 				}
+					// 				return response.json();
+					// 			})
+					// 			.then(data => {
+					// 				console.log(data);
+					// 				setStore({ items: data });
+					// 			});
+					// 	}
+					// })
+					.catch(err => console.error("Error:", err));
+			},
+
 			addWishlistItem: item => {
 				let { items } = getStore();
 
