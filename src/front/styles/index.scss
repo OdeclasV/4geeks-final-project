@@ -2,7 +2,7 @@
 
 .login-form {
     background-color: white;
-    border: solid 1px rgb(19, 19, 19);
+    // border: solid 1px rgb(19, 19, 19);
     padding: 10px;
     border-radius: 10px;
 }
@@ -106,4 +106,104 @@
     background: linear-gradient(-135deg, #43cea2, #185a9d);
 	transition: transform 400ms ease-in;
     border: none;
+}
+
+.btn-three {
+    text-decoration: none;
+    color: #fff;
+    background: #3E8E6D;
+    border: none;
+
+    
+}
+
+.btn-three:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #185a9d;
+	transition: transform 400ms ease-in;
+    border: none;
+}
+
+
+.btn-four {
+    text-decoration: none;
+    color: #fff;
+    background: #185a9d;
+    border: none;
+
+    
+}
+
+.btn-four:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #3E8E6D;
+	transition: transform 400ms ease-in;
+    border: none;
+}
+// card glow border with gradient
+
+.GradientBorder {
+    position: relative;
+    }
+
+// .GradientBorder::after {
+//     content: '';
+//     position: absolute;
+//     top: -5px;
+//     left: -5px;
+//     right: -5px;
+//     bottom: -5px;
+//     background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+//     border-radius: 10px;
+//     z-index: -1;
+// }
+
+.GradientBorder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #43cea2, #185a9d);
+    z-index: -2;
+    filter: blur(20px);
+}
+
+// dashboard blocks
+.overview-block {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+// wishlist items page
+.todo
+{
+    width: 100%;
+    line-height: 35px;
+    border-bottom: grey solid 1px;
+}
+.closebutton {
+    margin: 0;
+    color: red;
+    font-weight: 200;
+    float: right;
+    cursor: pointer;
+    opacity: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 200ms;
+}
+
+.todo:hover > .closebutton {
+    opacity: 100%;
+
+}
+.inputfield {
+    border:none;
+    border-bottom: 1px solid #595a5c;
+    padding: 5px 10px;
+    outline: none;
 }

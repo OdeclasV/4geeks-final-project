@@ -12,10 +12,10 @@ export const DonateOrAuction = () => {
 		<div className="text-center mt-5">
 			<h1>Let&apos;s Get Started!</h1>
 			<Link to="/donationtype">
-				<button className="btn btn-primary m-3">Donate to a Non-Profit</button>
+				<button className="btn btn-one py-2 m-3">Donate to a Non-Profit</button>
 			</Link>
 			<Link to="/auctiontype">
-				<button className="btn btn-primary">Auction Something For a Non-Profit</button>
+				<button className="btn btn-one py-2">Auction Something For a Non-Profit</button>
 			</Link>
 		</div>
 	);

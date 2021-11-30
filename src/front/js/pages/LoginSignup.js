@@ -35,9 +35,9 @@ export const LoginSignup = props => {
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
-				<div className="login-form">
+				<div className="login-form overview-block">
 					<div className="card-top text-center py-3">
-						<h2 className="">Returning Customers</h2>
+						<h2 className="">Log In</h2>
 					</div>
 
 					<div className="tab-content" id="pills-tabContent">
@@ -45,8 +45,13 @@ export const LoginSignup = props => {
 							<input type="e-mail" className="form-control" placeholder="Email" />
 							<input type="password" className="form-control" placeholder="Password" />
 							<Link to="/profile/nonprofit">
-								<button type="button" className="btn btn-primary btn-lg px-4 container-fluid">
-									Login
+								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+									Login Non Profit
+								</button>
+							</Link>
+							<Link to="/profile/user">
+								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+									Login User
 								</button>
 							</Link>
 						</div>
@@ -55,7 +60,7 @@ export const LoginSignup = props => {
 							<h4>
 								New User?
 								<Link to="/signup">
-									<button type="button" className="btn btn-success btn-lg px-4 container-fluid my-2">
+									<button type="button" className="btn btn-two btn-lg px-4 container-fluid my-2">
 										Sign Up Here
 									</button>
 								</Link>

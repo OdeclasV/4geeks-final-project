@@ -14,9 +14,10 @@ import { AuctionType } from "./pages/AuctionType";
 import { ChooseNonProfit } from "./pages/ChooseNonProfit";
 import { DonateClothing } from "./component/donate-form/DonateClothing";
 import { AuctionClothing } from "./component/donate-form/AuctionClothing";
-import { SignInModal, LoginSignup } from "./pages/LoginSignup";
+import { LoginSignup } from "./pages/LoginSignup";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
 import { SignUp } from "./pages/SignUp";
+import { UserProfile } from "./pages/profile-pages/UserProfile";
 
 //create your first component
 const Layout = () => {
@@ -59,6 +60,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile/nonprofit/:profileoption">
 							<NonProfitProfile />
+						</Route>
+						<Route exact path="/profile/user">
+							<UserProfile />
+						</Route>
+						<Route exact path="/profile/user/:profileoption">
+							<UserProfile />
 						</Route>
 						<Route exact path="/donateclothes">
 							<DonateClothing />

@@ -3,7 +3,7 @@ import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
 
-export const ProfileHome = () => {
+export const UserProfileHome = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 
@@ -30,7 +30,7 @@ export const ProfileHome = () => {
 							{/* First Row */}
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
-									<h3>Total Funds Raised:</h3>
+									<h3>Total Funds Donated:</h3>
 									<h2>{formatter.format(store.currentuser.totalfunds)}</h2>
 									<h4 className="text-success">
 										{" "}
@@ -40,7 +40,7 @@ export const ProfileHome = () => {
 									<p>Since last month</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
-									<h3>Total Donations Recieved:</h3>
+									<h3>Total Number of Donations:</h3>
 									<h2>{store.currentuser.donations}</h2>
 									<h4 className="text-danger">
 										{" "}
@@ -53,11 +53,11 @@ export const ProfileHome = () => {
 							{/* Second Row */}
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
-									<h3>Wishlist Items</h3>
+									<h3>Non Profit Friends</h3>
 									<p>{store.currentuser.needs}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
-									<h3>Recent Items Recieved</h3>
+									<h3>Recent Items Donated</h3>
 									<div className="items-carousel container-fluid d-flex flex-wrap">
 										<div className="card">
 											<img
