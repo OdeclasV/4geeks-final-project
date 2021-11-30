@@ -9,19 +9,22 @@ export const AuctionFurniture = () => {
 	const [condition, setCondition] = useState("Select a value");
 	const { store, actions } = useContext(Context);
 
-	const generateId = max => {
-		let newId = Math.floor(Math.random() * max);
-		return newId;
-	};
+	// let start_date = new Date(store.items[1].posted_date);
+	// let end_date = start_date.setDate(start_date.getDate() + 7);
+	// console.log(end_date);
 
 	const [auctionItem, setAuctionItem] = useState({
-		item_type: null,
+		bid_count: 0,
 		category: "furniture",
 		condition: null,
-		donated_by: null,
 		donate: null,
-		bid_count: 0,
-		image: "https://bit.ly/3kHj3PT"
+		donated_by: null,
+		donation_type: null,
+		image: "https://bit.ly/3kHj3PT",
+		item_type: null,
+		original_price: null,
+		posted_date: null,
+		end_date: null
 	});
 
 	return (
@@ -77,16 +80,33 @@ export const AuctionFurniture = () => {
 						className="form-control"
 						name="price"
 						id="furniture-price"
-						value={auctionItem.price}
+						value={auctionItem.original_price}
 						onChange={e => {
-							setAuctionItem({ ...auctionItem, price: e.target.value });
+							setAuctionItem({ ...auctionItem, original_price: e.target.value });
 						}}
 					/>
 				</div>
 			</div>
+			{/* <div className="form-group">
+				<label htmlFor="end_date" className="col-sm-3 control-label">
+					Price
+				</label>
+				<div className="col-sm-9">
+					<input
+						type="text"
+						className="form-control"
+						name="end_date"
+						id="end_date"
+						value={auctionItem.end_date}
+						onChange={e => {
+							setAuctionItem({ ...auctionItem, original_price: e.target.value });
+						}}
+					/>
+				</div>
+			</div> */}
 
 			<div className="form-group">
-				<label htmlFor="about" className="col-sm-3 control-label">
+				<label htmlFor="description" className="col-sm-3 control-label">
 					Description
 				</label>
 
@@ -123,6 +143,8 @@ export const AuctionFurniture = () => {
 						type="submit"
 						className="btn btn-primary"
 						onClick={() => {
+							setAuctionItem({ ...auctionItem, posted_date: new Date() });
+							//setAuctionItem({ ...auctionItem, end_date: auctionItem.posted_date.getDate() + 7 });
 							actions.addAuctionItem(auctionItem);
 						}}>
 						Add Item
