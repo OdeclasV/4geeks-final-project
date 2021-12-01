@@ -60,9 +60,9 @@ class Item(db.Model):
     current_price = db.Column(db.Integer, unique=False, nullable=True)
     image = db.Column(db.String(250),unique=False, nullable=True )
     name= db.Column(db.String(100), unique=False, nullable=True)
-    donation_type = db.Column(db.Integer, unique=False, nullable=True)
+    donation_type = db.Column(db.String, unique=False, nullable=True)
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
-    donate = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
+    donate_to = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     bid_count = db.Column(db.Integer,unique=False, nullable=True)
     posted_date = db.Column(db.String(250), unique=False, nullable=True)
     end_date = db.Column(db.String(250), unique=False, nullable=True)
@@ -81,8 +81,9 @@ class Item(db.Model):
             "name": self.name,
             "donation_type": self.donation_type,
             "donated_by": self.donated_by,
-            "donate": self.donate,
+            "donate_to": self.donate_to,
             "bid_count": self.bid_count,
+            "bids": list(map(lambda bid: bid.serialize(), self.bids)),
             "posted_date": self.posted_date,
             "end_date": self.end_date
         }
@@ -91,16 +92,16 @@ class Bid(db.Model):
     __tablename__ = "bid"
     id = db.Column(db.Integer, primary_key=True)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=True)
-    bid_amount = db.Column(db.Integer, unique=False, nullable=True)
+    minimun_bid = db.Column(db.Integer, unique=False, nullable=True) # current_price + 1
     created_date = db.Column(db.String(250), unique=False, nullable=True)
     num_of_bids = db.Column(db.String(250), unique=False, nullable=True)
-    current_price = db.Column(db.Integer, unique=False, nullable=True)
+    current_price = db.Column(db.Integer, unique=False, nullable=True)  # items' current price 
 
     def serialize(self):
         return {
             "id": self.id,
             "item_id": self.item_id,
-            "bid_amount": self.bid_amount,
+            "minimun_bid": self.minimun_bid,
             "created_date": self.created_date,
             "num_of_bids": self.num_of_bids,
             "current_price": self.current_price

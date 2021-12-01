@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1cdcec912360
+Revision ID: c10b643a231b
 Revises: 
-Create Date: 2021-11-29 23:30:11.088002
+Create Date: 2021-11-30 23:44:36.191131
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1cdcec912360'
+revision = 'c10b643a231b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,24 +46,26 @@ def upgrade():
     sa.Column('category', sa.String(length=250), nullable=True),
     sa.Column('condition', sa.String(length=250), nullable=True),
     sa.Column('original_price', sa.Integer(), nullable=True),
+    sa.Column('current_price', sa.Integer(), nullable=True),
     sa.Column('image', sa.String(length=250), nullable=True),
-    sa.Column('donation_type', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(length=100), nullable=True),
+    sa.Column('donation_type', sa.String(), nullable=True),
     sa.Column('donated_by', sa.Integer(), nullable=True),
-    sa.Column('donate', sa.Integer(), nullable=True),
+    sa.Column('donate_to', sa.Integer(), nullable=True),
     sa.Column('bid_count', sa.Integer(), nullable=True),
     sa.Column('posted_date', sa.String(length=250), nullable=True),
     sa.Column('end_date', sa.String(length=250), nullable=True),
-    sa.ForeignKeyConstraint(['donate'], ['nonprofit.id'], ),
+    sa.ForeignKeyConstraint(['donate_to'], ['nonprofit.id'], ),
     sa.ForeignKeyConstraint(['donated_by'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('bid',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('item_id', sa.Integer(), nullable=True),
-    sa.Column('starting_price', sa.Integer(), nullable=True),
-    sa.Column('final_price', sa.Integer(), nullable=True),
+    sa.Column('minimun_bid', sa.Integer(), nullable=True),
     sa.Column('created_date', sa.String(length=250), nullable=True),
-    sa.Column('end_date', sa.String(length=250), nullable=True),
+    sa.Column('num_of_bids', sa.String(length=250), nullable=True),
+    sa.Column('current_price', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['item_id'], ['item.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
