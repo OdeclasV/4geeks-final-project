@@ -167,11 +167,16 @@ def create_item():
 
     end_date = date_1 + datetime.timedelta(days=7)
 
-    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], donated_by=body["donated_by"], donate=body['donate'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
+    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], donated_by=body["donated_by"], donate_to=body['donate_to'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], current_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
 
     db.session.add(new_item)
     db.session.commit()
-    
+
+    new_bid = Bid(item_id=new_item.id, minimun_bid=int(new_item.original_price) + 1, created_date=created_date, num_of_bids=body["num_of_bids"], current_price=new_item.original_price)
+
+    db.session.add(new_bid)
+    db.session.commit()
+
     
     items = Item.query.all()
     all_items = list(map(lambda x: x.serialize(), items))
@@ -236,12 +241,12 @@ def create_bid():
 
     created_date = datetime.datetime.now().strftime("%x")
 
-    new_bid = Bid(bid_amount=body['bid_amount'], created_date=created_date, current_price=body['current_price'], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
+    new_bid = Bid(created_date=created_date, minimun_bid=body['current_price'], current_price=body["current_price"], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
     
-    item = Item.query.get(body["item_id"]) 
-    item.current_price=body["bid_amount"]
+    # item = Item.query.get(body["item_id"]) 
+    # item.current_price=body["minimun_bid"]
 
-    db.session.add(item)
+    # db.session.add(item)
 
     db.session.add(new_bid)
     db.session.commit()

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { ShoppingCart } from "./navbar-buttons/ShoppingCart";
 import { LoginButton } from "./navbar-buttons/LoginButton";
 import { SignUpButton } from "./navbar-buttons/SignUpButton";
 import PropTypes from "prop-types";
@@ -51,8 +50,8 @@ export const Navbar = props => {
 							</Link>
 						</li>
 						<li className="nav-menu-item mx-2">
-							<Link className="nav-menu-link" to="/productpage">
-								Item Page
+							<Link className="nav-menu-link" to="/nonprofitpartners">
+								Non-Profit Partners
 							</Link>
 						</li>
 					</ul>
