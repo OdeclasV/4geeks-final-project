@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			message: null,
 			//hardcoding these items here for the moment
 			items: [],
+			bids: [],
 			shoppingCartItems: [],
 			nonprofits: [],
 			users: [],
@@ -39,7 +40,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log(data);
 						setStore({ items: data });
-					});
+					})
+					.catch(err => console.error("Error:", err));
 			},
 			getNonprofits: () => {
 				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/nonprofit")
@@ -70,6 +72,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(item)
 				})
+					.then(response => response.json())
+					.then(data => {
+						//console.log(data);
+						let { bids } = getStore();
+						setStore({ items: data[0] });
+						setStore({ bids: [...bids, data[1]] });
+						console.log(getStore().bids);
+					})
+					.catch(err => console.error("Error:", err));
+			},
+
+			createBid: (id, price, numOfBids) => {
+				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/bid", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						item_id: id,
+						current_price: price,
+						num_of_bids: numOfBids
+					})
+				})
 					.then(response => {
 						if (response.ok) {
 							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/items")
@@ -88,15 +111,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 
-			createBid: (id, bidAmount, price) => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/bid", {
-					method: "POST",
+			updateBid: bid => {
+				fetch(`https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/bid/${bid.id}`, {
+					method: "PUT",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ item_id: id, bid_amount: bidAmount, current_price: price })
+					body: JSON.stringify(bid)
 				})
 					.then(response => {
 						if (response.ok) {
-							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/items")
+							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/bid")
 								.then(response => {
 									if (!response.ok) {
 										throw new Error(response.statusText);
@@ -105,7 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								})
 								.then(data => {
 									console.log(data);
-									setStore({ items: data });
+									setStore({ bids: data });
 								});
 						}
 					})

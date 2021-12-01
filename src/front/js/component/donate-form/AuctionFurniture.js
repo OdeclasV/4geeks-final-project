@@ -17,14 +17,15 @@ export const AuctionFurniture = () => {
 		bid_count: 0,
 		category: "furniture",
 		condition: null,
-		donate: null,
+		donate_to: null,
 		donated_by: null,
 		donation_type: null,
 		image: "https://bit.ly/3kHj3PT",
 		item_type: null,
 		original_price: null,
 		posted_date: null,
-		end_date: null
+		end_date: null,
+		num_of_bids: 0
 	});
 
 	return (
