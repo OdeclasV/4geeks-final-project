@@ -9,7 +9,7 @@
 
 .card {
     width: 30%;
-    border: solid 1px rgb(19, 19, 19);
+    // border: solid 1px rgb(19, 19, 19);
     margin: 5px;
     padding: 10px;
 }
@@ -141,6 +141,12 @@
     background: #3E8E6D;
 	transition: transform 400ms ease-in;
     border: none;
+}
+
+// shop item styling
+
+.giveblue-font {
+    color: #185a9d;
 }
 // card glow border with gradient
 

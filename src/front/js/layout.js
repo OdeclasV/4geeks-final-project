@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -26,6 +26,8 @@ const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+
+	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
 		<div className="container-fluid">
@@ -61,16 +63,16 @@ const Layout = () => {
 							<NonProfitPartners />
 						</Route>
 						<Route exact path="/profile/nonprofit">
-							<NonProfitProfile />
+							<NonProfitProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/profile/nonprofit/:profileoption">
-							<NonProfitProfile />
+							<NonProfitProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/profile/user">
-							<UserProfile />
+							<UserProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/profile/user/:profileoption">
-							<UserProfile />
+							<UserProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/donateclothes">
 							<DonateClothing />
@@ -79,14 +81,14 @@ const Layout = () => {
 							<AuctionClothing />
 						</Route>
 						<Route exact path="/login">
-							<LoginSignup />
+							<LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/signup">
-							<SignUp />
+							<SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
-						<Route exact path="/loginsignup/:option">
+						{/* <Route exact path="/loginsignup/:option">
 							<LoginSignup />
-						</Route>
+						</Route> */}
 						<Route exact path="/shop/:id">
 							<ProductPage />
 						</Route>

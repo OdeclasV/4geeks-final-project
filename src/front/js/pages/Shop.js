@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { ShopItem } from "../component/ShopItem";
+import { Link } from "react-router-dom";
 
 export const Shop = () => {
 	const { store, actions } = useContext(Context);
@@ -14,10 +15,10 @@ export const Shop = () => {
 
 	return (
 		<>
-			<div className="shop-title">
+			<div className="shop-title mb-2">
 				<h1 style={shopStyles}>Sale Items</h1>
 			</div>
-			<div className="d-flex">
+			<div className="d-flex justify-content-center mb-2">
 				{dropdowns.map(dropdown => {
 					// adds state to each mapped dropdown menu
 					// so when clicked, the state of one dropdown changes
@@ -28,7 +29,7 @@ export const Shop = () => {
 					return (
 						<div className="dropdown m-1" key={dropdown.name}>
 							<button
-								className="btn btn-secondary dropdown-toggle"
+								className="btn btn-one dropdown-toggle"
 								onClick={() => {
 									setDropdownMenu(!dropdownMenu);
 								}}
@@ -61,13 +62,14 @@ export const Shop = () => {
 						</div>
 					);
 				})}
+				<Link
+					className="giveblue-font text-decoration-none align-self-center m-2"
+					onClick={() => {
+						setfilterOption("");
+					}}>
+					Clear All
+				</Link>
 			</div>
-			<button
-				onClick={() => {
-					setfilterOption("");
-				}}>
-				Clear
-			</button>
 			<div className="shop-items">
 				<ul className="d-flex justify-content-around flex-wrap">
 					{store.items
