@@ -135,7 +135,7 @@ export const AuctionClothing = () => {
 							type="file"
 							name="myImage"
 							onChange={event => {
-								console.log(event.target.files[0]);
+								// console.log(event.target.files[0]);
 								setSelectedImage(event.target.files[0]);
 							}}
 						/>

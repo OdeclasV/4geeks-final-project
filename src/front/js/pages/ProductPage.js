@@ -34,9 +34,10 @@ export const ProductPage = () => {
 								<h1 className="">Awesome Shirt</h1>
 							</div>
 
-							<div className="giveblue-font timer-row d-flex align-self-center">
-								<p className="col-4">Time left to bid</p>
+							<div className="giveblue-font timer-row align-self-center">
+								<p className="mb-1">Time left to bid</p>
 								<Timer endDate={store.items[id] && store.items[id].end_date} />
+								{/* </div> */}
 							</div>
 
 							<div className="price-row d-flex">
