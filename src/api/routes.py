@@ -181,7 +181,7 @@ def create_item():
     items = Item.query.all()
     all_items = list(map(lambda x: x.serialize(), items))
 
-    return jsonify(all_items), 200
+    return jsonify(all_items, new_bid.serialize()), 200
 
 # update item
 @api.route('/items/<int:id>', methods=['PUT'])
@@ -193,7 +193,7 @@ def update_item(id):
         raise APIException('Item not found', status_code=404)
     
     if "bid_count" in body:
-        item.bid_count = body["bid_count"]
+        item.bid_count = item.bid_count + 1
     if "category" in body:
         item.category = body["category"]
     if "condition" in body:
@@ -211,7 +211,9 @@ def update_item(id):
     if "item_type" in body:
         item.item_type = body["item_type"]
     if "original_price" in body:
-        item.original_price = body["original_price"]    
+        item.original_price = body["original_price"]
+    if "current_price" in body:
+        item.current_price = body["current_price"]
     if "posted_date" in body:
         item.posted_date = body["posted_date"]
 
@@ -224,68 +226,68 @@ def update_item(id):
 
 
 # get bids
-@api.route('/bid', methods=['GET'])
-def get_bids():
+# @api.route('/bid', methods=['GET'])
+# def get_bids():
 
-    bids = Bid.query.all()
-    all_bids = list(map(lambda x: x.serialize(), bids))
+#     bids = Bid.query.all()
+#     all_bids = list(map(lambda x: x.serialize(), bids))
 
-    return jsonify(all_bids), 200
+#     return jsonify(all_bids), 200
 
 
 # create bid
 # check all bids for highest value
-@api.route('/bid', methods=['POST'])
-def create_bid():
-    body = request.get_json()
+# @api.route('/bid', methods=['POST'])
+# def create_bid():
+#     body = request.get_json()
 
-    created_date = datetime.datetime.now().strftime("%x")
+#     created_date = datetime.datetime.now().strftime("%x")
 
-    new_bid = Bid(created_date=created_date, minimun_bid=body['current_price'], current_price=body["current_price"], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
+#     new_bid = Bid(created_date=created_date, minimun_bid=body["minimun_bid"], current_price=body["current_price"], item_id=body['item_id'], num_of_bids=body['num_of_bids'])
     
-    # item = Item.query.get(body["item_id"]) 
-    # item.current_price=body["minimun_bid"]
+#     # item = Item.query.get(body["item_id"]) 
+#     # item.current_price=body["minimun_bid"]
 
-    # db.session.add(item)
+#     # db.session.add(item)
 
-    db.session.add(new_bid)
-    db.session.commit()
+#     db.session.add(new_bid)
+#     db.session.commit()
 
-    # bids = Bid.query.all()
-    # all_bids = list(map(lambda x: x.serialize(), bids))
+#     # bids = Bid.query.all()
+#     # all_bids = list(map(lambda x: x.serialize(), bids))
 
-    # return (new_bid.serialize()), 200
+#     # return (new_bid.serialize()), 200
 
-    # return list updated
-    items = Item.query.all()
-    all_items = list(map(lambda x: x.serialize(), items))
+#     # return list updated
+#     items = Item.query.all()
+#     all_items = list(map(lambda x: x.serialize(), items))
 
-    return jsonify(all_items), 200
+#     return jsonify(all_items), 200
 
 # update bid
-@api.route('/bid/<int:id>', methods=['PUT'])
-def update_bid(id):
-    body = request.get_json()
-    bid = Bid.query.get(id)
+# @api.route('/bid/<int:id>', methods=['PUT'])
+# def update_bid(id):
+#     body = request.get_json()
+#     bid = Bid.query.get(id)
 
-    if bid is None:
-        raise APIException('Bid not found', status_code=404)
+#     if bid is None:
+#         raise APIException('Bid not found', status_code=404)
     
-    if "item_id" in body:
-        bid.item_id = body["item_id"]
-    if "bid_amount" in body:
-        bid.bid_amount = body["bid_amount"]
-    if "num_of_bids" in body:
-        bid.num_of_bids = body["num_of_bids"]
-    if "current_price" in body:
-        bid.current_price = body["current_price"]
+#     if "item_id" in body:
+#         bid.item_id = body["item_id"]
+#     if "bid_amount" in body:
+#         bid.bid_amount = body["bid_amount"]
+#     if "num_of_bids" in body:
+#         bid.num_of_bids = body["num_of_bids"]
+#     if "current_price" in body:
+#         bid.current_price = body["current_price"]
 
 
-    db.session.commit()
-    bids = Bid.query.all()
-    all_bids = list(map(lambda x: x.serialize(), bids))
+#     db.session.commit()
+#     bids = Bid.query.all()
+#     all_bids = list(map(lambda x: x.serialize(), bids))
 
-    return jsonify(all_bids), 200
+#     return jsonify(all_bids), 200
 
 # delete user
 

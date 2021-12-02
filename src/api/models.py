@@ -66,7 +66,6 @@ class Item(db.Model):
     bid_count = db.Column(db.Integer,unique=False, nullable=True)
     posted_date = db.Column(db.String(250), unique=False, nullable=True)
     end_date = db.Column(db.String(250), unique=False, nullable=True)
-    bids = db.relationship('Bid', backref='item', lazy=True)
     transactions = db.relationship('Transaction', backref='item', lazy=True)
 
     def serialize(self):
@@ -83,7 +82,6 @@ class Item(db.Model):
             "donated_by": self.donated_by,
             "donate_to": self.donate_to,
             "bid_count": self.bid_count,
-            "bids": list(map(lambda bid: bid.serialize(), self.bids)),
             "posted_date": self.posted_date,
             "end_date": self.end_date
         }
