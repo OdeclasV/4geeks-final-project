@@ -2,17 +2,20 @@ import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
-import { LineGraph } from "../Graphs/LineGraph";
+// import { LineGraph } from "../Graphs/LineGraph";
 
 export const ProfileHome = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
+	let { id } = useParams();
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
 		currency: "USD",
 		minimumFractionDigits: 0
 	});
+
+	// console.log(store.user[id]);
 
 	return (
 		<>

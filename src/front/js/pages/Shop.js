@@ -15,8 +15,8 @@ export const Shop = () => {
 
 	return (
 		<>
-			<div className="shop-title mb-2">
-				<h1 style={shopStyles}>Sale Items</h1>
+			<div className="shop-title text-center mb-3">
+				<h1>Shop for Good</h1>
 			</div>
 			<div className="d-flex justify-content-center mb-2">
 				{dropdowns.map(dropdown => {
@@ -83,8 +83,4 @@ export const Shop = () => {
 			</div>
 		</>
 	);
-};
-
-const shopStyles = {
-	textAlign: "center"
 };

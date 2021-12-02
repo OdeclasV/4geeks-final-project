@@ -63,16 +63,22 @@ const Layout = () => {
 							<NonProfitPartners />
 						</Route>
 						<Route exact path="/profile/nonprofit">
-							<NonProfitProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<NonProfitProfile />
 						</Route>
 						<Route exact path="/profile/nonprofit/:profileoption">
-							<NonProfitProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<NonProfitProfile />
+						</Route>
+						<Route exact path="/profile/nonprofit/:profileoption/:id">
+							<NonProfitProfile />
 						</Route>
 						<Route exact path="/profile/user">
-							<UserProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<UserProfile />
 						</Route>
 						<Route exact path="/profile/user/:profileoption">
-							<UserProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<UserProfile />
+						</Route>
+						<Route exact path="/profile/user/:profileoption/:id">
+							<UserProfile />
 						</Route>
 						<Route exact path="/donateclothes">
 							<DonateClothing />

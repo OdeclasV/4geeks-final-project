@@ -51,7 +51,7 @@ export const AuctionClothing = () => {
 
 						<select
 							className="form-select"
-							aria-label="Default select example"
+							aria-label="Default select condition"
 							value={condition}
 							onChange={e => {
 								setCondition(e.target.value);
@@ -65,6 +65,22 @@ export const AuctionClothing = () => {
 					</div>
 
 					<div className="form-group">
+						<label htmlFor="name" className="control-label mt-3">
+							Name
+						</label>
+
+						<div className="">
+							<input
+								type="text"
+								className="form-control"
+								name="name"
+								id="name"
+								placeholder="Men's Patagonia Sweater"
+							/>
+						</div>
+					</div>
+
+					<div className="form-group">
 						<label htmlFor="size" className="control-label mt-3">
 							Size
 						</label>
@@ -74,7 +90,7 @@ export const AuctionClothing = () => {
 								className="form-control"
 								name="size"
 								id="clothe-size"
-								placeholder="Small, Medium, Large / 72 inches x 36 inches"
+								placeholder="Small, Medium, Large"
 							/>
 						</div>
 					</div>

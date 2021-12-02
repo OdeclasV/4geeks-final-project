@@ -8,7 +8,7 @@ import Proptypes from "prop-types";
 import "../../styles/index.scss";
 import { SignUp } from "./SignUp";
 
-export const LoginSignup = props => {
+export const LoginSignup = ({ match, index }) => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const history = useHistory();
@@ -44,7 +44,8 @@ export const LoginSignup = props => {
 						<div className="form px-4">
 							<input type="e-mail" className="form-control" placeholder="Email" />
 							<input type="password" className="form-control" placeholder="Password" />
-							<Link to="/profile/nonprofit">
+							{/* some kind of validation here if email and password match then use that profile index in link below */}
+							<Link to={`/profile/nonprofit/${index}`}>
 								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 									Login Non Profit
 								</button>
@@ -74,5 +75,6 @@ export const LoginSignup = props => {
 };
 
 LoginSignup.propTypes = {
-	match: Proptypes.object
+	match: Proptypes.object,
+	index: Proptypes.number
 };
