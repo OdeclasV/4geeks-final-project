@@ -217,11 +217,20 @@
 // poduct page
 
 .product-img-block {
-    width: 50%;
-    height: 30vh;
+    height: 500px;
     background-color:#FFFFFF;
-    margin-top:10px;
     overflow: hidden;
     object-fit: cover;
     object-position: center;
+    border: #195b9e solid 2px;
+    border-radius: 10px;
+}
+
+.product-info-block {
+    width: 50%;
+    height: 500px;
+    background-color:#FFFFFF;
+    margin-top:10px;
+    border: #195b9e solid 2px;
+    border-radius: 10px;
 }

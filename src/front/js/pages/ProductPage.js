@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Timer } from "../component/Timer";
 // import { ShopItem } from "../component/ShopItem";
 
 export const ProductPage = () => {
@@ -20,30 +21,41 @@ export const ProductPage = () => {
 	return (
 		<>
 			<div className="container-fluid">
-				<div className="h-100 p-5 bg-light border rounded-3">
-					<div className="row-one d-flex justify-content-between">
+				<div className="h-100 p-4 bg-light border rounded-3">
+					<div className="row d-flex justify-content-between">
 						{/* Product Image */}
-						<div className="product-img-block col-6 m-4">
+						<div className="product-img-block col-6 p-5">
 							<img src={store.items[id] && store.items[id].image} />
 						</div>
 
-						{/* Product Description */}
-						<div className="m-2 page-title col-6 m-4">
-							<h1 className="">Awesome Shirt</h1>
-							<h3>Id</h3>
-							<p>{store.items[id] && store.items[id].id}</p>
-							<h3>Description</h3>
-							<p>{store.items[id] && store.items[id].description}</p>
-							<h3>Condition:</h3>
-							<p className="card-text item-condition">{store.items[id] && store.items[id].condition}</p>
-							<h3>Current Price</h3>
-							<p className="card-text item-price">${store.items[id] && store.items[id].current_price}</p>
-							<h3>Number of Bids:</h3>
-							<p className="card-text item-price">{bidCount}</p>
-							<label htmlFor="minimum-bid" className="control-label">
-								Minimum Bid:
-							</label>
-							<div className="set-bid-amount">
+						<div className="product-info-box col-6 p-5">
+							{/* Product Description  Top */}
+							<div className="title-row">
+								<h1 className="">Awesome Shirt</h1>
+							</div>
+
+							<div className="giveblue-font timer-row d-flex align-self-center">
+								<p className="col-4">Time left to bid</p>
+								<Timer endDate={store.items[id] && store.items[id].end_date} />
+							</div>
+
+							<div className="price-row d-flex">
+								<h3 className="col-4">Current Price</h3>
+								<h3 className="card-text item-price">
+									${store.items[id] && store.items[id].current_price}
+								</h3>
+							</div>
+
+							<div className="bid-count-row d-flex">
+								<p className="col-4">Number of Bids:</p>
+								<p className="card-text item-price">{bidCount}</p>
+							</div>
+
+							<div className="place-bid-row d-flex mb-2">
+								<label htmlFor="minimum-bid" className="control-label col-4">
+									Minimum Bid:
+								</label>
+
 								<input
 									type="number"
 									className="form-control"
@@ -58,23 +70,33 @@ export const ProductPage = () => {
 									//setPrice(parseInt(e.target.value));
 								/>
 							</div>
-
-							{/* Modal Button Section */}
-
-							<button
-								type="button"
-								className="btn btn-two"
-								data-bs-toggle="modal"
-								data-bs-target="#placeBid"
-								onClick={() => {
-									setShow("true");
-									console.log(store.items[id].id);
-									setBidCount(bidCount + 1);
-									actions.updateBid(store.items[id].id, currentBid);
-								}}>
-								Place Bid
-							</button>
-							<div
+							<div>
+								<button
+									type="button"
+									className="btn btn-two container-fluid col-8 py-2 my-2"
+									data-bs-toggle="modal"
+									data-bs-target="#placeBid"
+									onClick={() => {
+										setShow("true");
+										console.log(store.items[id].id);
+										setBidCount(bidCount + 1);
+										actions.updateBid(store.items[id].id, currentBid);
+									}}>
+									Place Bid
+								</button>
+							</div>
+							{/* Product Description bottom */}
+							<div className="product-details-row">
+								<h4>Description</h4>
+								<p>{store.items[id] && store.items[id].description}</p>
+								<br />
+								<h4>Condition:</h4>
+								<p className="card-text item-condition">
+									{store.items[id] && store.items[id].condition}
+								</p>
+							</div>
+						</div>
+						{/* <div
 								className={show == "true" ? "modal fade show" : "modal fade"}
 								id="placeBid"
 								// tabindex="-1"
@@ -106,8 +128,7 @@ export const ProductPage = () => {
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
+							</div> */}
 					</div>
 				</div>
 			</div>
