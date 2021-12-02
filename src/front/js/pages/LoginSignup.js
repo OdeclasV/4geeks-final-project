@@ -13,24 +13,24 @@ export const LoginSignup = ({ match, index }) => {
 	const params = useParams();
 	const history = useHistory();
 
-	console.log(params);
+	// console.log(params);
 
-	const [loginTab, showloginTab] = useState(true); // set this to true so it shows up when user gets to page
-	const [signupTab, showsignupTab] = useState(false);
+	// const [loginTab, showloginTab] = useState(true); // set this to true so it shows up when user gets to page
+	// const [signupTab, showsignupTab] = useState(false);
 
-	// flag variables to set class values
-	let showLogin = "";
-	let showSignup = "";
+	// // flag variables to set class values
+	// let showLogin = "";
+	// let showSignup = "";
 
-	// checks if loginTab's state is True
-	if (loginTab) {
-		showLogin = "show active";
-	}
+	// // checks if loginTab's state is True
+	// if (loginTab) {
+	// 	showLogin = "show active";
+	// }
 
-	// checks if signupTab's state is True
-	if (signupTab) {
-		showSignup = "show active";
-	}
+	// // checks if signupTab's state is True
+	// if (signupTab) {
+	// 	showSignup = "show active";
+	// }
 
 	return (
 		<>
