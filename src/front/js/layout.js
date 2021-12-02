@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -14,15 +14,20 @@ import { AuctionType } from "./pages/AuctionType";
 import { ChooseNonProfit } from "./pages/ChooseNonProfit";
 import { DonateClothing } from "./component/donate-form/DonateClothing";
 import { AuctionClothing } from "./component/donate-form/AuctionClothing";
-import { SignInModal, LoginSignup } from "./pages/LoginSignup";
+import { LoginSignup } from "./pages/LoginSignup";
 import { NonProfitProfile } from "./pages/profile-pages/NonProfitProfile";
 import { SignUp } from "./pages/SignUp";
+import { UserProfile } from "./pages/profile-pages/UserProfile";
+import { ProductPage } from "./pages/ProductPage";
+import { NonProfitPartners } from "./pages/NonProfitPartners";
 
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+
+	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
 		<div className="container-fluid">
@@ -54,11 +59,26 @@ const Layout = () => {
 						<Route exact path="/choosenonprofit">
 							<ChooseNonProfit />
 						</Route>
+						<Route exact path="/nonprofitpartners">
+							<NonProfitPartners />
+						</Route>
 						<Route exact path="/profile/nonprofit">
 							<NonProfitProfile />
 						</Route>
 						<Route exact path="/profile/nonprofit/:profileoption">
 							<NonProfitProfile />
+						</Route>
+						<Route exact path="/profile/nonprofit/:profileoption/:id">
+							<NonProfitProfile />
+						</Route>
+						<Route exact path="/profile/user">
+							<UserProfile />
+						</Route>
+						<Route exact path="/profile/user/:profileoption">
+							<UserProfile />
+						</Route>
+						<Route exact path="/profile/user/:profileoption/:id">
+							<UserProfile />
 						</Route>
 						<Route exact path="/donateclothes">
 							<DonateClothing />
@@ -67,14 +87,15 @@ const Layout = () => {
 							<AuctionClothing />
 						</Route>
 						<Route exact path="/login">
-							<LoginSignup />
+							<LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/signup">
-							<SignUp />
+							<SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
-						<Route exact path="/loginsignup/:option">
+						{/* <Route exact path="/loginsignup/:option">
 							<LoginSignup />
-						</Route>
+						</Route> */}
+						<Route exact path="/shop/:id" component={ProductPage} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

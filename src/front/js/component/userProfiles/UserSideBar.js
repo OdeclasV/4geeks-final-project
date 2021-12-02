@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const SideBar = ({ username }) => {
+export const UserSideBar = ({ username }) => {
 	const history = useHistory();
 
 	const [dropdown, setDropdown] = useState(false);
@@ -40,7 +40,7 @@ export const SideBar = ({ username }) => {
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						aria-current="page"
 						onClick={() => {
-							history.push("/profile/nonprofit");
+							history.push("/profile/user");
 						}}>
 						<i className="fa fa-home" />
 						<span className="ms-2">Dashboard</span>
@@ -56,7 +56,7 @@ export const SideBar = ({ username }) => {
 						href="#"
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
-							history.push("/profile/nonprofit/donations");
+							history.push("/profile/user/donations");
 						}}>
 						<i className="fa fa-columns" />
 						<span className="ms-2">Donations</span>
@@ -67,10 +67,10 @@ export const SideBar = ({ username }) => {
 						href="#"
 						className="nav-link text-white"
 						onClick={() => {
-							history.push("/profile/nonprofit/wishlist");
+							history.push("/profile/user/nonprofit-friends");
 						}}>
 						<i className="fa fa-clipboard-list" />
-						<span className="ms-2">Wishlist</span>
+						<span className="ms-2">Non Profit Friends</span>
 					</a>
 				</li>
 				<li className="m-2 p-2">
@@ -78,7 +78,7 @@ export const SideBar = ({ username }) => {
 						href="#"
 						className="nav-link text-white"
 						onClick={() => {
-							history.push("/profile/nonprofit/myaccount");
+							history.push("/profile/user/myaccount");
 						}}>
 						<i className="fa fa-cog" />
 						<span className="ms-2">My Account</span>
@@ -100,6 +100,6 @@ export const SideBar = ({ username }) => {
 	);
 };
 
-SideBar.propTypes = {
+UserSideBar.propTypes = {
 	username: PropTypes.string
 };

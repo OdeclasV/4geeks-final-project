@@ -4,7 +4,7 @@ import { Context } from "../../store/appContext";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const ProfileMyAccount = props => {
+export const UserProfileMyAccount = props => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 
@@ -23,28 +23,24 @@ export const ProfileMyAccount = props => {
 						{/* info area */}
 						<div className="p-2 m-2 border rounded-3 col-9">
 							<h4>
-								<strong>Company Name:</strong>
+								<strong>Name:</strong>
 							</h4>
-							<h4>{store.currentnonprofit.name}</h4>
+							<h4>
+								{store.currentuser.name} {store.currentuser.last_name}
+							</h4>
 							<br />
 							<h4>
 								<strong>Email:</strong>
 							</h4>
-							<p>{store.currentnonprofit.email}</p>
+							<p>{store.currentuser.email}</p>
+							<br />
 							<h4>
-								<strong>Description:</strong>
+								<strong>Non Profit Friends:</strong>
 							</h4>
-							<p>{store.currentnonprofit.description}</p>
-							<h4>
-								<strong>Address:</strong>
-							</h4>
-							<p>{store.currentnonprofit.address}</p>
+							<p>{store.currentuser.nonprofitfriends}</p>
 							<button type="submit" className="btn btn-one">
 								Change Password
 							</button>
-						</div>
-						<div className="non-profit-logo p-2 m-2 border rounded-3">
-							<img className="card-img-top" src={store.currentnonprofit.logo} alt="Card image cap" />
 						</div>
 					</div>
 				</div>

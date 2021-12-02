@@ -22,19 +22,19 @@ export const Home = () => {
 					/>
 				</div>
 				<div className="col-lg-6">
-					<h1 className="display-5 fw-bold lh-1 mb-3"> Time To Give Back</h1>
+					<h1 className="display-5 fw-bold lh-1 mb-3 giveblue-font"> Time To Give Back</h1>
 					<p className="lead">
 						some short decription of our project and why it is so awesome will go here, get ready!
 					</p>
 
 					<div className="d-grid gap-2 d-md-flex justify-content-md-start">
 						<Link to="/donate">
-							<button type="button" className="btn btn-primary btn-lg px-4 me-md-2">
+							<button type="button" className="btn btn-two btn-lg px-4 me-md-2">
 								Donate
 							</button>
 						</Link>
 						<Link to="/shop">
-							<button type="button" className="btn btn-light btn-lg px-4">
+							<button type="button" className="btn btn-one btn-lg px-4 me-md-2">
 								Shop
 							</button>
 						</Link>

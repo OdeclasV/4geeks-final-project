@@ -8,56 +8,59 @@ import Proptypes from "prop-types";
 import "../../styles/index.scss";
 import { SignUp } from "./SignUp";
 
-export const LoginSignup = props => {
+export const LoginSignup = ({ match, index }) => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const history = useHistory();
 
-	console.log(params);
-
-	const [loginTab, showloginTab] = useState(true); // set this to true so it shows up when user gets to page
-	const [signupTab, showsignupTab] = useState(false);
-
-	// flag variables to set class values
-	let showLogin = "";
-	let showSignup = "";
-
-	// checks if loginTab's state is True
-	if (loginTab) {
-		showLogin = "show active";
-	}
-
-	// checks if signupTab's state is True
-	if (signupTab) {
-		showSignup = "show active";
-	}
+	const [userEmail, setUserEmail] = useState("");
+	let userSignIn = userEmail.includes("user.com");
+	let nonProfitSignIn = userEmail.includes("nonprofit.com");
 
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
-				<div className="card">
+				<div className="login-form overview-block">
 					<div className="card-top text-center py-3">
-						<h2 className="">Returning Customers</h2>
+						<h2 className="">Log In</h2>
 					</div>
 
 					<div className="tab-content" id="pills-tabContent">
-						<div>
-							<div className="form px-4 pt-5">
-								<input type="e-mail" className="form-control" placeholder="Email" />
-								<input type="password" className="form-control" placeholder="Password" />
-								<Link to="/profile/nonprofit">
-									<button type="button" className="btn btn-primary btn-lg px-4 container-fluid">
-										Login
+						<div className="form px-4">
+							<input
+								type="e-mail"
+								className="form-control"
+								placeholder="Email"
+								value={userEmail}
+								onChange={e => setUserEmail(e.target.value)}
+								onKeyUp={e => setUserEmail(e.target.value)}
+							/>
+							<input type="password" className="form-control" placeholder="Password" />
+							{/* some kind of validation here if email and password match then use that profile index in link below */}
+							{userSignIn ? (
+								<Link to="/profile/user">
+									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+										Login User
 									</button>
 								</Link>
-							</div>
+							) : nonProfitSignIn ? (
+								<Link to={`/profile/nonprofit/${index}`}>
+									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+										Login Non Profit
+									</button>
+								</Link>
+							) : (
+								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+									Login
+								</button>
+							)}
 						</div>
 
-						<div className="new-users text-center pb-3 px-4">
+						<div className="new-users text-center px-4">
 							<h4>
 								New User?
 								<Link to="/signup">
-									<button type="button" className="btn btn-success btn-lg px-4 container-fluid my-5">
+									<button type="button" className="btn btn-two btn-lg px-4 container-fluid my-2">
 										Sign Up Here
 									</button>
 								</Link>
@@ -71,5 +74,6 @@ export const LoginSignup = props => {
 };
 
 LoginSignup.propTypes = {
-	match: Proptypes.object
+	match: Proptypes.object,
+	index: Proptypes.number
 };
