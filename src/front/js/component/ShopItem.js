@@ -77,7 +77,10 @@ export const ShopItem = ({ item, index }) => {
 					{/* </div> */}
 					<div className="text-center px-2">
 						<Link to={`/shop/${index}`}>
-							<button type="submit" className="btn btn-two btn-lg container-fluid my-2">
+							<button
+								type="submit"
+								className="btn btn-two btn-lg container-fluid my-2"
+								onClick={() => actions.getBids()}>
 								View Item
 							</button>
 						</Link>

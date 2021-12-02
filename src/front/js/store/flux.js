@@ -43,6 +43,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(err => console.error("Error:", err));
 			},
+
+			getBids: () => {
+				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/items")
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						console.log(data);
+						setStore({ bids: data });
+					});
+			},
 			getNonprofits: () => {
 				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us20.gitpod.io/api/nonprofit")
 					.then(response => {

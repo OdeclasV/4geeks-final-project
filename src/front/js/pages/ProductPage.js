@@ -8,10 +8,21 @@ import { Link } from "react-router-dom";
 export const ProductPage = () => {
 	const [product, setProduct] = useState([]);
 	const { store, actions } = useContext(Context);
-
+	const [show, setShow] = useState("false");
 	let { id } = useParams();
-	console.log(store.items[id] && store.items[id].condition);
-	console.log(store.bids);
+
+	// const [newBid, setNewBid] = useState({
+	// 	item_id: store.items[id] && store.items[id].id,
+	// 	minimun_bid: store.items[id] && store.items[id].current_price + 1,
+	// 	current_price: store.items[id] && store.items[id].current_price,
+	// 	num_of_bids: store.items[id] && store.items[id].bid_count
+	// });
+
+	const [minimun_bid, setMinimum_bid] = useState(store.items[id] && store.items[id].current_price + 1);
+	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
+
+	// console.log(store.items[id] && store.items[id].condition);
+	// console.log(store.items[id] && store.items[id].id);
 
 	//create state for bid
 	// use store.items[id].id
@@ -35,10 +46,27 @@ export const ProductPage = () => {
 							<p>{store.items[id] && store.items[id].description}</p>
 							<h3>Condition:</h3>
 							<p className="card-text item-condition">{store.items[id] && store.items[id].condition}</p>
-							<h3>Highest Bid:</h3>
-							<p className="card-text item-price">${store.items[id] && store.items[id].original_price}</p>
+							<h3>Current Price</h3>
+							<p className="card-text item-price">${store.items[id] && store.items[id].current_price}</p>
 							<h3>Number of Bids:</h3>
 							<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
+							<label htmlFor="minimum-bid" className="control-label">
+								Minimum Bid:
+							</label>
+							<div className="set-bid-amount">
+								<input
+									type="number"
+									className="form-control"
+									name="price"
+									id="bid"
+									value={parseInt(minimun_bid)}
+									min={parseInt(minimun_bid)}
+									onChange={e => {
+										setMinimum_bid(parseInt(e.target.value + 1));
+										setPrice(parseInt(e.target.value));
+									}}
+								/>
+							</div>
 
 							{/* Modal Button Section */}
 
