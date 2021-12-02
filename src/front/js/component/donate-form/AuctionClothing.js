@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
-import { ChooseNonProfit } from "../../pages/ChooseNonProfit";
+
 export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
@@ -31,7 +31,7 @@ export const AuctionClothing = () => {
 
 						<select
 							className="form-select"
-							aria-label="Default select example"
+							aria-label="Default select clothes"
 							value={typeOfClothes}
 							onChange={e => {
 								setTypeOfClothes(e.target.value);
