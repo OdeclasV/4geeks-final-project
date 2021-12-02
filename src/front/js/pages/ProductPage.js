@@ -11,21 +11,11 @@ export const ProductPage = () => {
 	const [show, setShow] = useState("false");
 	let { id } = useParams();
 
-	// const [newBid, setNewBid] = useState({
-	// 	item_id: store.items[id] && store.items[id].id,
-	// 	minimun_bid: store.items[id] && store.items[id].current_price + 1,
-	// 	current_price: store.items[id] && store.items[id].current_price,
-	// 	num_of_bids: store.items[id] && store.items[id].bid_count
-	// });
+	const [newBid, setNewBid] = useState(0);
 
-	const [minimun_bid, setMinimum_bid] = useState(store.items[id] && store.items[id].current_price + 1);
+	const [currentBid, setCurrentBid] = useState(store.items[id] && store.items[id].current_price + 1);
+	const [bidCount, setBidCount] = useState(0);
 	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
-
-	// console.log(store.items[id] && store.items[id].condition);
-	// console.log(store.items[id] && store.items[id].id);
-
-	//create state for bid
-	// use store.items[id].id
 
 	return (
 		<>
@@ -49,7 +39,7 @@ export const ProductPage = () => {
 							<h3>Current Price</h3>
 							<p className="card-text item-price">${store.items[id] && store.items[id].current_price}</p>
 							<h3>Number of Bids:</h3>
-							<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
+							<p className="card-text item-price">{bidCount}</p>
 							<label htmlFor="minimum-bid" className="control-label">
 								Minimum Bid:
 							</label>
@@ -59,12 +49,13 @@ export const ProductPage = () => {
 									className="form-control"
 									name="price"
 									id="bid"
-									value={parseInt(minimun_bid)}
-									min={parseInt(minimun_bid)}
+									value={parseInt(currentBid)}
+									min={parseInt(currentBid)}
 									onChange={e => {
-										setMinimum_bid(parseInt(e.target.value + 1));
-										setPrice(parseInt(e.target.value));
+										setCurrentBid(e.target.value);
 									}}
+									//setNewBid(parseInt(e.target.value));
+									//setPrice(parseInt(e.target.value));
 								/>
 							</div>
 
@@ -77,6 +68,9 @@ export const ProductPage = () => {
 								data-bs-target="#placeBid"
 								onClick={() => {
 									setShow("true");
+									console.log(store.items[id].id);
+									setBidCount(bidCount + 1);
+									actions.updateBid(store.items[id].id, currentBid);
 								}}>
 								Place Bid
 							</button>
