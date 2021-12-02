@@ -13,12 +13,15 @@ export const Navbar = props => {
 
 	return (
 		<div className="navbar">
-			<nav className="container-fluid navbar-expand-lg navbar-light py-3">
-				<Link className="navbar-brand" to="/">
-					Shop To Give
-				</Link>
-
-				<button
+			<nav className="container-fluid navbar-expand-lg navbar-light py-3 row">
+				<div className="container col-3">
+					<Link className="navbar-brand" to="/">
+						<a className="navbar-brand">
+							<img src="https://i.ibb.co/pr8CgK8/Bid-For-Good-07.png" alt="" width="100%" height="auto" />
+						</a>
+					</Link>
+				</div>
+				{/* <button
 					className="navbar-toggler"
 					onClick={() => {
 						setDropdown(dropdown);
@@ -30,9 +33,11 @@ export const Navbar = props => {
 					aria-expanded="false"
 					aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon" />
-				</button>
+				</button> */}
 
-				<div className="collapse navbar-collapse d-flex justify-content-end" aria-labelledby="navbarToggler">
+				<div
+					className="collapse navbar-collapse d-flex justify-content-end col-9"
+					aria-labelledby="navbarToggler">
 					<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li className="nav-menu-item mx-2 active">
 							<Link className="nav-menu-link" to="/">
