@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
+	const { store, actions } = useContext(Context);
 
 	const [condition, setCondition] = useState("Select a value");
 	const [nonprofit, setNonProfit] = useState("Select a NonProfit");

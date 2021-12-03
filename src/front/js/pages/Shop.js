@@ -65,6 +65,7 @@ export const Shop = () => {
 					);
 				})}
 				<Link
+					to=""
 					className="giveblue-font text-decoration-none align-self-center m-2"
 					onClick={() => {
 						setfilterOption("");
@@ -75,11 +76,12 @@ export const Shop = () => {
 			<div className="shop-items">
 				<ul className="d-flex justify-content-around flex-wrap">
 					{store.items
+						.filter(item => item.donation_type == 2)
 						.filter(item => {
 							return filterOption ? filterOption == item.category : true;
 						})
 						.map((item, index) => {
-							return <ShopItem key={item.id} item={item} index={index} />;
+							return <ShopItem key={item.id} item={item} />;
 						})}
 				</ul>
 			</div>

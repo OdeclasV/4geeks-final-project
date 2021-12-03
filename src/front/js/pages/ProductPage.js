@@ -13,9 +13,9 @@ export const ProductPage = () => {
 	let { id } = useParams();
 
 	const [newBid, setNewBid] = useState(0);
+	console.log(store.items);
 
 	const [currentBid, setCurrentBid] = useState(store.items[id] && store.items[id].current_price + 1);
-	const [bidCount, setBidCount] = useState(0);
 	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
 
 	return (
@@ -49,7 +49,7 @@ export const ProductPage = () => {
 
 							<div className="bid-count-row d-flex">
 								<p className="col-4">Number of Bids:</p>
-								<p className="card-text item-price">{bidCount}</p>
+								<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
 							</div>
 
 							<div className="place-bid-row d-flex mb-2">
@@ -80,7 +80,6 @@ export const ProductPage = () => {
 									onClick={() => {
 										setShow("true");
 										console.log(store.items[id].id);
-										setBidCount(bidCount + 1);
 										actions.updateBid(store.items[id].id, currentBid);
 									}}>
 									Place Bid

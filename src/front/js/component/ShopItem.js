@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // passign item as the only props of this component
 // item's information is coming from the ShopItem page
 
-export const ShopItem = ({ item, index }) => {
+export const ShopItem = ({ item }) => {
 	let bidIncrement = 1;
 	let itemPriceInt = parseInt(item.original_price, 10);
 
@@ -76,7 +76,7 @@ export const ShopItem = ({ item, index }) => {
 						// </button> */}
 					{/* </div> */}
 					<div className="text-center px-2">
-						<Link to={`/shop/${index}`}>
+						<Link to={`/shop/${item.id}`}>
 							<button type="submit" className="btn btn-two btn-lg container-fluid my-2">
 								View Item
 							</button>
@@ -93,6 +93,5 @@ export const ShopItem = ({ item, index }) => {
 };
 
 ShopItem.propTypes = {
-	item: PropTypes.object,
-	index: PropTypes.number
+	item: PropTypes.object
 };

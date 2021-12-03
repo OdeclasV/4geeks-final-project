@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
+	const currentURL = "https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io";
 
 	return {
 		store: {
@@ -108,7 +108,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 					.then(response => response.json())
-					.then(data => setStore({ items: data }))
+					.then(data => {
+						console.log(data);
+						setStore({ items: data });
+					})
 					.catch(err => console.error("Error:", err));
 			},
 
