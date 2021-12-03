@@ -161,9 +161,9 @@ def get_items():
 def create_item():
     body = request.get_json()
 
-    created_date = datetime.datetime.now().strftime("%x")
+    created_date = datetime.datetime.now().strftime("%x %X")
 
-    date_1 = datetime.datetime.strptime(created_date, "%m/%d/%y")
+    date_1 = datetime.datetime.strptime(created_date, "%m/%d/%y %H:%M:%S")
 
     end_date = date_1 + datetime.timedelta(days=7)
 
