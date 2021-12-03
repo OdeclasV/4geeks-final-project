@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 
 export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
+
 	const [condition, setCondition] = useState("Select a value");
 	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [itemName, setItemName] = useState("");
 	const [itemDescription, setItemDescription] = useState("");
-	const { store, actions } = useContext(Context);
 	const [selectedImage, setSelectedImage] = useState(null);
 
 	// let start_date = new Date(store.items[1].posted_date);
 	// let end_date = start_date.setDate(start_date.getDate() + 7);
 	// console.log(end_date);
 
+	const { store, actions } = useContext(Context);
 	const [auctionItem, setAuctionItem] = useState({
 		bid_count: 0,
 		category: "furniture",
@@ -31,6 +32,17 @@ export const AuctionFurniture = () => {
 		num_of_bids: 0
 	});
 
+	const imageUploader = async the_image => {
+		const data = new FormData();
+		data.append("image", the_image);
+		data.append("key", "d05f626f3e944b28f9d8dff843aafe2c");
+		let response = await fetch("https://api.imgbb.com/1/upload", {
+			method: "POST",
+			body: data
+		});
+		let image_info = await response.json();
+		setAuctionItem({ ...auctionItem, image: image_info.data.url });
+	};
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
@@ -146,8 +158,9 @@ export const AuctionFurniture = () => {
 							type="file"
 							name="myImage"
 							onChange={event => {
-								console.log(event.target.files[0]);
+								// console.log(event.target.files[0]);
 								setSelectedImage(event.target.files[0]);
+								imageUploader(event.target.files[0]);
 							}}
 						/>
 					</div>
@@ -172,11 +185,6 @@ export const AuctionFurniture = () => {
 									</option>
 								);
 							})}
-							{/* <option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option> */}
 						</select>
 					</div>
 
