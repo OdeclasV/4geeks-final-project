@@ -1,8 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			//hardcoding these items here for the moment
 			items: [],
 			bids: [],
 			shoppingCartItems: [],
@@ -66,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
+						//console.log(data);
 						setStore({ nonprofits: data });
 					});
 			},
@@ -88,14 +86,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-						//console.log(data);
-						let { bids } = getStore();
-						setStore({ items: data[0] });
-						setStore({ bids: [...bids, data[1]] });
-						console.log(getStore().bids);
+						setStore({ items: data });
+						// setStore({ bids: [...bids, data[1]] });
+						// console.log(getStore().bids);
 					})
 					.catch(err => console.error("Error:", err));
 			},
+
+			// donateItem: item => {
+
+			// },
+
 			updateBid: (id, currentBid) => {
 				fetch(`https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items/${id}`, {
 					method: "PUT",

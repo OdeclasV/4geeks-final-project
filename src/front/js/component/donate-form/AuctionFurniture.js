@@ -5,28 +5,27 @@ import { Link } from "react-router-dom";
 export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
-	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const { store, actions } = useContext(Context);
 	const [selectedImage, setSelectedImage] = useState(null);
-
-	// let start_date = new Date(store.items[1].posted_date);
-	// let end_date = start_date.setDate(start_date.getDate() + 7);
-	// console.log(end_date);
 
 	const [auctionItem, setAuctionItem] = useState({
 		bid_count: 0,
 		category: "furniture",
 		condition: null,
-		donate_to: null,
+		donate_to: nonprofit,
 		donated_by: null,
-		donation_type: null,
+		donation_type: 2,
 		image: "https://bit.ly/3kHj3PT",
+		name: null,
 		item_type: null,
 		original_price: null,
 		posted_date: null,
 		end_date: null,
 		num_of_bids: 0
 	});
+
+	console.log(auctionItem);
 
 	return (
 		<>
@@ -50,7 +49,6 @@ export const AuctionFurniture = () => {
 							<option value="chair">Chair</option>
 							<option value="sofa">Sofa</option>
 						</select>
-						{typeOfFurniture == "chair" ? <h3>Hello</h3> : ""}
 					</div>
 
 					<div className="form-group">
@@ -85,6 +83,9 @@ export const AuctionFurniture = () => {
 								name="name"
 								id="name"
 								placeholder="Restoration Hardware Dining Table"
+								onChange={e => {
+									setAuctionItem({ ...auctionItem, name: e.target.value });
+								}}
 							/>
 						</div>
 					</div>
@@ -106,23 +107,6 @@ export const AuctionFurniture = () => {
 							/>
 						</div>
 					</div>
-					{/* <div className="form-group">
-						<label htmlFor="end_date" className="col-sm-3 control-label">
-							Price
-						</label>
-						<div className="col-sm-9">
-							<input
-								type="text"
-								className="form-control"
-								name="end_date"
-								id="end_date"
-								value={auctionItem.end_date}
-								onChange={e => {
-									setAuctionItem({ ...auctionItem, original_price: e.target.value });
-								}}
-							/>
-						</div>
-					</div> */}
 
 					<div className="form-group">
 						<label htmlFor="description" className="control-label mt-3">
@@ -159,16 +143,24 @@ export const AuctionFurniture = () => {
 						<select
 							className="form-select"
 							aria-label="Default select example"
-							value={nonProfit}
+							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
-								setAuctionItem({ ...auctionItem, donate: e.target.value });
+								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
+							{/* <option value="Select a NonProfit">Select a NonProfit</option>
 							<option value="the-cat-network">The Cat Network</option>
 							<option value="universal-aid-for-children">Universal Aid for Children</option>
 							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							<option value="camillus-house">Camillus House</option> */}
 						</select>
 					</div>
 
@@ -180,7 +172,6 @@ export const AuctionFurniture = () => {
 								className="btn btn-two container mt-3"
 								onClick={() => {
 									setAuctionItem({ ...auctionItem, posted_date: new Date() });
-									//setAuctionItem({ ...auctionItem, end_date: auctionItem.posted_date.getDate() + 7 });
 									actions.addAuctionItem(auctionItem);
 								}}>
 								Add Item
