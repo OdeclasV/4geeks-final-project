@@ -11,6 +11,7 @@ export const AuctionFurniture = () => {
 	const [itemDescription, setItemDescription] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 
+	const { store, actions } = useContext(Context);
 	const [auctionItem, setAuctionItem] = useState({
 		bid_count: 0,
 		category: "furniture",
