@@ -24,11 +24,11 @@ export const ProductPage = () => {
 				<div className="h-100 p-4 bg-light border rounded-3">
 					<div className="row d-flex justify-content-between">
 						{/* Product Image */}
-						<div className="product-img-block col-6 p-5">
+						<div className="product-img-block d-block mx-lg-auto img-fluid col-4 p-5">
 							<img src={store.items[id] && store.items[id].image} />
 						</div>
 
-						<div className="product-info-box col-6 p-5">
+						<div className="product-info-box col-8 p-5">
 							{/* Product Description  Top */}
 							<div className="title-row">
 								<h1 className="">{store.items[id] && store.items[id].item_name}</h1>
@@ -72,18 +72,20 @@ export const ProductPage = () => {
 								/>
 							</div>
 							<div>
-								<button
-									type="button"
-									className="btn btn-two container-fluid col-8 py-2 my-2"
-									data-bs-toggle="modal"
-									data-bs-target="#placeBid"
-									onClick={() => {
-										setShow("true");
-										console.log(store.items[id].id);
-										actions.updateBid(store.items[id].id, currentBid);
-									}}>
-									Place Bid
-								</button>
+								<Link to="/bid-placed">
+									<button
+										type="button"
+										className="btn btn-two container-fluid col-8 py-2 my-2"
+										data-bs-toggle="modal"
+										data-bs-target="#placeBid"
+										onClick={() => {
+											setShow("true");
+											console.log(store.items[id].id);
+											actions.updateBid(store.items[id].id, currentBid);
+										}}>
+										Place Bid
+									</button>
+								</Link>
 							</div>
 							{/* Product Description bottom */}
 							<div className="product-details-row">

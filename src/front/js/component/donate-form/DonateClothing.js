@@ -15,9 +15,9 @@ export const DonateClothing = () => {
 		donate_to: nonprofit,
 		donated_by: null,
 		donation_type: 1,
-		image: "https://bit.ly/3kHj3PT",
+		image: null,
 		name: null,
-		item_type: null,
+		item_type: "1",
 		original_price: 0,
 		posted_date: null,
 		end_date: null
@@ -136,7 +136,7 @@ export const DonateClothing = () => {
 
 					<div className="form-group">
 						<div className="submit-button">
-							<Link to="/">
+							<Link to="/donation-placed">
 								<button type="submit" className="btn btn-two container mt-3">
 									Donate Item
 								</button>

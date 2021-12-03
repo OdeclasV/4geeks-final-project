@@ -20,6 +20,8 @@ import { SignUp } from "./pages/SignUp";
 import { UserProfile } from "./pages/profile-pages/UserProfile";
 import { ProductPage } from "./pages/ProductPage";
 import { NonProfitPartners } from "./pages/NonProfitPartners";
+import { BidPlaced } from "./pages/BidPlaced";
+import { DonationPlaced } from "./pages/DonationPlaced";
 
 //create your first component
 const Layout = () => {
@@ -96,6 +98,12 @@ const Layout = () => {
 							<LoginSignup />
 						</Route> */}
 						<Route exact path="/shop/:id" component={ProductPage} />
+						<Route exact path="/bid-placed">
+							<BidPlaced />
+						</Route>
+						<Route exact path="/donation-placed">
+							<DonationPlaced />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

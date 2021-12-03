@@ -111,9 +111,9 @@ export const DonateFurniture = () => {
 
 					<div className="form-group">
 						<div className="submit-button">
-							<Link to="/">
+							<Link to="/donation-placed">
 								<button type="submit" className="btn btn-two container mt-3">
-									Add Item
+									Donate Item
 								</button>
 							</Link>
 						</div>
