@@ -11,11 +11,6 @@ export const AuctionFurniture = () => {
 	const [itemDescription, setItemDescription] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 
-	// let start_date = new Date(store.items[1].posted_date);
-	// let end_date = start_date.setDate(start_date.getDate() + 7);
-	// console.log(end_date);
-
-	const { store, actions } = useContext(Context);
 	const [auctionItem, setAuctionItem] = useState({
 		bid_count: 0,
 		category: "furniture",
