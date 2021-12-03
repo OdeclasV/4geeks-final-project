@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
-	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [itemName, setItemName] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [itemDescription, setItemDescription] = useState("");
@@ -168,7 +168,7 @@ export const AuctionClothing = () => {
 						<select
 							className="form-select"
 							aria-label="Default select example"
-							value={nonProfit}
+							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
 								setAuctionItem({ ...auctionItem, donate: e.target.value });
