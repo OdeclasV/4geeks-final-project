@@ -20,9 +20,9 @@ export const AuctionClothing = () => {
 		item_description: null,
 		donate_to: null,
 		donated_by: null,
-		donation_type: null,
+		donation_type: 2,
 		image: null,
-		item_type: "2",
+		item_type: null,
 		original_price: null,
 		posted_date: null,
 		end_date: null,
@@ -160,6 +160,7 @@ export const AuctionClothing = () => {
 						/>
 					</div>
 
+					{/* <ChooseNonProfit /> */}
 					<div className="form-group">
 						<label htmlFor="description" className="control-label mt-3">
 							Choose Nonprofit
@@ -170,7 +171,7 @@ export const AuctionClothing = () => {
 							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
-								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
+								setAuctionItem({ ...auctionItem, donate: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
 							{store.nonprofits.map(nonprofit => {
@@ -181,7 +182,6 @@ export const AuctionClothing = () => {
 								);
 							})}
 						</select>
-						{/* <ChooseNonProfit /> */}
 					</div>
 
 					<div className="form-group">
