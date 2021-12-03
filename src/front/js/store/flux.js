@@ -88,17 +88,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-<<<<<<< HEAD
-						console.log(data);
-						let { bids } = getStore();
-						setStore({ items: data[0] });
-						setStore({ bids: [...bids, data[1]] });
-						console.log(getStore().bids);
-=======
 						setStore({ items: data });
 						// setStore({ bids: [...bids, data[1]] });
 						// console.log(getStore().bids);
->>>>>>> 85749216e4d941c82c9605b3a6efd2ea5b641300
 					})
 					.catch(err => console.error("Error:", err));
 			},
