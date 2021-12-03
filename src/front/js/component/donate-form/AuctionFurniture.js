@@ -32,6 +32,8 @@ export const AuctionFurniture = () => {
 		num_of_bids: 0
 	});
 
+
+
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">

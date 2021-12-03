@@ -4,9 +4,26 @@ import { Link } from "react-router-dom";
 
 export const DonateClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
-	const [nonprofit, setNonProfit] = useState("Select a value");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { store, actions } = useContext(Context);
+
+	const [donationItem, setDonationItem] = useState({
+		bid_count: 0,
+		category: "clothing",
+		condition: null,
+		donate_to: nonprofit,
+		donated_by: null,
+		donation_type: 1,
+		image: "https://bit.ly/3kHj3PT",
+		name: null,
+		item_type: null,
+		original_price: 0,
+		posted_date: null,
+		end_date: null
+	});
+
+	console.log(donationItem);
 
 	return (
 		<>
@@ -23,6 +40,7 @@ export const DonateClothing = () => {
 							value={typeOfClothes}
 							onChange={e => {
 								setTypeOfClothes(e.target.value);
+								setDonationItem({ ...donationItem, item_type: e.target.value });
 							}}>
 							<option value="Select a value">Select a value</option>
 							<option value="t-shirt">T-shirt</option>
@@ -43,6 +61,9 @@ export const DonateClothing = () => {
 								name="name"
 								id="name"
 								placeholder="Men's Patagonia Sweater"
+								onChange={e => {
+									setDonationItem({ ...donationItem, name: e.target.value });
+								}}
 							/>
 						</div>
 					</div>
@@ -100,12 +121,16 @@ export const DonateClothing = () => {
 							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
+								setDonationItem({ ...donationItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
 						</select>
 					</div>
 
@@ -113,7 +138,7 @@ export const DonateClothing = () => {
 						<div className="submit-button">
 							<Link to="/">
 								<button type="submit" className="btn btn-two container mt-3">
-									Add Item
+									Donate Item
 								</button>
 							</Link>
 						</div>

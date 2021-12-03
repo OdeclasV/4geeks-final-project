@@ -15,7 +15,7 @@ export const ProfileHome = () => {
 		minimumFractionDigits: 0
 	});
 
-	// console.log(store.user[id]);
+	//console.log(store.nonprofits[0] && store.nonprofits[0].items_received.filter(item => item.donation_type == 1));
 
 	return (
 		<>
@@ -45,7 +45,12 @@ export const ProfileHome = () => {
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Donations Recieved:</h3>
-									<h2>{store.currentnonprofit.donations}</h2>
+									<h2>
+										{store.nonprofits[0]
+											? store.nonprofits[0].items_received.filter(item => item.donation_type == 1)
+													.length
+											: 0}
+									</h2>
 									<h4 className="text-danger">
 										{" "}
 										<i className="fas fa-arrow-down" />
