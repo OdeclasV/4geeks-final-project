@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getItems: () => {
-				fetch({ currentURL })
+				fetch(`${currentURL}/api/items`)
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.statusText);
@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-						//console.log(data);
+						console.log(data);
 						let { bids } = getStore();
 						setStore({ items: data[0] });
 						setStore({ bids: [...bids, data[1]] });
@@ -139,29 +139,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 
-			updateBid: bid => {
-				fetch(`${currentURL}/api/bid/${bid.id}`, {
-					method: "PUT",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(bid)
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch(`${currentURL}/api/bid`)
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									console.log(data);
-									setStore({ bids: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// updateBid: bid => {
+			// 	fetch(`${currentURL}/api/bid/${bid.id}`, {
+			// 		method: "PUT",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify(bid)
+			// 	})
+			// 		.then(response => {
+			// 			if (response.ok) {
+			// 				fetch(`${currentURL}/api/bid`)
+			// 					.then(response => {
+			// 						if (!response.ok) {
+			// 							throw new Error(response.statusText);
+			// 						}
+			// 						return response.json();
+			// 					})
+			// 					.then(data => {
+			// 						console.log(data);
+			// 						setStore({ bids: data });
+			// 					});
+			// 			}
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
 			addWishlistItem: item => {
 				let { items } = getStore();

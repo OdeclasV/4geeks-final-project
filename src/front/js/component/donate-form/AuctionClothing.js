@@ -22,23 +22,23 @@ export const AuctionClothing = () => {
 		donated_by: null,
 		donation_type: null,
 		image: null,
-		item_type: null,
+		item_type: "2",
 		original_price: null,
 		posted_date: null,
 		end_date: null,
 		num_of_bids: 0
 	});
 
-	const imageUploader = () => {
+	const imageUploader = async the_image => {
 		const data = new FormData();
-		data.append("image", selectedImage);
+		data.append("image", the_image);
 		data.append("key", "d05f626f3e944b28f9d8dff843aafe2c");
-		fetch("https://api.imgbb.com/1/upload", {
+		let response = await fetch("https://api.imgbb.com/1/upload", {
 			method: "POST",
 			body: data
-		})
-			.then(resp => resp.json())
-			.then(data => setAuctionItem({ ...auctionItem, image: data.url_viewer }));
+		});
+		let image_info = await response.json();
+		setAuctionItem({ ...auctionItem, image: image_info.data.url });
 	};
 
 	return (
@@ -155,6 +155,7 @@ export const AuctionClothing = () => {
 							onChange={event => {
 								// console.log(event.target.files[0]); why index 0?
 								setSelectedImage(event.target.files[0]);
+								imageUploader(event.target.files[0]);
 							}}
 						/>
 					</div>
@@ -187,7 +188,7 @@ export const AuctionClothing = () => {
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {
-									imageUploader();
+									console.log(auctionItem);
 									actions.addAuctionItem(auctionItem);
 								}}>
 								Add Item

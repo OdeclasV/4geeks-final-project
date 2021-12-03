@@ -38,7 +38,7 @@ export const ShopItem = ({ item, index }) => {
 			<div className="card m-1 overview-block" style={{ width: "20rem" }}>
 				<img className="card-img-top" src={item.image} alt="Card image cap" />
 				<div className="card-body">
-					<h3 className="card-title">{item.name}</h3>
+					<h3 className="card-title">{item.item_name}</h3>
 					<h5 className="card-text giveblue-font item-price">Top Bid: ${item.original_price}</h5>
 					{/* <p className="card-text item-price">Bid Increment: ${bidIncrement}</p> */}
 
