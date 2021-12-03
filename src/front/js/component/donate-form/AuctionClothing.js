@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
-	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [itemName, setItemName] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [itemDescription, setItemDescription] = useState("");
@@ -167,16 +167,19 @@ export const AuctionClothing = () => {
 						<select
 							className="form-select"
 							aria-label="Default select example"
-							value={nonProfit}
+							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
 								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
 						</select>
 						{/* <ChooseNonProfit /> */}
 					</div>

@@ -39,7 +39,7 @@ export const ShopItem = ({ item, index }) => {
 				<img className="card-img-top" src={item.image} alt="Card image cap" />
 				<div className="card-body">
 					<h3 className="card-title">{item.item_name}</h3>
-					<h5 className="card-text giveblue-font item-price">Top Bid: ${item.original_price}</h5>
+					<h5 className="card-text giveblue-font item-price">Top Bid: ${item.current_price}</h5>
 					{/* <p className="card-text item-price">Bid Increment: ${bidIncrement}</p> */}
 
 					{/* <label htmlFor="price" className="control-label">
