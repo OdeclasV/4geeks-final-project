@@ -6,6 +6,8 @@ export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
 	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [itemName, setItemName] = useState("");
+	const [itemDescription, setItemDescription] = useState("");
 	const { store, actions } = useContext(Context);
 	const [selectedImage, setSelectedImage] = useState(null);
 
@@ -17,10 +19,12 @@ export const AuctionFurniture = () => {
 		bid_count: 0,
 		category: "furniture",
 		condition: null,
+		item_name: null,
+		item_description: null,
 		donate_to: null,
 		donated_by: null,
 		donation_type: null,
-		image: "https://bit.ly/3kHj3PT",
+		image: null,
 		item_type: null,
 		original_price: null,
 		posted_date: null,
@@ -84,7 +88,12 @@ export const AuctionFurniture = () => {
 								className="form-control"
 								name="name"
 								id="name"
-								placeholder="Restoration Hardware Dining Table"
+								placeholder="The Iron Throne"
+								value={itemName}
+								onChange={e => {
+									setItemName(e.target.value);
+									setAuctionItem({ ...auctionItem, item_name: e.target.value });
+								}}
 							/>
 						</div>
 					</div>
@@ -99,6 +108,7 @@ export const AuctionFurniture = () => {
 								className="form-control"
 								name="price"
 								id="furniture-price"
+								placeholder="800"
 								value={auctionItem.original_price}
 								onChange={e => {
 									setAuctionItem({ ...auctionItem, original_price: e.target.value });
@@ -130,7 +140,15 @@ export const AuctionFurniture = () => {
 						</label>
 
 						<div className="">
-							<textarea className="form-control" />
+							<textarea
+								className="form-control"
+								placeholder="comes with a lot of swords"
+								value={itemDescription}
+								onChange={e => {
+									setItemDescription(e.target.value);
+									setAuctionItem({ ...auctionItem, item_description: e.target.value });
+								}}
+							/>
 						</div>
 					</div>
 

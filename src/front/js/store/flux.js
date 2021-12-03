@@ -1,4 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
+
 	return {
 		store: {
 			message: null,
@@ -30,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getItems: () => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items")
+				fetch({ currentURL })
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.statusText);
@@ -45,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getBids: () => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items")
+				fetch(`${currentURL}/api/items`)
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.statusText);
@@ -58,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getNonprofits: () => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/nonprofit")
+				fetch(`${currentURL}/api/nonprofit`)
 					.then(response => {
 						if (!response.ok) {
 							throw new Error(response.statusText);
@@ -81,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			addAuctionItem: item => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items", {
+				fetch(`${currentURL}/api/items`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(item)
@@ -97,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 			updateBid: (id, currentBid) => {
-				fetch(`https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items/${id}`, {
+				fetch(`${currentURL}/api/items/${id}`, {
 					method: "PUT",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -110,7 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			createBid: (id, minimunBid, currentPrice, numOfBids) => {
-				fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/bid", {
+				fetch(`${currentURL}/api/bid`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -121,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (response.ok) {
-							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/items")
+							fetch(`${currentURL}/api/items`)
 								.then(response => {
 									if (!response.ok) {
 										throw new Error(response.statusText);
@@ -138,14 +140,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			updateBid: bid => {
-				fetch(`https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/bid/${bid.id}`, {
+				fetch(`${currentURL}/api/bid/${bid.id}`, {
 					method: "PUT",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(bid)
 				})
 					.then(response => {
 						if (response.ok) {
-							fetch("https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io/api/bid")
+							fetch(`${currentURL}/api/bid`)
 								.then(response => {
 									if (!response.ok) {
 										throw new Error(response.statusText);

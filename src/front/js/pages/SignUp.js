@@ -15,7 +15,7 @@ export const SignUp = () => {
 					{/* Tabs */}
 					<ul className="nav nav-tabs  justify-content-center nav-justified" role="tablist">
 						<li className="nav-item" role="presentation">
-							<button
+							<div
 								className={selectedTab == "user" ? "nav-link active" : "nav-link"}
 								id="pills-signup-user"
 								data-bs-toggle="tab"
@@ -28,7 +28,7 @@ export const SignUp = () => {
 									setSelectedTab("user");
 								}}>
 								Users
-							</button>
+							</div>
 						</li>
 
 						<li className="nav-item" role="presentation">

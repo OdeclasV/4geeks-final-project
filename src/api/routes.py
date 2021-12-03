@@ -167,7 +167,7 @@ def create_item():
 
     end_date = date_1 + datetime.timedelta(days=7)
 
-    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], donated_by=body["donated_by"], donate_to=body['donate_to'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], current_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
+    new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], item_name=body["item_name"], item_description=body["item_description"], donated_by=body["donated_by"], donate_to=body['donate_to'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], current_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
 
     db.session.add(new_item)
     db.session.commit()

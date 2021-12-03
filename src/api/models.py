@@ -59,7 +59,8 @@ class Item(db.Model):
     original_price = db.Column(db.Integer, unique=False, nullable=True)
     current_price = db.Column(db.Integer, unique=False, nullable=True)
     image = db.Column(db.String(250),unique=False, nullable=True )
-    name= db.Column(db.String(100), unique=False, nullable=True)
+    item_name = db.Column(db.String(100), unique=False, nullable=True)
+    item_description = db.Column(db.String(100), unique=False, nullable=True)
     donation_type = db.Column(db.String, unique=False, nullable=True)
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     donate_to = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
@@ -77,7 +78,8 @@ class Item(db.Model):
             "original_price": self.original_price,
             "current_price": self.current_price,
             "image": self.image,
-            "name": self.name,
+            "item_name": self.item_name,
+            "item_description": self.item_description,
             "donation_type": self.donation_type,
             "donated_by": self.donated_by,
             "donate_to": self.donate_to,

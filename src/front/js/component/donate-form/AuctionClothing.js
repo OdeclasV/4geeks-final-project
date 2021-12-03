@@ -7,18 +7,39 @@ export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
 	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
-	const { store, actions } = useContext(Context);
+	const [itemName, setItemName] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
+	const [itemDescription, setItemDescription] = useState("");
 
+	const { store, actions } = useContext(Context);
 	const [auctionItem, setAuctionItem] = useState({
+		bid_count: 0,
 		category: "clothing",
-		donation_type: "bid",
 		condition: null,
+		item_name: null,
+		item_description: null,
+		donate_to: null,
+		donated_by: null,
+		donation_type: null,
+		image: null,
 		item_type: null,
-		original_price: 20,
-		image: "https://bit.ly/3kHj3PT",
-		donate: null
+		original_price: null,
+		posted_date: null,
+		end_date: null,
+		num_of_bids: 0
 	});
+
+	const imageUploader = () => {
+		const data = new FormData();
+		data.append("image", selectedImage);
+		data.append("key", "d05f626f3e944b28f9d8dff843aafe2c");
+		fetch("https://api.imgbb.com/1/upload", {
+			method: "POST",
+			body: data
+		})
+			.then(resp => resp.json())
+			.then(data => setAuctionItem({ ...auctionItem, image: data.url_viewer }));
+	};
 
 	return (
 		<>
@@ -75,22 +96,12 @@ export const AuctionClothing = () => {
 								className="form-control"
 								name="name"
 								id="name"
-								placeholder="Men's Patagonia Sweater"
-							/>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="size" className="control-label mt-3">
-							Size
-						</label>
-						<div className="">
-							<input
-								type="text"
-								className="form-control"
-								name="size"
-								id="clothe-size"
-								placeholder="Small, Medium, Large"
+								placeholder="Invisibility Cloak"
+								value={itemName}
+								onChange={e => {
+									setItemName(e.target.value);
+									setAuctionItem({ ...auctionItem, item_name: e.target.value });
+								}}
 							/>
 						</div>
 					</div>
@@ -105,9 +116,9 @@ export const AuctionClothing = () => {
 								className="form-control"
 								name="price"
 								id="clothing-price"
-								value={auctionItem.price}
+								value={auctionItem.original_price}
 								onChange={e => {
-									setAuctionItem({ ...auctionItem, price: e.target.value });
+									setAuctionItem({ ...auctionItem, original_price: e.target.value });
 								}}
 							/>
 						</div>
@@ -119,7 +130,14 @@ export const AuctionClothing = () => {
 						</label>
 
 						<div className="">
-							<textarea className="form-control" />
+							<textarea
+								className="form-control"
+								value={itemDescription}
+								onChange={e => {
+									setItemDescription(e.target.value);
+									setAuctionItem({ ...auctionItem, item_description: e.target.value });
+								}}
+							/>
 						</div>
 					</div>
 
@@ -135,7 +153,7 @@ export const AuctionClothing = () => {
 							type="file"
 							name="myImage"
 							onChange={event => {
-								// console.log(event.target.files[0]);
+								// console.log(event.target.files[0]); why index 0?
 								setSelectedImage(event.target.files[0]);
 							}}
 						/>
@@ -151,7 +169,7 @@ export const AuctionClothing = () => {
 							value={nonProfit}
 							onChange={e => {
 								setNonProfit(e.target.value);
-								setAuctionItem({ ...auctionItem, donate: e.target.value });
+								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
 							<option value="the-cat-network">The Cat Network</option>
@@ -169,6 +187,7 @@ export const AuctionClothing = () => {
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {
+									imageUploader();
 									actions.addAuctionItem(auctionItem);
 								}}>
 								Add Item

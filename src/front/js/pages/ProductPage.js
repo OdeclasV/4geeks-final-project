@@ -31,7 +31,7 @@ export const ProductPage = () => {
 						<div className="product-info-box col-6 p-5">
 							{/* Product Description  Top */}
 							<div className="title-row">
-								<h1 className="">Awesome Shirt</h1>
+								<h1 className="">{store.items[id] && store.items[id].item_name}</h1>
 							</div>
 
 							<div className="giveblue-font timer-row align-self-center">
@@ -89,7 +89,7 @@ export const ProductPage = () => {
 							{/* Product Description bottom */}
 							<div className="product-details-row">
 								<h4>Description</h4>
-								<p>{store.items[id] && store.items[id].description}</p>
+								<p>{store.items[id] && store.items[id].item_description}</p>
 								<br />
 								<h4>Condition:</h4>
 								<p className="card-text item-condition">
