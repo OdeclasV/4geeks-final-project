@@ -13,8 +13,6 @@ export const Shop = () => {
 		{ name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
 	];
 
-	//console.log(store.items);
-
 	return (
 		<>
 			<div className="shop-title text-center mb-3">
@@ -64,19 +62,19 @@ export const Shop = () => {
 						</div>
 					);
 				})}
-				<Link
-					to=""
-					className="giveblue-font text-decoration-none align-self-center m-2"
-					onClick={() => {
-						setfilterOption("");
-					}}>
-					Clear All
-				</Link>
+				<div className="m-1">
+					<button
+						className="btn btn-one"
+						onClick={() => {
+							setfilterOption("");
+						}}>
+						Clear All
+					</button>
+				</div>
 			</div>
 			<div className="shop-items">
 				<ul className="d-flex justify-content-around flex-wrap">
 					{store.items
-						.filter(item => item.donation_type == 2)
 						.filter(item => {
 							return filterOption ? filterOption == item.category : true;
 						})

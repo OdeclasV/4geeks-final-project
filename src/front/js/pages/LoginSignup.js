@@ -17,36 +17,31 @@ export const LoginSignup = ({ match, index }) => {
 	let userSignIn = userEmail.includes(allowedNonprofitEmails);
 	//let nonProfitSignIn = userEmail.includes("");
 
+	// nonprofit and user validation for login
 	let allowednonProfit;
+	let allowedUser;
+
+	// creates array of all existing nonprofit emails
 	let allowedNonprofitEmails = store.nonprofits.map(nonprofit => {
 		return nonprofit.email;
 	});
 
+	// creates array of all existing user emails
+	let allowedUserEmails = store.users.map(user => {
+		return user.email;
+	});
+
+	// assigns index of specific nonprofit to allowedNonProfit
+	// this is needed to render right info in nonprofit dashboard
 	if (allowedNonprofitEmails.includes(userEmail)) {
 		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)];
 	}
 
-	//console.log(allowednonProfit);
-
-	// store.nonprofits[allowedNonprofit[0]]
-	// 	? console.log(store.nonprofits[allowedNonprofit[0]].name)
-	// 	: console.log("none");
-
-	// let allowedNonprofit = store.nonprofits.filter(nonprofit => {
-	// 	if (nonprofit.email.includes(userEmail)) {
-	// 		return nonprofit;
-	// 	}
-	// });
-
-	//console.log(allowedNonprofit[0]);
-
-	//allowedNonprofit.includes(userEmail) ? console.log(store.nonprofits.indexOf(userEmail)) : console.log("none");
-
-	//colocar include para hacer comprobacion de nonprofit
-	//verifica allowed.Nonprofit.includes(e.target.value) u otro metodo que te devuelve 1 o -1 dependiendo del usuario
-	// utiliza indexOf
-	//si es asi, approved
-	//extiende al user
+	// assigns index of specific user to allowedUser
+	// this is needed to render right info in user dashboard
+	if (allowedUserEmails.includes(userEmail)) {
+		allowedUser = store.users[allowedUserEmails.indexOf(userEmail)];
+	}
 
 	return (
 		<>
@@ -69,10 +64,17 @@ export const LoginSignup = ({ match, index }) => {
 							<input type="password" className="form-control" placeholder="Password" />
 							{/* some kind of validation here if email and password match then use that profile index in link below */}
 							{allowednonProfit ? (
-								// cambiar esto a nonprofit.id
+								// users is sent to specific nonprofit, per their index
 								<Link to={`/profile/nonprofit/${allowedNonprofitEmails.indexOf(userEmail)}`}>
 									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 										Login Non Profit
+									</button>
+								</Link>
+							) : allowedUser ? (
+								// users is sent to specific user, per their index
+								<Link to={`/profile/user/${allowedUserEmails.indexOf(userEmail)}`}>
+									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+										Login User
 									</button>
 								</Link>
 							) : (

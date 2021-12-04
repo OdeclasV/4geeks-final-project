@@ -29,6 +29,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+			getUsers: () => {
+				fetch(`${currentURL}/api/user`)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ users: data });
+					})
+					.catch(err => console.error("Error:", error));
+			},
 			getItems: () => {
 				fetch(`${currentURL}/api/items`)
 					.then(response => {
