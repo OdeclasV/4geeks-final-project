@@ -28,24 +28,20 @@ export const ProfileMyAccount = props => {
 							<h4>
 								<strong>Company Name:</strong>
 							</h4>
-							<h4>{store.nonprofits[index] ? store.nonprofits[index].name : "Nonprofit"}</h4>
+							<h4>{store.nonprofits[index] ? store.nonprofits[index].name : ""}</h4>
 							<br />
 							<h4>
 								<strong>Email:</strong>
 							</h4>
-							<p>{store.nonprofits[index] ? store.nonprofits[index].email : "nonprofit@email.com"}</p>
+							<p>{store.nonprofits[index] ? store.nonprofits[index].email : ""}</p>
 							<h4>
 								<strong>Description:</strong>
 							</h4>
-							<p>
-								{store.nonprofits[index]
-									? store.nonprofits[index].description
-									: "nonprofit description"}
-							</p>
+							<p>{store.nonprofits[index] ? store.nonprofits[index].description : ""}</p>
 							<h4>
 								<strong>Address:</strong>
 							</h4>
-							<p>{store.nonprofits[index] ? store.nonprofits[index].address : "Nonprofit Address"}</p>
+							<p>{store.nonprofits[index] ? store.nonprofits[index].address : ""}</p>
 							<button type="submit" className="btn btn-one">
 								Change Password
 							</button>

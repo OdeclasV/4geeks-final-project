@@ -26,7 +26,7 @@ export const ProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.nonprofits[index] ? store.nonprofits[index].name : "Nonprofit"}
+								{store.nonprofits[index] ? store.nonprofits[index].name : ""}
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -75,7 +75,7 @@ export const ProfileHome = () => {
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
-									<p>{store.nonprofits[index] ? store.nonprofits[index].wish_list_items : "Items"}</p>
+									<p>{store.nonprofits[index] ? store.nonprofits[index].wish_list_items : ""}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Recieved</h3>

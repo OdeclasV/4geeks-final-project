@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { useHistory } from "react-router";
+import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export const SideBar = ({ username, index }) => {
 	const history = useHistory();
+	const { store, actions } = useContext(Context);
 
 	const [dropdown, setDropdown] = useState(false);
 	const [active, setActive] = useState(false);
-
-	console.log(index);
 
 	let show = "";
 	let activeOption = "";
@@ -28,7 +28,7 @@ export const SideBar = ({ username, index }) => {
 		<div className="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style={{ width: "250px" }}>
 			<a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 				<svg className="bi me-2" width="40" height="32" />
-				<span className="fs-4">{username}</span>
+				<span className="fs-4">{store.nonprofits[index] ? store.nonprofits[index].name : ""}</span>
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
