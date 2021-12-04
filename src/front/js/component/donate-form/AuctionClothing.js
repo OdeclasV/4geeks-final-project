@@ -181,7 +181,7 @@ export const AuctionClothing = () => {
 							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
-								setAuctionItem({ ...auctionItem, donate: e.target.value });
+								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
 							{store.nonprofits.map(nonprofit => {
