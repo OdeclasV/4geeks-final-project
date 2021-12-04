@@ -39,7 +39,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => {
 						console.log(data);
-						setStore({ items: data });
+						let shopOnlyItems = [];
+						data.filter(item => {
+							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+						});
+						setStore({ items: shopOnlyItems });
+						console.log(getStore().items);
+						console.log(shopOnlyItems);
+						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
 			},
@@ -110,7 +117,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log(data);
-						setStore({ items: data });
+						let shopOnlyItems = [];
+						data.filter(item => {
+							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+						});
+						setStore({ items: shopOnlyItems });
+						console.log(getStore().items);
+						console.log(shopOnlyItems);
+						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
 			},

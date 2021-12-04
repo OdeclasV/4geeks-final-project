@@ -187,7 +187,7 @@ export const AuctionClothing = () => {
 					<div className="form-group">
 						<div className="submit-button">
 							<Link
-								to="/"
+								to="/bid-placed"
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {

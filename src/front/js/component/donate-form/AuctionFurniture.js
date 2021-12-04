@@ -61,7 +61,6 @@ export const AuctionFurniture = () => {
 							<option value="chair">Chair</option>
 							<option value="sofa">Sofa</option>
 						</select>
-						{typeOfFurniture == "chair" ? <h3>Hello</h3> : ""}
 					</div>
 
 					<div className="form-group">
@@ -187,7 +186,7 @@ export const AuctionFurniture = () => {
 					<div className="form-group">
 						<div className="submit-button">
 							<Link
-								to="/"
+								to="/bid-placed"
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {

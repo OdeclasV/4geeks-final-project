@@ -16,14 +16,13 @@ export const DonateClothing = () => {
 		donated_by: null,
 		donation_type: 1,
 		image: null,
-		name: null,
-		item_type: "1",
+		item_name: null,
+		item_type: null,
+		item_description: null,
 		original_price: 0,
 		posted_date: null,
 		end_date: null
 	});
-
-	console.log(donationItem);
 
 	return (
 		<>
@@ -62,7 +61,7 @@ export const DonateClothing = () => {
 								id="name"
 								placeholder="Men's Patagonia Sweater"
 								onChange={e => {
-									setDonationItem({ ...donationItem, name: e.target.value });
+									setDonationItem({ ...donationItem, item_name: e.target.value });
 								}}
 							/>
 						</div>
@@ -89,7 +88,12 @@ export const DonateClothing = () => {
 						</label>
 
 						<div className="">
-							<textarea className="form-control" />
+							<textarea
+								className="form-control"
+								onChange={e => {
+									setDonationItem({ ...donationItem, item_description: e.target.value });
+								}}
+							/>
 						</div>
 					</div>
 
@@ -137,7 +141,10 @@ export const DonateClothing = () => {
 					<div className="form-group">
 						<div className="submit-button">
 							<Link to="/donation-placed">
-								<button type="submit" className="btn btn-two container mt-3">
+								<button
+									type="submit"
+									className="btn btn-two container mt-3"
+									onClick={() => actions.addAuctionItem(donationItem)}>
 									Donate Item
 								</button>
 							</Link>
