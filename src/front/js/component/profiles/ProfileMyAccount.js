@@ -8,6 +8,9 @@ export const ProfileMyAccount = props => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 
+	let { index } = useParams();
+
+	console.log(index);
 	return (
 		<>
 			<div className="container-fluid ">
@@ -25,20 +28,24 @@ export const ProfileMyAccount = props => {
 							<h4>
 								<strong>Company Name:</strong>
 							</h4>
-							<h4>{store.currentnonprofit.name}</h4>
+							<h4>{store.nonprofits[index] ? store.nonprofits[index].name : "Nonprofit"}</h4>
 							<br />
 							<h4>
 								<strong>Email:</strong>
 							</h4>
-							<p>{store.currentnonprofit.email}</p>
+							<p>{store.nonprofits[index] ? store.nonprofits[index].email : "nonprofit@email.com"}</p>
 							<h4>
 								<strong>Description:</strong>
 							</h4>
-							<p>{store.currentnonprofit.description}</p>
+							<p>
+								{store.nonprofits[index]
+									? store.nonprofits[index].description
+									: "nonprofit description"}
+							</p>
 							<h4>
 								<strong>Address:</strong>
 							</h4>
-							<p>{store.currentnonprofit.address}</p>
+							<p>{store.nonprofits[index] ? store.nonprofits[index].address : "Nonprofit Address"}</p>
 							<button type="submit" className="btn btn-one">
 								Change Password
 							</button>

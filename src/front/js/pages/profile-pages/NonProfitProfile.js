@@ -9,13 +9,17 @@ import { ProfileDashboard } from "../../component/profiles/ProfileDashboard";
 import { ProfileWishlist } from "../../component/profiles/ProfileWhislist";
 import { ProfileHome } from "../../component/profiles/ProfileHome";
 import { ProfileMyAccount } from "../../component/profiles/ProfileMyAccount";
-// import { BarGraph } from "../../component/BarGraph";
 
 export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
+	let { index } = useParams();
+	//console.log(index);
+
 	const { store, actions } = useContext(Context);
+
+	console.log(store.nonprofits[index]);
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
@@ -31,8 +35,7 @@ export const NonProfitProfile = props => {
 
 	return (
 		<div className="d-flex">
-			<SideBar username="Non-profit" />
-			{/* <BarGraph /> */}
+			<SideBar username="Non-profit" index={index} />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

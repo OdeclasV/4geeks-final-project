@@ -13,7 +13,7 @@ export const Shop = () => {
 		{ name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
 	];
 
-	console.log(store.items);
+	//console.log(store.items);
 
 	return (
 		<>

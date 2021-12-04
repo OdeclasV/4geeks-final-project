@@ -14,8 +14,39 @@ export const LoginSignup = ({ match, index }) => {
 	const history = useHistory();
 
 	const [userEmail, setUserEmail] = useState("");
-	let userSignIn = userEmail.includes("user.com");
-	let nonProfitSignIn = userEmail.includes("nonprofit.com");
+	let userSignIn = userEmail.includes(allowedNonprofitEmails);
+	//let nonProfitSignIn = userEmail.includes("");
+
+	let allowednonProfit;
+	let allowedNonprofitEmails = store.nonprofits.map(nonprofit => {
+		return nonprofit.email;
+	});
+
+	if (allowedNonprofitEmails.includes(userEmail)) {
+		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)];
+	}
+
+	//console.log(allowednonProfit);
+
+	// store.nonprofits[allowedNonprofit[0]]
+	// 	? console.log(store.nonprofits[allowedNonprofit[0]].name)
+	// 	: console.log("none");
+
+	// let allowedNonprofit = store.nonprofits.filter(nonprofit => {
+	// 	if (nonprofit.email.includes(userEmail)) {
+	// 		return nonprofit;
+	// 	}
+	// });
+
+	//console.log(allowedNonprofit[0]);
+
+	//allowedNonprofit.includes(userEmail) ? console.log(store.nonprofits.indexOf(userEmail)) : console.log("none");
+
+	//colocar include para hacer comprobacion de nonprofit
+	//verifica allowed.Nonprofit.includes(e.target.value) u otro metodo que te devuelve 1 o -1 dependiendo del usuario
+	// utiliza indexOf
+	//si es asi, approved
+	//extiende al user
 
 	return (
 		<>
@@ -37,14 +68,9 @@ export const LoginSignup = ({ match, index }) => {
 							/>
 							<input type="password" className="form-control" placeholder="Password" />
 							{/* some kind of validation here if email and password match then use that profile index in link below */}
-							{userSignIn ? (
-								<Link to="/profile/user">
-									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
-										Login User
-									</button>
-								</Link>
-							) : nonProfitSignIn ? (
-								<Link to={`/profile/nonprofit/${index}`}>
+							{allowednonProfit ? (
+								// cambiar esto a nonprofit.id
+								<Link to={`/profile/nonprofit/${allowedNonprofitEmails.indexOf(userEmail)}`}>
 									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 										Login Non Profit
 									</button>

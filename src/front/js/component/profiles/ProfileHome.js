@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 export const ProfileHome = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
-	let { id } = useParams();
+	let { index } = useParams();
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
@@ -26,7 +26,7 @@ export const ProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.currentnonprofit.name}
+								{store.nonprofits[index] ? store.nonprofits[index].name : "Nonprofit"}
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -46,9 +46,10 @@ export const ProfileHome = () => {
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Donations Recieved:</h3>
 									<h2>
-										{store.nonprofits[0]
-											? store.nonprofits[0].items_received.filter(item => item.donation_type == 1)
-													.length
+										{store.nonprofits[index]
+											? store.nonprofits[index].items_received.filter(
+													item => item.donation_type == 1
+											  ).length
 											: 0}
 									</h2>
 									<h4 className="text-danger">
@@ -74,7 +75,7 @@ export const ProfileHome = () => {
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
-									<p>{store.currentnonprofit.needs}</p>
+									<p>{store.nonprofits[index] ? store.nonprofits[index].wish_list_items : "Items"}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Recieved</h3>
