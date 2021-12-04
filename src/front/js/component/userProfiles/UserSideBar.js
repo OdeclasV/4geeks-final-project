@@ -67,10 +67,10 @@ export const UserSideBar = ({ username }) => {
 						href="#"
 						className="nav-link text-white"
 						onClick={() => {
-							history.push("/profile/user/nonprofit-friends");
+							history.push("/profile/user/my-orders");
 						}}>
 						<i className="fa fa-clipboard-list" />
-						<span className="ms-2">Non Profit Friends</span>
+						<span className="ms-2">Orders</span>
 					</a>
 				</li>
 				<li className="m-2 p-2">

@@ -23,7 +23,7 @@ export const UserProfile = props => {
 			return <UserProfileDonations />;
 		} else if (profile == "myaccount") {
 			return <UserProfileMyAccount />;
-		} else if (profile == "nonprofit-friends") {
+		} else if (profile == "my-orders") {
 			return <UserNonProfitFriends />;
 		} else {
 			return <UserProfileHome />;

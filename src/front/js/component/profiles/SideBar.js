@@ -46,7 +46,7 @@ export const SideBar = ({ username, index }) => {
 							history.push(`/profile/nonprofit/${index}`);
 						}}>
 						<i className="fa fa-home" />
-						<span className="ms-2">Home</span>
+						<span className="ms-2">Dashboard</span>
 					</a>
 				</li>
 				<li

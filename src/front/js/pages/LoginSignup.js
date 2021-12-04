@@ -78,9 +78,14 @@ export const LoginSignup = ({ match, index }) => {
 									</button>
 								</Link>
 							) : (
-								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
-									Login
-								</button>
+								<Link to="/">
+									<button
+										type="button"
+										className="btn btn-one btn-lg px-4 container-fluid"
+										onClick={() => actions.login()}>
+										Login
+									</button>
+								</Link>
 							)}
 						</div>
 
