@@ -50,7 +50,6 @@ class NonProfit(db.Model):
             "total_profits": self.total_profits
         }
 
-
 class Item(db.Model):
     __tablename__ = "item"
     id = db.Column(db.Integer, primary_key=True)
@@ -97,6 +96,8 @@ class Bid(db.Model):
     created_date = db.Column(db.String(250), unique=False, nullable=True)
     num_of_bids = db.Column(db.String(250), unique=False, nullable=True)
     current_price = db.Column(db.Integer, unique=False, nullable=True)  # items' current price 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+
 
     def serialize(self):
         return {
@@ -105,7 +106,8 @@ class Bid(db.Model):
             "minimun_bid": self.minimun_bid,
             "created_date": self.created_date,
             "num_of_bids": self.num_of_bids,
-            "current_price": self.current_price
+            "current_price": self.current_price,
+            "user_id": self.user_id
         }
 
 class Transaction(db.Model):
