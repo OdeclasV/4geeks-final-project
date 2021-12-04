@@ -16,6 +16,7 @@ export const ProfileDashboard = props => {
 							<th scope="col">Item</th>
 							<th scope="col">Date</th>
 							<th scope="col">Donor</th>
+							<th scope="col">Request Pick Up</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -24,6 +25,11 @@ export const ProfileDashboard = props => {
 							<td>cool shirt</td>
 							<td>21-Nov-21</td>
 							<td>George</td>
+							<td>
+								<label htmlFor="pickup-date">Select Date:</label>
+								<input type="date" id="pickup-date" name="pickup-date" />
+								<input type="submit" />
+							</td>
 						</tr>
 						<tr>
 							<th scope="row">2</th>
