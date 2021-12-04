@@ -59,25 +59,10 @@ export const DonateClothing = () => {
 								className="form-control"
 								name="name"
 								id="name"
-								placeholder="Men's Patagonia Sweater"
+								placeholder="Leather Jacket"
 								onChange={e => {
 									setDonationItem({ ...donationItem, item_name: e.target.value });
 								}}
-							/>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="name" className="control-label mt-3">
-							Size
-						</label>
-						<div className="">
-							<input
-								type="text"
-								className="form-control"
-								name="name"
-								id="name"
-								placeholder="Small, Medium, Large / 72 inches x 36 inches"
 							/>
 						</div>
 					</div>
@@ -90,6 +75,7 @@ export const DonateClothing = () => {
 						<div className="">
 							<textarea
 								className="form-control"
+								placeholder="smells nice"
 								onChange={e => {
 									setDonationItem({ ...donationItem, item_description: e.target.value });
 								}}
