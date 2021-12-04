@@ -38,14 +38,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
+						//console.log(data);
 						let shopOnlyItems = [];
 						data.filter(item => {
 							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
 						});
 						setStore({ items: shopOnlyItems });
-						console.log(getStore().items);
-						console.log(shopOnlyItems);
+						//console.log(getStore().items);
+						//console.log(shopOnlyItems);
 						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
+						//console.log(data);
 						setStore({ bids: data });
 					});
 			},
@@ -122,8 +122,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
 						});
 						setStore({ items: shopOnlyItems });
-						console.log(getStore().items);
-						console.log(shopOnlyItems);
+						//console.log(getStore().items);
+						//console.log(shopOnlyItems);
 						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
@@ -149,7 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 									return response.json();
 								})
 								.then(data => {
-									console.log(data);
+									//console.log(data);
 									setStore({ items: data });
 								});
 						}
