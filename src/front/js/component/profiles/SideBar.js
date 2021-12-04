@@ -46,7 +46,7 @@ export const SideBar = ({ username, index }) => {
 							history.push(`/profile/nonprofit/${index}`);
 						}}>
 						<i className="fa fa-home" />
-						<span className="ms-2">Home</span>
+						<span className="ms-2">Dashboard</span>
 					</a>
 				</li>
 				<li
@@ -59,10 +59,10 @@ export const SideBar = ({ username, index }) => {
 						href=""
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
-							history.push(`/profile/nonprofit/${index}/dashboard`);
+							history.push(`/profile/nonprofit/${index}/donations`);
 						}}>
 						<i className="fa fa-columns" />
-						<span className="ms-2">Dashboard</span>
+						<span className="ms-2">Donations</span>
 					</a>
 				</li>
 				<li className="m-2 p-2">

@@ -51,6 +51,7 @@ export const AuctionClothing = () => {
 						</label>
 
 						<select
+							required
 							className="form-select"
 							aria-label="Default select clothes"
 							value={typeOfClothes}
@@ -71,6 +72,7 @@ export const AuctionClothing = () => {
 						</label>
 
 						<select
+							required
 							className="form-select"
 							aria-label="Default select condition"
 							value={condition}
@@ -92,6 +94,7 @@ export const AuctionClothing = () => {
 
 						<div className="">
 							<input
+								required
 								type="text"
 								className="form-control"
 								name="name"
@@ -112,6 +115,7 @@ export const AuctionClothing = () => {
 						</label>
 						<div className="">
 							<input
+								required
 								type="text"
 								className="form-control"
 								name="price"
@@ -131,6 +135,7 @@ export const AuctionClothing = () => {
 
 						<div className="">
 							<textarea
+								required
 								className="form-control"
 								value={itemDescription}
 								onChange={e => {
@@ -142,6 +147,9 @@ export const AuctionClothing = () => {
 					</div>
 
 					<div className="form-group mt-1">
+						<label htmlFor="type of clothing" className="control-label mt-3 pr-3">
+							Upload Image
+						</label>
 						{selectedImage && (
 							<div>
 								<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
@@ -150,6 +158,7 @@ export const AuctionClothing = () => {
 							</div>
 						)}
 						<input
+							required
 							type="file"
 							name="myImage"
 							onChange={event => {
@@ -166,6 +175,7 @@ export const AuctionClothing = () => {
 							Choose Nonprofit
 						</label>
 						<select
+							required
 							className="form-select"
 							aria-label="Default select example"
 							value={nonprofit}

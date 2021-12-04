@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
-// import { LineGraph } from "../Graphs/LineGraph";
+import { LineGraph } from "../Graphs/LineGraph";
 
 export const ProfileHome = () => {
 	const params = useParams();
@@ -64,7 +64,7 @@ export const ProfileHome = () => {
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Funds Compared to last Month</h3>
-									{/* <LineGraph /> */}
+									<LineGraph />
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Last Weeks Donations:</h3>

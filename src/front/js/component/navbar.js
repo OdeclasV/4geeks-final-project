@@ -17,7 +17,7 @@ export const Navbar = props => {
 				<div className="container col-3">
 					<Link className="navbar-brand" to="/">
 						<a className="navbar-brand">
-							<img src="https://i.ibb.co/pr8CgK8/Bid-For-Good-07.png" alt="" width="100%" height="auto" />
+							<img src=".../img/Bid-For-Good-07.png" alt="" width="100%" height="auto" />
 						</a>
 					</Link>
 				</div>
