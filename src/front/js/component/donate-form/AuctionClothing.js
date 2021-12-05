@@ -20,7 +20,7 @@ export const AuctionClothing = () => {
 		item_description: null,
 		donate_to: null,
 		donated_by: null,
-		donation_type: 2,
+		donation_type: "auction",
 		image: null,
 		item_type: null,
 		original_price: null,

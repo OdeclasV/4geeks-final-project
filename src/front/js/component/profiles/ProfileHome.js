@@ -7,7 +7,7 @@ import { LineGraph } from "../Graphs/LineGraph";
 export const ProfileHome = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
-	let { index } = useParams();
+	let { id } = useParams();
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
@@ -15,10 +15,21 @@ export const ProfileHome = () => {
 		minimumFractionDigits: 0
 	});
 
-	//console.log(store.nonprofits[0] && store.nonprofits[0].items_received.filter(item => item.donation_type == 1));
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeNonprofit;
 
-	//console.log(store.nonprofits[index] && store.nonprofits[index].items_received);
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.nonprofits &&
+		store.nonprofits.filter(nonprofit => {
+			if (nonprofit.id == id) {
+				activeNonprofit = nonprofit;
+			}
+		});
 
+	//activeNonprofit ? console.log(activeNonprofit.items_received) : console.log("none");
+	activeNonprofit ? activeNonprofit.items_received.map(item => console.log(item.item_name)) : console.log("none");
 	return (
 		<>
 			<div className="container">
@@ -28,7 +39,7 @@ export const ProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.nonprofits[index] ? store.nonprofits[index].name : ""}
+								{activeNonprofit ? activeNonprofit.name : ""}
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -37,7 +48,7 @@ export const ProfileHome = () => {
 							<div className="row-one d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Funds Raised:</h3>
-									<h2>{formatter.format(store.currentnonprofit.totalfunds)}</h2>
+									<h2>{formatter.format(activeNonprofit ? activeNonprofit.total_profits : 0)}</h2>
 									<h4 className="text-success">
 										{" "}
 										<i className="fas fa-arrow-up" />
@@ -48,9 +59,9 @@ export const ProfileHome = () => {
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Donations Recieved:</h3>
 									<h2>
-										{store.nonprofits[index]
-											? store.nonprofits[index].items_received.filter(
-													item => item.donation_type == 1
+										{activeNonprofit
+											? activeNonprofit.items_received.filter(
+													item => item.donation_type == "donation"
 											  ).length
 											: 0}
 									</h2>
@@ -77,22 +88,28 @@ export const ProfileHome = () => {
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
-									<p>{store.nonprofits[index] ? store.nonprofits[index].wish_list_items : ""}</p>
+									<p>{activeNonprofit ? activeNonprofit.wish_list_items : ""}</p>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Recieved</h3>
 									<div className="items-carousel container-fluid d-flex flex-wrap">
-										<div className="card">
-											<img
-												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
-												alt="Card image cap"
-											/>
-											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
-											</div>
-										</div>
-										<div className="card">
+										{activeNonprofit
+											? activeNonprofit.items_received.map(item => {
+													return (
+														<div className="card" key={item.id}>
+															<img
+																className="card-img-top"
+																src={item.image}
+																alt="Card image cap"
+															/>
+															<div className="card-body">
+																<h5 className="card-title">{item.item_name}</h5>
+															</div>
+														</div>
+													);
+											  })
+											: console.log("none")}
+										{/* <div className="card">
 											<img
 												className="card-img-top"
 												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
@@ -111,7 +128,7 @@ export const ProfileHome = () => {
 											<div className="card-body">
 												<h5 className="card-title">Awesome Shirt</h5>
 											</div>
-										</div>
+										</div> */}
 									</div>
 								</div>
 							</div>

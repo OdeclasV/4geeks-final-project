@@ -56,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//console.log(data);
 						let shopOnlyItems = [];
 						data.filter(item => {
-							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+							item.donation_type == "auction" ? shopOnlyItems.push(item) : shopOnlyItems;
 						});
 						setStore({ items: shopOnlyItems });
 						//console.log(getStore().items);
@@ -111,6 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						setStore({ items: data });
+						console.log(data);
 						// setStore({ bids: [...bids, data[1]] });
 						// console.log(getStore().bids);
 					})
@@ -134,7 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data);
 						let shopOnlyItems = [];
 						data.filter(item => {
-							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+							item.donation_type == "auction" ? shopOnlyItems.push(item) : shopOnlyItems;
 						});
 						setStore({ items: shopOnlyItems });
 						//console.log(getStore().items);

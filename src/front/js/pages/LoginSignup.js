@@ -34,13 +34,15 @@ export const LoginSignup = ({ match, index }) => {
 	// assigns index of specific nonprofit to allowedNonProfit
 	// this is needed to render right info in nonprofit dashboard
 	if (allowedNonprofitEmails.includes(userEmail)) {
-		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)];
+		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)].id;
+		console.log(allowednonProfit);
 	}
 
 	// assigns index of specific user to allowedUser
 	// this is needed to render right info in user dashboard
 	if (allowedUserEmails.includes(userEmail)) {
-		allowedUser = store.users[allowedUserEmails.indexOf(userEmail)];
+		allowedUser = store.users && store.users[allowedUserEmails.indexOf(userEmail)].id;
+		console.log(allowedUser);
 	}
 
 	return (
@@ -65,14 +67,14 @@ export const LoginSignup = ({ match, index }) => {
 							{/* some kind of validation here if email and password match then use that profile index in link below */}
 							{allowednonProfit ? (
 								// users is sent to specific nonprofit, per their index
-								<Link to={`/profile/nonprofit/${allowedNonprofitEmails.indexOf(userEmail)}`}>
+								<Link to={`/profile/nonprofit/${allowednonProfit}`}>
 									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 										Login Non Profit
 									</button>
 								</Link>
 							) : allowedUser ? (
 								// users is sent to specific user, per their index
-								<Link to={`/profile/user/${allowedUserEmails.indexOf(userEmail)}`}>
+								<Link to={`/profile/user/${allowedUser}`}>
 									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 										Login User
 									</button>
