@@ -80,11 +80,6 @@ def get_nonprofits():
     nonprofits = NonProfit.query.all()
     all_nonprofits = list(map(lambda x: x.serialize(), nonprofits))
 
-    # response_body = {
-    #     "db_message": "These are all the nonprofits"
-    # }
-    # return jsonify(response_body, all_nonprofits), 200
-
 
     return jsonify(all_nonprofits), 200
 
@@ -119,30 +114,39 @@ def one_nonprofit(id):
     return jsonify(nonprofit), 200
 
 # update nonprofit
-# @api.route('/nonprofit/<int:id>', methods=['PUT'])
-# def update_nonprofit(id):
-#     body = request.get_json()
-#     user = User.query.get(id)
+@api.route('/nonprofit/<int:id>', methods=['PUT'])
+def update_nonprofit(id):
+    body = request.get_json()
+    nonprofit = Nonprofit.query.get(id)
 
-#     if user is None:
-#         raise APIException('User not found', status_code=404)
+    if nonprofit is None:
+        raise APIException('Nonprofit not found', status_code=404)
     
-#     if "name" in body:
-#         user.name = body["name"]
-#     if "last_name" in body:
-#         user.last_name = body["last_name"]
-#     if "email" in body:
-#         user.email = body["email"]
-#     if "password" in body:
-#         user.password = body["password"]
-#     if "nonprofit_friends" in body:
-#         user.nonprofit_friends = body["nonprofit_friends"]
-    
-#     db.session.commit()
-#     users = User.query.all()
-#     all_users = list(map(lambda x: x.serialize(), users))
+    if "name" in body:
+        nonprofit.name = body["name"]
+    if "email" in body:
+        nonprofit.email = body["email"]
+    if "password" in body:
+        nonprofit.password = body["password"]
+    if "address" in body:
+        nonprofit.address = body["address"]
+    if "description" in body:
+        nonprofit.description = body["description"]
+    if "nonprofit_logo" in body:
+        nonprofit.nonprofit_logo = body["nonprofit_logo"]
+    if "wish_list_items" in body:
+        nonprofit.wish_list_items = body["wish_list_items"]
+    if "items_received" in body:
+        nonprofit.items_received = body["items_received"]
+    if "total_profits" in body:
+        nonprofit.total_profits = body["total_profits"]
+        
+    db.session.commit()
+    nonprofits = NonProfit.query.all()
+    all_nonprofits = list(map(lambda x: x.serialize(), nonprofits))
 
-#     return jsonify(all_users), 200
+
+    return jsonify(all_nonprofits), 200
 
 
 ##### Item Info ##### 
@@ -160,6 +164,25 @@ def get_items():
 @api.route('/items', methods=['POST'])
 def create_item():
     body = request.get_json()
+ 
+    if "name" == None:
+        return "error message", 404
+    # if "email" in body:
+    #     nonprofit.email = body["email"]
+    # if "password" in body:
+    #     nonprofit.password = body["password"]
+    # if "address" in body:
+    #     nonprofit.address = body["address"]
+    # if "description" in body:
+    #     nonprofit.description = body["description"]
+    # if "nonprofit_logo" in body:
+    #     nonprofit.nonprofit_logo = body["nonprofit_logo"]
+    # if "wish_list_items" in body:
+    #     nonprofit.wish_list_items = body["wish_list_items"]
+    # if "items_received" in body:
+    #     nonprofit.items_received = body["items_received"]
+    # if "total_profits" in body:
+    #     nonprofit.total_profits = body["total_profits"]
 
     created_date = datetime.datetime.now().strftime("%x %X")
 
@@ -167,21 +190,27 @@ def create_item():
 
     end_date = date_1 + datetime.timedelta(days=7)
 
+
+
     new_item = Item(item_type=body["item_type"], category=body["category"], condition=body["condition"], item_name=body["item_name"], item_description=body["item_description"], donated_by=body["donated_by"], donate_to=body['donate_to'], bid_count=body['bid_count'], image=body['image'], original_price=body['original_price'], current_price=body['original_price'], posted_date=created_date, donation_type=body['donation_type'], end_date=end_date)
 
     db.session.add(new_item)
     db.session.commit()
 
-    new_bid = Bid(item_id=new_item.id, minimun_bid=int(new_item.original_price) + 1, created_date=created_date, num_of_bids=body["num_of_bids"], current_price=new_item.original_price)
+    # type_of_donation = new_item.donation_type
+    # if int(type_of_donation) == 1:
+    #     update_nonprofit(int(new_item.donate_to))
 
-    db.session.add(new_bid)
-    db.session.commit()
+    # new_bid = Bid(item_id=new_item.id, minimun_bid=int(new_item.original_price) + 1, created_date=created_date, num_of_bids=body["num_of_bids"], current_price=new_item.original_price)
+
+    # db.session.add(new_bid)
+    # db.session.commit()
 
     
     items = Item.query.all()
     all_items = list(map(lambda x: x.serialize(), items))
 
-    return jsonify(all_items, new_bid.serialize()), 200
+    return jsonify(all_items), 200
 
 # update item
 @api.route('/items/<int:id>', methods=['PUT'])
@@ -192,8 +221,8 @@ def update_item(id):
     if item is None:
         raise APIException('Item not found', status_code=404)
     
-    if "bid_count" in body:
-        item.bid_count = item.bid_count + 1
+    item.bid_count = item.bid_count + 1
+    
     if "category" in body:
         item.category = body["category"]
     if "condition" in body:
@@ -221,6 +250,7 @@ def update_item(id):
     db.session.commit()
     items = Item.query.all()
     all_items = list(map(lambda x: x.serialize(), items))
+    #item.serialize()
 
     return jsonify(all_items), 200
 

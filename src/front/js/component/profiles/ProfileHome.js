@@ -17,6 +17,8 @@ export const ProfileHome = () => {
 
 	//console.log(store.nonprofits[0] && store.nonprofits[0].items_received.filter(item => item.donation_type == 1));
 
+	//console.log(store.nonprofits[index] && store.nonprofits[index].items_received);
+
 	return (
 		<>
 			<div className="container">
