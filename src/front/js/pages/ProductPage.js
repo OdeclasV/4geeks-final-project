@@ -24,7 +24,7 @@ export const ProductPage = () => {
 				<div className="h-100 p-4 bg-light border rounded-3">
 					<div className="row d-flex justify-content-between">
 						{/* Product Image */}
-						<div className="product-img-block d-block mx-lg-auto img-fluid col-4 p-5">
+						<div className="product-img-block card-img-left d-block mx-lg-auto col-4 ">
 							<img src={store.items[id] && store.items[id].image} />
 						</div>
 

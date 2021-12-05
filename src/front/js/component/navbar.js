@@ -6,6 +6,7 @@ import { LoginButton } from "./navbar-buttons/LoginButton";
 import { SignUpButton } from "./navbar-buttons/SignUpButton";
 import PropTypes from "prop-types";
 import { LogoutButton } from "./navbar-buttons/LogoutButton";
+import BidForGoodLogo from "../../img/Bid-For-Good-07.png";
 
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +18,7 @@ export const Navbar = props => {
 				<div className="container col-3">
 					<Link className="navbar-brand" to="/">
 						<a className="navbar-brand">
-							<img src=".../img/Bid-For-Good-07.png" alt="" width="100%" height="auto" />
+							<img src={BidForGoodLogo} alt="" width="100%" height="auto" />
 						</a>
 					</Link>
 				</div>

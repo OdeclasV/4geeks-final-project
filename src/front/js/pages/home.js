@@ -27,10 +27,17 @@ export const Home = () => {
 						some short decription of our project and why it is so awesome will go here, get ready!
 					</p>
 					{!store.loggedin ? (
-						<div>
-							<h2>
-								Description of the web app with images <br /> Solicitation for new users to register
-							</h2>
+						<div className="d-grid gap-2 d-md-flex justify-content-md-start">
+							<Link to="/donate">
+								<button type="button" className="btn btn-two btn-lg px-4 me-md-2">
+									Login
+								</button>
+							</Link>
+							<Link to="/shop">
+								<button type="button" className="btn btn-one btn-lg px-4 me-md-2">
+									Sign Up
+								</button>
+							</Link>
 						</div>
 					) : (
 						<div className="d-grid gap-2 d-md-flex justify-content-md-start">
