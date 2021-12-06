@@ -67,10 +67,10 @@ const Layout = () => {
 						<Route exact path="/profile/nonprofit">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:index">
+						<Route exact path="/profile/nonprofit/:id">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:index/:profileoption">
+						<Route exact path="/profile/nonprofit/:id/:profileoption">
 							<NonProfitProfile />
 						</Route>
 						<Route exact path="/profile/user">

@@ -5,6 +5,7 @@ import { Chart, registerables } from "chart.js"; // due to some quirkiness I can
 
 Chart.register(...registerables);
 
+
 export const LineGraph = () => {
 	return (
 		<div>

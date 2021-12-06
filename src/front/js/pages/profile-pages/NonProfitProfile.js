@@ -14,12 +14,23 @@ export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
-	let { index } = useParams();
+	let { id } = useParams();
 	//console.log(index);
 
 	const { store, actions } = useContext(Context);
 
-	console.log(store.nonprofits[index]);
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeNonprofit;
+
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.nonprofits &&
+		store.nonprofits.filter(nonprofit => {
+			if (nonprofit.id == id) {
+				activeNonprofit = nonprofit;
+			}
+		});
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
@@ -35,7 +46,7 @@ export const NonProfitProfile = props => {
 
 	return (
 		<div className="d-flex">
-			<SideBar username="Non-profit" index={index} />
+			<SideBar nonprofit={activeNonprofit} id={id} />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

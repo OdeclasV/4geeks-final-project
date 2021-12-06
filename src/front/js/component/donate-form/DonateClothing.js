@@ -14,7 +14,7 @@ export const DonateClothing = () => {
 		condition: null,
 		donate_to: nonprofit,
 		donated_by: null,
-		donation_type: 1,
+		donation_type: "donation",
 		image: null,
 		item_name: null,
 		item_type: null,
