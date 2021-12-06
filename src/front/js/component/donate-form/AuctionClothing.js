@@ -150,23 +150,25 @@ export const AuctionClothing = () => {
 						<label htmlFor="type of clothing" className="control-label mt-3 pr-3">
 							Upload Image
 						</label>
-						{selectedImage && (
-							<div>
-								<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
-								<br />
-								<button onClick={() => setSelectedImage(null)}>Remove</button>
-							</div>
-						)}
-						<input
-							required
-							type="file"
-							name="myImage"
-							onChange={event => {
-								// console.log(event.target.files[0]); why index 0?
-								setSelectedImage(event.target.files[0]);
-								imageUploader(event.target.files[0]);
-							}}
-						/>
+						<div>
+							{selectedImage && (
+								<div>
+									<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+									<br />
+									<button onClick={() => setSelectedImage(null)}>Remove</button>
+								</div>
+							)}
+							<input
+								required
+								type="file"
+								name="myImage"
+								onChange={event => {
+									// console.log(event.target.files[0]); why index 0?
+									setSelectedImage(event.target.files[0]);
+									imageUploader(event.target.files[0]);
+								}}
+							/>
+						</div>
 					</div>
 
 					{/* <ChooseNonProfit /> */}

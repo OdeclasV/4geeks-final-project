@@ -2,6 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 import { Chart, registerables } from "chart.js"; // due to some quirkiness I can't explain, lines 4 and 5 are needed for chart to render
+
 Chart.register(...registerables);
 
 export const LineGraph = () => {
@@ -13,7 +14,7 @@ export const LineGraph = () => {
 					datasets: [
 						{
 							label: "Current Month",
-							data: [25, 50, 100, 250],
+							data: [60, 25, 140, 120],
 							backgroundColor: [
 								"rgba(255, 99, 132, 0.2)",
 								"rgba(54, 162, 235, 0.2)",
@@ -30,7 +31,7 @@ export const LineGraph = () => {
 						},
 						{
 							label: "Last  Month",
-							data: [25, 40, 70, 120],
+							data: [25, 70, 30, 100],
 							backgroundColor: [
 								"rgba(255, 99, 132, 0.2)",
 								"rgba(54, 162, 235, 0.2)",
@@ -53,8 +54,8 @@ export const LineGraph = () => {
 						// }
 					]
 				}}
-				height={300}
-				width={500}
+				height={150}
+				width={300}
 				options={{
 					maintainAspectRatio: false,
 					scales: {
@@ -62,6 +63,16 @@ export const LineGraph = () => {
 							{
 								ticks: {
 									beginAtZero: true
+								},
+								gridLines: {
+									lineWidth: 0
+								}
+							}
+						],
+						xAxes: [
+							{
+								gridLines: {
+									lineWidth: 0
 								}
 							}
 						]

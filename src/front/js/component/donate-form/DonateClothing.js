@@ -125,6 +125,66 @@ export const DonateClothing = () => {
 					</div>
 
 					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Delivery Method:
+						</label>
+						<div className="row mx-3">
+							<div className="form-check col">
+								<input
+									type="radio"
+									className="form-check-input"
+									id="radio1"
+									name="optradio"
+									value="option1"
+									checked
+								/>
+								Pick Up
+								<label className="form-check-label" htmlFor="radio1" />
+							</div>
+
+							<div className="form-check col">
+								<input
+									type="radio"
+									className="form-check-input"
+									id="radio2"
+									name="optradio"
+									value="option2"
+								/>
+								Drop Off
+								<label className="form-check-label" htmlFor="radio2" />
+							</div>
+						</div>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Available Dates:
+						</label>
+						{/* <input type="date" id="pickup-date" name="pickup-date" /> */}
+						<select className="form-select">
+							<option value="Select a value">Choose a Date</option>
+							<option value="t-shirt">Dec. 15, 2021</option>
+							<option value="jacket">Dec. 17, 2021</option>
+							<option value="pants">Dec. 18, 2021</option>
+							<option value="jacket">Dec. 20, 2021</option>
+							<option value="pants">Dec. 21, 2021</option>
+						</select>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Available Times:
+						</label>
+						{/* <input type="date" id="pickup-date" name="pickup-date" /> */}
+						<select className="form-select">
+							<option value="Select a value">Choose a Window</option>
+							<option value="t-shirt">8AM - 12PM</option>
+							<option value="jacket">12PM - 4PM</option>
+							<option value="pants">4PM - 8PM</option>
+						</select>
+					</div>
+
+					<div className="form-group">
 						<div className="submit-button">
 							<Link to="/donation-placed">
 								<button

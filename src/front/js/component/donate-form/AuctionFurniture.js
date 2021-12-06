@@ -142,22 +142,27 @@ export const AuctionFurniture = () => {
 					</div>
 
 					<div className="form-group mt-1">
-						{selectedImage && (
-							<div>
-								<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
-								<br />
-								<button onClick={() => setSelectedImage(null)}>Remove</button>
-							</div>
-						)}
-						<input
-							type="file"
-							name="myImage"
-							onChange={event => {
-								// console.log(event.target.files[0]);
-								setSelectedImage(event.target.files[0]);
-								imageUploader(event.target.files[0]);
-							}}
-						/>
+						<label htmlFor="type of clothing" className="control-label mt-3 pr-3">
+							Upload Image
+						</label>
+						<div>
+							{selectedImage && (
+								<div>
+									<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+									<br />
+									<button onClick={() => setSelectedImage(null)}>Remove</button>
+								</div>
+							)}
+							<input
+								type="file"
+								name="myImage"
+								onChange={event => {
+									// console.log(event.target.files[0]);
+									setSelectedImage(event.target.files[0]);
+									imageUploader(event.target.files[0]);
+								}}
+							/>
+						</div>
 					</div>
 
 					<div className="form-group">

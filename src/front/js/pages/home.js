@@ -28,14 +28,14 @@ export const Home = () => {
 					</p>
 					{!store.loggedin ? (
 						<div className="d-grid gap-2 d-md-flex justify-content-md-start">
-							<Link to="/donate">
+							<Link to="/login">
 								<button type="button" className="btn btn-two btn-lg px-4 me-md-2">
-									Login
+									Donate
 								</button>
 							</Link>
 							<Link to="/shop">
 								<button type="button" className="btn btn-one btn-lg px-4 me-md-2">
-									Sign Up
+									Shop
 								</button>
 							</Link>
 						</div>

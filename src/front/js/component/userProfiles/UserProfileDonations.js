@@ -19,6 +19,10 @@ export const UserProfileDonations = props => {
 								<th scope="col">Item</th>
 								<th scope="col">Date</th>
 								<th scope="col">Non Profit</th>
+								<th scope="col">Status</th>
+								<th scope="col">Date</th>
+								<th scope="col">Time</th>
+								{/* pick up status, scheduled date, contact non-profit */}
 							</tr>
 						</thead>
 						<tbody>
@@ -27,18 +31,27 @@ export const UserProfileDonations = props => {
 								<td>cool shirt</td>
 								<td>21-Nov-21</td>
 								<td>Good Company</td>
+								<td>Pick Up Scheduled</td>
+								<td>Dec. 14, 2021</td>
+								<td>12PM - 4PM</td>
 							</tr>
 							<tr>
 								<th scope="row">2</th>
 								<td>cool pants</td>
 								<td>22-Nov-21</td>
 								<td>Real Good Company</td>
+								<td>Drop Off Scheduled</td>
+								<td>Dec. 14, 2021</td>
+								<td>12PM - 4PM</td>
 							</tr>
 							<tr>
 								<th scope="row">3</th>
 								<td>cool shoes</td>
 								<td>23-Nov-21</td>
 								<td>Really Real Good Company</td>
+								<td>Pick Up Scheduled</td>
+								<td>Dec. 14, 2021</td>
+								<td>12PM - 4PM</td>
 							</tr>
 						</tbody>
 					</table>

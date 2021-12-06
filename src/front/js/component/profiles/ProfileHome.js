@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 
 import { useParams } from "react-router-dom";
 import { LineGraph } from "../Graphs/LineGraph";
+import { LineGraphWeekly } from "../Graphs/LineGraphWeekly";
 
 export const ProfileHome = () => {
 	const params = useParams();
@@ -22,7 +23,7 @@ export const ProfileHome = () => {
 	return (
 		<>
 			<div className="container">
-				<div className="h-100 p-5 rounded-3">
+				<div className="h-100 p-2 rounded-3">
 					<div className="dashboard-page">
 						{/* title section */}
 						<div className="title-area container-fluid p-2">
@@ -70,7 +71,7 @@ export const ProfileHome = () => {
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Last Weeks Donations:</h3>
-									{/* <LineGraph /> */}
+									{/* <LineGraphWeekly /> */}
 								</div>
 							</div>
 							{/* Third Row */}

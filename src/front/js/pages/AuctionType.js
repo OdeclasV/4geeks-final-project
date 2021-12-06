@@ -36,6 +36,11 @@ export const AuctionType = props => {
 									<option value="clothing">Clothes</option>
 									<option value="furniture">Furniture</option>
 									<option value="art">Art</option>
+									<option value="clothing">Cars</option>
+									<option value="furniture">Electronics</option>
+									<option value="art">Jewelry and Watches</option>
+									<option value="furniture">Books</option>
+									<option value="art">Toys</option>
 								</select>
 							</div>
 							{category == "clothing" ? (

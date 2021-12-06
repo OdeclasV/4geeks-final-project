@@ -53,11 +53,36 @@ export const UserProfileHome = () => {
 							{/* Second Row */}
 							<div className="row-two d-flex justify-content-between">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
-									<h3>Non Profit Friends</h3>
-									<p>{store.currentuser.nonprofitfriends}</p>
+									<h3>Recent Donations</h3>
+									<table className="table">
+										<thead className="thead-dark">
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Item</th>
+												<th scope="col">Non Profit</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>cool shirt</td>
+												<td>Good Company</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>cool pants</td>
+												<td>Real Good Company</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>cool shoes</td>
+												<td>Really Real Good Company</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
-									<h3>Recent Items Donated</h3>
+									<h3>Current Bids</h3>
 									<div className="items-carousel container-fluid d-flex flex-wrap">
 										<div className="card">
 											<img
@@ -68,6 +93,9 @@ export const UserProfileHome = () => {
 											<div className="card-body">
 												<h5 className="card-title">Awesome Shirt</h5>
 											</div>
+											<button type="button" className="btn btn-two py-2 my-2">
+												View item
+											</button>
 										</div>
 										<div className="card">
 											<img

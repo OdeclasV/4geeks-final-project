@@ -31,146 +31,147 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
-			getUsers: () => {
-				fetch(`${currentURL}/api/user`)
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						setStore({ users: data });
-					})
-					.catch(err => console.error("Error:", error));
-			},
-			getItems: () => {
-				fetch(`${currentURL}/api/items`)
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						//console.log(data);
-						let shopOnlyItems = [];
-						data.filter(item => {
-							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
-						});
-						setStore({ items: shopOnlyItems });
-						//console.log(getStore().items);
-						//console.log(shopOnlyItems);
-						// setStore({ items: data });
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// getUsers: () => {
+			// 	fetch(`${currentURL}/api/user`)
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			setStore({ users: data });
+			// 		})
+			// 		.catch(err => console.error("Error:", error));
+			// },
+			// getItems: () => {
+			// 	fetch(`${currentURL}/api/items`)
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			//console.log(data);
+			// 			let shopOnlyItems = [];
+			// 			data.filter(item => {
+			// 				item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+			// 			});
+			// 			setStore({ items: shopOnlyItems });
+			// 			//console.log(getStore().items);
+			// 			//console.log(shopOnlyItems);
+			// 			// setStore({ items: data });
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
-			getBids: () => {
-				fetch(`${currentURL}/api/items`)
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						//console.log(data);
-						setStore({ bids: data });
-					});
-			},
-			getNonprofits: () => {
-				fetch(`${currentURL}/api/nonprofit`)
-					.then(response => {
-						if (!response.ok) {
-							throw new Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						console.log(data);
-						setStore({ nonprofits: data });
-					});
-			},
+			// getBids: () => {
+			// 	fetch(`${currentURL}/api/items`)
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			//console.log(data);
+			// 			setStore({ bids: data });
+			// 		});
+			// },
 
-			addToShoppingCart: (item, price, image) => {
-				let { shoppingCartItems } = getStore();
-				let items = { name: item, price: price, image: image };
-				// shoppingCartItems.push(items);
-				if (!shoppingCartItems.filter(element => element.name == item).length) {
-					setStore({ shoppingCartItems: [...shoppingCartItems, items] });
-				} // change to item.id
-			},
+			// getNonprofits: () => {
+			// 	fetch(`${currentURL}/api/nonprofit`)
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				throw new Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			console.log(data);
+			// 			setStore({ nonprofits: data });
+			// 		});
+			// },
 
-			addAuctionItem: item => {
-				fetch(`${currentURL}/api/items`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(item)
-				})
-					.then(response => response.json())
-					.then(data => {
-						setStore({ items: data });
-						// setStore({ bids: [...bids, data[1]] });
-						// console.log(getStore().bids);
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// addToShoppingCart: (item, price, image) => {
+			// 	let { shoppingCartItems } = getStore();
+			// 	let items = { name: item, price: price, image: image };
+			// 	// shoppingCartItems.push(items);
+			// 	if (!shoppingCartItems.filter(element => element.name == item).length) {
+			// 		setStore({ shoppingCartItems: [...shoppingCartItems, items] });
+			// 	} // change to item.id
+			// },
+
+			// addAuctionItem: item => {
+			// 	fetch(`${currentURL}/api/items`, {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify(item)
+			// 	})
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			setStore({ items: data });
+			// 			// setStore({ bids: [...bids, data[1]] });
+			// 			// console.log(getStore().bids);
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
 			// donateItem: item => {
 
 			// },
 
-			updateBid: (id, currentBid) => {
-				fetch(`${currentURL}/api/items/${id}`, {
-					method: "PUT",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						current_price: currentBid
-					})
-				})
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-						let shopOnlyItems = [];
-						data.filter(item => {
-							item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
-						});
-						setStore({ items: shopOnlyItems });
-						//console.log(getStore().items);
-						//console.log(shopOnlyItems);
-						// setStore({ items: data });
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// updateBid: (id, currentBid) => {
+			// 	fetch(`${currentURL}/api/items/${id}`, {
+			// 		method: "PUT",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			current_price: currentBid
+			// 		})
+			// 	})
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log(data);
+			// 			let shopOnlyItems = [];
+			// 			data.filter(item => {
+			// 				item.donation_type == 2 ? shopOnlyItems.push(item) : shopOnlyItems;
+			// 			});
+			// 			setStore({ items: shopOnlyItems });
+			// 			//console.log(getStore().items);
+			// 			//console.log(shopOnlyItems);
+			// 			// setStore({ items: data });
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
-			createBid: (id, minimunBid, currentPrice, numOfBids) => {
-				fetch(`${currentURL}/api/bid`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						item_id: id,
-						current_price: currentPrice,
-						num_of_bids: numOfBids
-					})
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch(`${currentURL}/api/items`)
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									//console.log(data);
-									setStore({ items: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// createBid: (id, minimunBid, currentPrice, numOfBids) => {
+			// 	fetch(`${currentURL}/api/bid`, {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			item_id: id,
+			// 			current_price: currentPrice,
+			// 			num_of_bids: numOfBids
+			// 		})
+			// 	})
+			// 		.then(response => {
+			// 			if (response.ok) {
+			// 				fetch(`${currentURL}/api/items`)
+			// 					.then(response => {
+			// 						if (!response.ok) {
+			// 							throw new Error(response.statusText);
+			// 						}
+			// 						return response.json();
+			// 					})
+			// 					.then(data => {
+			// 						//console.log(data);
+			// 						setStore({ items: data });
+			// 					});
+			// 			}
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
 			// updateBid: bid => {
 			// 	fetch(`${currentURL}/api/bid/${bid.id}`, {
