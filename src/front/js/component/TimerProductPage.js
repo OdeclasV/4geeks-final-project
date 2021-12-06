@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Proptypes from "prop-types";
 
-export const Timer = ({ endDate }) => {
+export const TimerProductPage = ({ endDate }) => {
 	const calculateTimeLeft = () => {
 		//let year = new Date().getFullYear();
 		let difference = new Date(endDate) - +new Date();
@@ -12,7 +12,9 @@ export const Timer = ({ endDate }) => {
 		if (difference > 0) {
 			timeLeft = {
 				days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-				hours: Math.floor((difference / (1000 * 60 * 60)) % 24)
+				hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+				minutes: Math.floor((difference / 1000 / 60) % 60),
+				seconds: Math.floor((difference / 1000) % 60)
 			};
 		}
 		return timeLeft;
@@ -45,6 +47,6 @@ export const Timer = ({ endDate }) => {
 	// make fetch to update Nonprofit total funds
 };
 
-Timer.propTypes = {
+TimerProductPage.propTypes = {
 	endDate: Proptypes.string
 };

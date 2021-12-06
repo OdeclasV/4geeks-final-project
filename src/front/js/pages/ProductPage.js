@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Timer } from "../component/Timer";
+import { TimerProductPage } from "../component/TimerProductPage";
 // import { ShopItem } from "../component/ShopItem";
 
 export const ProductPage = () => {
@@ -36,7 +37,7 @@ export const ProductPage = () => {
 
 							<div className="giveblue-font timer-row align-self-center">
 								<p className="mb-1">Time left to bid</p>
-								<Timer endDate={store.items[id] && store.items[id].end_date} />
+								<TimerProductPage endDate={store.items[id] && store.items[id].end_date} />
 								{/* </div> */}
 							</div>
 
