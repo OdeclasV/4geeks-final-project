@@ -60,6 +60,15 @@ export const ProfileDashboard = props => {
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>cool shoes</td>
+							<td>23-Nov-21</td>
+							<td>Severus S.</td>
+							<td>20-Dec-2021</td>
+							<td>12AM - 4PM</td>
+						</tr>
+
 						{activeNonprofit
 							? activeNonprofit.items_received.map(item => {
 									let itemCount = 0;
@@ -70,9 +79,10 @@ export const ProfileDashboard = props => {
 											<td>{item.posted_date}</td>
 											<td>{getUserNames(item.donated_by)}</td>
 											<td>20-Dec-2021</td>
+											<td>8AM - 12PM</td>
 										</tr>
 									);
-							})
+							  })
 							: console.log("none")}
 						{/* {/* <tr>
 							<th scope="row">1</th>

@@ -14,7 +14,7 @@ export const Home = () => {
 
 	return (
 		<>
-			<div className="container col-xxl-8">
+			<div className="container col-xxl-10">
 				<div className="row flex-lg-row-reverse align-items-center g-5 py-5">
 					<div className="col-10 col-sm-8 col-lg-6">
 						<img
@@ -31,10 +31,17 @@ export const Home = () => {
 							some short decription of our project and why it is so awesome will go here, get ready!
 						</p>
 						{!store.loggedin ? (
-							<div>
-								<h2>
-									Description of the web app with images <br /> Solicitation for new users to register
-								</h2>
+							<div className="d-grid gap-2 d-md-flex justify-content-md-start">
+								<Link to="/donate">
+									<button type="button" className="btn btn-two btn-lg px-4 me-md-2">
+										Donate
+									</button>
+								</Link>
+								<Link to="/shop">
+									<button type="button" className="btn btn-one btn-lg px-4 me-md-2">
+										Shop
+									</button>
+								</Link>
 							</div>
 						) : (
 							<div className="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -73,7 +80,7 @@ export const Home = () => {
 						</button>
 					</div>
 				</div>
-				<div className="nonprofit-partners m-5">
+				<div className="nonprofit-partners m-1">
 					<h1 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
 						Nonprofit Partners
 					</h1>

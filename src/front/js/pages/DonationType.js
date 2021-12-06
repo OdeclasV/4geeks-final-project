@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { useParams, useHistory } from "react-router";
 import { DonateClothing } from "../component/donate-form/DonateClothing";
 import { DonateFurniture } from "../component/donate-form/DonateFurniture";
+import { DonateElectronics } from "../component/donate-form/DonateElectronics";
 
 export const DonationType = () => {
 	const [category, setCategory] = useState("Select a category");
@@ -34,13 +35,18 @@ export const DonationType = () => {
 									<option value="Select a value">Select a value</option>
 									<option value="clothing">Clothes</option>
 									<option value="furniture">Furniture</option>
-									<option value="art">Art</option>
+									<option value="art">Electronics</option>
+									<option value="art">Household</option>
+									<option value="art">Baby Products</option>
+									<option value="art">Toys</option>
 								</select>
 							</div>
 							{category == "clothing" ? (
 								<DonateClothing />
 							) : category == "furniture" ? (
 								<DonateFurniture />
+							) : category == "electronics" ? (
+								<DonateElectronics />
 							) : (
 								<hr />
 							)}

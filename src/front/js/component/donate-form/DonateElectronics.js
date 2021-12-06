@@ -2,15 +2,14 @@ import React, { useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
 
-export const DonateFurniture = () => {
-	const [typeOfFurniture, setTypeOfFurniture] = useState("Select a value");
-	const [nonprofit, setNonProfit] = useState("Select a value");
+export const DonateElectronics = () => {
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { store, actions } = useContext(Context);
 
 	const [donationItem, setDonationItem] = useState({
 		bid_count: 0,
-		category: "furniture",
+		category: "electronics",
 		condition: null,
 		donate_to: nonprofit,
 		donated_by: null,
@@ -30,21 +29,21 @@ export const DonateFurniture = () => {
 				<div className="login-form overview-block">
 					<div className="form-group">
 						<label htmlFor="name" className="control-label mt-3">
-							Type of Furniture
+							Type of Electronic
 						</label>
 
 						<select
 							className="form-select"
-							aria-label="Default select type"
-							value={typeOfFurniture}
+							aria-label="Default select clothes"
+							value={typeOfClothes}
 							onChange={e => {
-								setTypeOfFurniture(e.target.value);
+								setTypeOfClothes(e.target.value);
 								setDonationItem({ ...donationItem, item_type: e.target.value });
 							}}>
 							<option value="Select a value">Select a value</option>
-							<option value="dining table">Dining Table</option>
-							<option value="chair">Chair</option>
-							<option value="sofa">Sofa</option>
+							<option value="t-shirt">Phone</option>
+							<option value="jacket">TV</option>
+							<option value="pants">Radio</option>
 						</select>
 					</div>
 
@@ -59,7 +58,7 @@ export const DonateFurniture = () => {
 								className="form-control"
 								name="name"
 								id="name"
-								placeholder="The Iron Throne"
+								placeholder="Leather Jacket"
 								onChange={e => {
 									setDonationItem({ ...donationItem, item_name: e.target.value });
 								}}
@@ -75,6 +74,7 @@ export const DonateFurniture = () => {
 						<div className="">
 							<textarea
 								className="form-control"
+								placeholder="smells nice"
 								onChange={e => {
 									setDonationItem({ ...donationItem, item_description: e.target.value });
 								}}

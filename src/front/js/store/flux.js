@@ -1,6 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	const currentURL = "https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io";
-	// const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io/";
+	// const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
 
 	return {
 		store: {
@@ -75,33 +75,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 
-			// getBids: () => {
-			// 	fetch(`${currentURL}/api/items`)
-			// 		.then(response => {
-			// 			if (!response.ok) {
-			// 				throw new Error(response.statusText);
-			// 			}
-			// 			return response.json();
-			// 		})
-			// 		.then(data => {
-			// 			//console.log(data);
-			// 			setStore({ bids: data });
-			// 		});
-			// },
+			getBids: () => {
+				fetch(`${currentURL}/api/items`)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						//console.log(data);
+						setStore({ bids: data });
+					});
+			},
 
-			// getNonprofits: () => {
-			// 	fetch(`${currentURL}/api/nonprofit`)
-			// 		.then(response => {
-			// 			if (!response.ok) {
-			// 				throw new Error(response.statusText);
-			// 			}
-			// 			return response.json();
-			// 		})
-			// 		.then(data => {
-			// 			console.log(data);
-			// 			setStore({ nonprofits: data });
-			// 		});
-			// },
+			getNonprofits: () => {
+				fetch(`${currentURL}/api/nonprofit`)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						console.log(data);
+						setStore({ nonprofits: data });
+					});
+			},
 
 			addAuctionItem: item => {
 				fetch(`${currentURL}/api/items`, {
@@ -144,7 +144,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
-			},
+			}
 
 			// createBid: (id, minimunBid, currentPrice, numOfBids) => {
 			// 	fetch(`${currentURL}/api/bid`, {
@@ -197,12 +197,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		})
 			// 		.catch(err => console.error("Error:", err));
 			// },
-
-			addWishlistItem: item => {
-				let { items } = getStore();
-
-				setStore({ items: [...items, item] });
-			}
 		}
 	};
 };

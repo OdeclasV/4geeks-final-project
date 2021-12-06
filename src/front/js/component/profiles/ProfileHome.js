@@ -46,8 +46,8 @@ export const ProfileHome = () => {
 						{/* Dashboard content */}
 						<div className="">
 							{/* First Row */}
-							<div className="row-one d-flex justify-content-between">
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+							<div className="row-one d-flex row">
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-5">
 									<h3>Total Funds Raised:</h3>
 									<h2>{formatter.format(activeNonprofit ? activeNonprofit.total_profits : 0)}</h2>
 									<h4 className="text-success">
@@ -57,7 +57,8 @@ export const ProfileHome = () => {
 									</h4>
 									<p>Since last month</p>
 								</div>
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-5">
 									<h3>Total Donations Recieved:</h3>
 									<h2>
 										{activeNonprofit
@@ -75,23 +76,46 @@ export const ProfileHome = () => {
 								</div>
 							</div>
 							{/* Second Row */}
-							<div className="row-one d-flex justify-content-between">
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+							<div className="row row-two d-flex">
+								<div className="overview-block col-5 m-2 p-2 bg-light border rounded-3">
 									<h3>Funds Compared to last Month</h3>
 									<LineGraph />
 								</div>
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
+								<div className="overview-block col-5 m-2 p-2 bg-light border rounded-3">
 									<h3>Last Weeks Donations:</h3>
-									{/* <LineGraphWeekly /> */}
+									<LineGraphWeekly />
 								</div>
 							</div>
 							{/* Third Row */}
-							<div className="row-two d-flex justify-content-between">
+							<div className="row row-three d-flex">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
 									<p>{activeNonprofit ? activeNonprofit.wish_list_items : ""}</p>
+									<div className="form-check">
+										<input
+											className="form-check-input"
+											type="checkbox"
+											value=""
+											id="flexCheckDefault"
+											checked
+										/>
+										<label className="form-check-label" htmlFor="flexCheckDefault">
+											Clothes
+										</label>
+									</div>
+									<div className="form-check">
+										<input
+											className="form-check-input"
+											type="checkbox"
+											value=""
+											id="flexCheckChecked"
+										/>
+										<label className="form-check-label" htmlFor="flexCheckChecked">
+											Furniture
+										</label>
+									</div>
 								</div>
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-7">
 									<h3>Recent Items Recieved</h3>
 									<div className="items-carousel container-fluid d-flex flex-wrap">
 										{activeNonprofit

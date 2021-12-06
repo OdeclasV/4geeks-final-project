@@ -40,19 +40,24 @@ export const Navbar = props => {
 					className="collapse navbar-collapse d-flex justify-content-end col-9"
 					aria-labelledby="navbarToggler">
 					<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li className="nav-menu-item mx-2 active">
-							<Link
-								className="nav-menu-link"
-								to={
-									store.userType == "nonprofit"
-										? `/profile/nonprofit/${store.loggedin}`
-										: store.userType == "user"
-											? `/profile/user/${store.loggedin}`
-											: "/"
-								}>
-								Dashboard <span className="sr-only">(current)</span>
-							</Link>
-						</li>
+						{store.loggedin != 0 ? (
+							<li className="nav-menu-item mx-2 active">
+								<Link
+									className="nav-menu-link"
+									to={
+										store.userType == "nonprofit"
+											? `/profile/nonprofit/${store.loggedin}`
+											: store.userType == "user"
+												? `/profile/user/${store.loggedin}`
+												: "/"
+									}>
+									Dashboard <span className="sr-only">(current)</span>
+								</Link>
+							</li>
+						) : (
+							""
+						)}
+
 						<li className="nav-menu-item mx-2">
 							<Link className="nav-menu-link" to="/shop">
 								Shop

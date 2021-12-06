@@ -5,7 +5,6 @@ import { Chart, registerables } from "chart.js"; // due to some quirkiness I can
 
 Chart.register(...registerables);
 
-
 export const LineGraph = () => {
 	return (
 		<div>
@@ -55,25 +54,22 @@ export const LineGraph = () => {
 						// }
 					]
 				}}
-				height={150}
-				width={300}
+				height={200}
+				width={"100%"}
 				options={{
 					maintainAspectRatio: false,
 					scales: {
-						yAxes: [
-							{
-								ticks: {
-									beginAtZero: true
-								},
-								gridLines: {
-									lineWidth: 0
-								}
-							}
-						],
 						xAxes: [
 							{
 								gridLines: {
-									lineWidth: 0
+									display: false
+								}
+							}
+						],
+						yAxes: [
+							{
+								gridLines: {
+									display: false
 								}
 							}
 						]

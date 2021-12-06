@@ -25,7 +25,7 @@ export const SideBar = ({ nonprofit, id }) => {
 	}
 
 	return (
-		<div className="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style={{ width: "250px" }}>
+		<div className="d-flex flex-column  flex-shrink-0 p-3 text-white bg-dark" style={{ width: "20%" }}>
 			<a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 				<svg className="bi me-2" width="40" height="32" />
 				<span className="fs-4">{nonprofit ? nonprofit.name : ""}</span>
@@ -55,7 +55,7 @@ export const SideBar = ({ nonprofit, id }) => {
 						<span className="ms-2">Donations</span>
 					</a>
 				</li>
-				<li className="m-2 p-2">
+				{/* <li className="m-2 p-2">
 					<a
 						href=""
 						className="nav-link text-white"
@@ -65,7 +65,7 @@ export const SideBar = ({ nonprofit, id }) => {
 						<i className="fa fa-clipboard-list" />
 						<span className="ms-2">Wishlist</span>
 					</a>
-				</li>
+				</li> */}
 				<li className="m-2 p-2">
 					<a
 						href=""

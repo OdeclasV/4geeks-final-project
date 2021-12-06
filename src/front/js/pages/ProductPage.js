@@ -25,8 +25,8 @@ export const ProductPage = () => {
 				<div className="h-100 p-4 bg-light border rounded-3">
 					<div className="row d-flex justify-content-between">
 						{/* Product Image */}
-						<div className="product-img-block card-img-left d-block mx-lg-auto npmcol-4 ">
-							<img src={store.items[id] && store.items[id].image} />
+						<div className="product-img-block card-img-left d-block p-2 mx-lg-auto col-4 ">
+							<img className="w-100 h-auto" src={store.items[id] && store.items[id].image} />
 						</div>
 
 						<div className="product-info-box col-8 p-5">
@@ -39,6 +39,11 @@ export const ProductPage = () => {
 								<p className="mb-1">Time left to bid</p>
 								<TimerProductPage endDate={store.items[id] && store.items[id].end_date} />
 								{/* </div> */}
+							</div>
+
+							<div className="bid-count-row d-flex">
+								<p className="col-4">Number of Bids:</p>
+								<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
 							</div>
 
 							<div className="price-row d-flex">
@@ -96,6 +101,10 @@ export const ProductPage = () => {
 								<h4>Condition:</h4>
 								<p className="card-text item-condition">
 									{store.items[id] && store.items[id].condition}
+								</p>
+								<h4>Funds going to:</h4>
+								<p className="card-text item-condition">
+									{store.items[id] && store.items[id].donate_to}
 								</p>
 							</div>
 						</div>
