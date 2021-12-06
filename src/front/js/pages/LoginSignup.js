@@ -41,7 +41,7 @@ export const LoginSignup = ({ match, index }) => {
 	// assigns index of specific user to allowedUser
 	// this is needed to render right info in user dashboard
 	if (allowedUserEmails.includes(userEmail)) {
-		allowedUser = store.users && store.users[allowedUserEmails.indexOf(userEmail)].id;
+		allowedUser = store.users[allowedUserEmails.indexOf(userEmail)].id;
 		console.log(allowedUser);
 	}
 
@@ -68,23 +68,26 @@ export const LoginSignup = ({ match, index }) => {
 							{allowednonProfit ? (
 								// users is sent to specific nonprofit, per their index
 								<Link to={`/profile/nonprofit/${allowednonProfit}`}>
-									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+									<button
+										type="button"
+										className="btn btn-one btn-lg px-4 container-fluid"
+										onClick={() => actions.login("nonprofit", allowednonProfit)}>
 										Login Non Profit
 									</button>
 								</Link>
 							) : allowedUser ? (
 								// users is sent to specific user, per their index
 								<Link to={`/profile/user/${allowedUser}`}>
-									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+									<button
+										type="button"
+										className="btn btn-one btn-lg px-4 container-fluid"
+										onClick={() => actions.login("user", allowedUser)}>
 										Login User
 									</button>
 								</Link>
 							) : (
 								<Link to="/">
-									<button
-										type="button"
-										className="btn btn-one btn-lg px-4 container-fluid"
-										onClick={() => actions.login()}>
+									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
 										Login
 									</button>
 								</Link>

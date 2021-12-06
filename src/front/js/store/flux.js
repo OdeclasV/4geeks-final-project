@@ -9,7 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			shoppingCartItems: [],
 			nonprofits: [],
 			users: [],
-			loggedin: false,
+			loggedin: 0, //uses user id
+			userType: "",
 			currentnonprofit: {
 				id: 1,
 				name: "good non-profit",
@@ -31,6 +32,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+			login: (userType, userID) => {
+				setStore({ loggedin: userID, userType: userType });
+			},
+			logout: () => {
+				setStore({
+					loggedin: 0
+				});
+			},
 			getUsers: () => {
 				fetch(`${currentURL}/api/user`)
 					.then(response => {
@@ -42,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						setStore({ users: data });
 					})
-					.catch(err => console.error("Error:", error));
+					.catch(err => console.error("Error:", err));
 			},
 			getItems: () => {
 				fetch(`${currentURL}/api/items`)
