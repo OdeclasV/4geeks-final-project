@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 export const UserProfileHome = () => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
+	let { id } = useParams();
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
@@ -13,6 +14,20 @@ export const UserProfileHome = () => {
 		minimumFractionDigits: 0
 	});
 
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeUser;
+
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.users &&
+		store.users.filter(user => {
+			if (user.id == id) {
+				activeUser = user;
+			}
+		});
+
+	// console.log(activeUser);
 	return (
 		<>
 			<div className="container">
@@ -22,7 +37,7 @@ export const UserProfileHome = () => {
 						<div className="title-area container-fluid p-2">
 							<h1>
 								<strong>Welcome back, </strong>
-								{store.currentuser.name}!
+								{activeUser ? activeUser.name : ""}!
 							</h1>
 						</div>
 						{/* Dashboard content */}
@@ -41,7 +56,13 @@ export const UserProfileHome = () => {
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-6">
 									<h3>Total Number of Donations:</h3>
-									<h2>{store.currentuser.donations}</h2>
+									<h2>
+										{activeUser
+											? activeUser.donations.filter(
+													donation => donation.donation_type == "donation"
+											  ).length
+											: 0}
+									</h2>
 									<h4 className="text-danger">
 										{" "}
 										<i className="fas fa-arrow-down" />

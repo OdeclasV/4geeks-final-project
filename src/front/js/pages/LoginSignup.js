@@ -14,8 +14,8 @@ export const LoginSignup = ({ match, index }) => {
 	const history = useHistory();
 
 	const [userEmail, setUserEmail] = useState("");
-	let userSignIn = userEmail.includes(allowedNonprofitEmails);
-	//let nonProfitSignIn = userEmail.includes("");
+	// let userSignIn = userEmail.includes(allowedNonprofitEmails);
+	// //let nonProfitSignIn = userEmail.includes("");
 
 	// nonprofit and user validation for login
 	let allowednonProfit;
@@ -35,14 +35,12 @@ export const LoginSignup = ({ match, index }) => {
 	// this is needed to render right info in nonprofit dashboard
 	if (allowedNonprofitEmails.includes(userEmail)) {
 		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)].id;
-		console.log(allowednonProfit);
 	}
 
 	// assigns index of specific user to allowedUser
 	// this is needed to render right info in user dashboard
 	if (allowedUserEmails.includes(userEmail)) {
 		allowedUser = store.users[allowedUserEmails.indexOf(userEmail)].id;
-		console.log(allowedUser);
 	}
 
 	return (
@@ -66,7 +64,7 @@ export const LoginSignup = ({ match, index }) => {
 							<input type="password" className="form-control" placeholder="Password" />
 							{/* some kind of validation here if email and password match then use that profile index in link below */}
 							{allowednonProfit ? (
-								// users is sent to specific nonprofit, per their index
+								// users is sent to specific nonprofit, per their id
 								<Link to={`/profile/nonprofit/${allowednonProfit}`}>
 									<button
 										type="button"
@@ -76,7 +74,7 @@ export const LoginSignup = ({ match, index }) => {
 									</button>
 								</Link>
 							) : allowedUser ? (
-								// users is sent to specific user, per their index
+								// users is sent to specific user, per their id
 								<Link to={`/profile/user/${allowedUser}`}>
 									<button
 										type="button"

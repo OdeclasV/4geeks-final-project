@@ -9,6 +9,7 @@ import { UserProfileHome } from "../../component/userProfiles/UserProfileHome";
 import { UserProfileDonations } from "../../component/userProfiles/UserProfileDonations";
 import { UserProfileMyAccount } from "../../component/userProfiles/UserProfileMyAccount";
 import { UserNonProfitFriends } from "../../component/userProfiles/UserNonProfitFriends";
+import { SideBar } from "../../component/profiles/SideBar";
 
 // import { BarGraph } from "../../component/BarGraph";
 
@@ -17,6 +18,23 @@ export const UserProfile = props => {
 	const history = useHistory();
 
 	const { store, actions } = useContext(Context);
+
+	let { id } = useParams();
+
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeUser;
+
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.users &&
+		store.users.filter(user => {
+			if (user.id == id) {
+				activeUser = user;
+			}
+		});
+
+	console.log(activeUser);
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
@@ -32,7 +50,7 @@ export const UserProfile = props => {
 
 	return (
 		<div className="d-flex">
-			<UserSideBar username="User" />
+			<SideBar user={activeUser} userId={id} />
 			{/* <BarGraph /> */}
 			{clickedProfile(params.profileoption)}
 		</div>

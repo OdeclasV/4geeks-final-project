@@ -46,7 +46,7 @@ export const NonProfitProfile = props => {
 
 	return (
 		<div className="d-flex">
-			<SideBar nonprofit={activeNonprofit} id={id} />
+			<SideBar nonprofit={activeNonprofit} nonprofitId={id} />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);
