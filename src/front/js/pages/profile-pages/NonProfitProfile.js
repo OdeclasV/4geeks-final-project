@@ -34,11 +34,11 @@ export const NonProfitProfile = props => {
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
-			return <ProfileDashboard />;
+			return <ProfileDashboard nonprofit={activeNonprofit} />;
 		} else if (profile == "wishlist") {
 			return <ProfileWishlist />;
 		} else if (profile == "myaccount") {
-			return <ProfileMyAccount />;
+			return <ProfileMyAccount nonprofit={activeNonprofit} />;
 		} else {
 			return <ProfileHome />;
 		}

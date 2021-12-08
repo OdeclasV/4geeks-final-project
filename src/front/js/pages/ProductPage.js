@@ -72,6 +72,7 @@ export const ProductPage = () => {
 										Minimum Bid:
 									</label>
 
+<<<<<<< HEAD
 									<input
 										type="number"
 										className="form-control"
@@ -110,6 +111,62 @@ export const ProductPage = () => {
 										</Link>
 									)}
 								</div>
+=======
+								<input
+									type="number"
+									className="form-control"
+									name="price"
+									id="bid"
+									value={parseInt(currentBid)}
+									min={parseInt(currentBid)}
+									onChange={e => {
+										setCurrentBid(e.target.value);
+									}}
+									//setNewBid(parseInt(e.target.value));
+									//setPrice(parseInt(e.target.value));
+								/>
+							</div>
+							<div>
+								{store.loggedin != 0 ? (
+									<Link to="/bid-placed">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal"
+											data-bs-target="#placeBid"
+											onClick={() => {
+												setShow("true");
+												console.log(store.items[id].id);
+												actions.updateBid(store.items[id].id, currentBid);
+											}}>
+											Place Bid
+										</button>
+									</Link>
+								) : (
+									<Link to="/login">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal">
+											Login to Place a Bid
+										</button>
+									</Link>
+								)}
+							</div>
+							{/* Product Description bottom */}
+							<div className="product-details-row">
+								<h4>Description</h4>
+								<p>{store.items[id] && store.items[id].item_description}</p>
+								<br />
+								<h4>Condition:</h4>
+								<p className="card-text item-condition">
+									{store.items[id] && store.items[id].condition}
+								</p>
+								<h4>Funds going to:</h4>
+								<p className="card-text item-condition">
+									{store.items[id] && store.items[id].donate_to}
+								</p>
+>>>>>>> 3104f5b8b1fb68a9c53659e4bf88bf174313bf75
 							</div>
 						</div>
 					</div>

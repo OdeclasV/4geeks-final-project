@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import heromockURL from "../../img/project-hero-mock.png";
 import taglineURL from "../../img/tagline.png";
 import palettesURL from "../../img/palettes.png";
+import BidForGoodHands from "../../img/Bid-For-Good-09.png";
+
 import "../../styles/home.scss";
 import { NonProfitPartners } from "./NonProfitPartners";
 
@@ -62,15 +64,15 @@ export const Home = () => {
 				<div className="row flex-lg-row align-items-center g-5 py-5">
 					<div className="col-10 col-sm-8 col-lg-6">
 						<img
-							src={palettesURL}
+							src={BidForGoodHands}
 							className="d-block mx-lg-auto img-fluid"
-							width="700"
-							height="500"
+							width="300"
+							height="200"
 							loading="lazy"
 						/>
 					</div>
 					<div className="col-lg-6">
-						<h1 className="display-5 fw-bold lh-1 mb-3 giveblue-font">Bid.Shop.Give</h1>
+						<h2 className="display-5 fw-bold lh-1 mb-3 giveblue-font">Bid.Shop.Give</h2>
 						<p className="lead">
 							Bids on items you want. Donate items you don&apos;t want directly to your preferred
 							nonprofit. Give back, do your part.
@@ -80,6 +82,7 @@ export const Home = () => {
 						</button>
 					</div>
 				</div>
+<<<<<<< HEAD
 				<div className="third-index">
 					<div className="nonprofit-partners m-1 giveblue-font">
 						<h1 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
@@ -87,6 +90,13 @@ export const Home = () => {
 						</h1>
 						<NonProfitPartners />
 					</div>
+=======
+				<div className="row flex-lg-row align-items-center g-5 py-5 nonprofit-partners m-1">
+					<h3 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
+						Nonprofit Friends
+					</h3>
+					<NonProfitPartners />
+>>>>>>> 3104f5b8b1fb68a9c53659e4bf88bf174313bf75
 				</div>
 			</div>
 		</>

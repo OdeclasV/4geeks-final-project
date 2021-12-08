@@ -4,7 +4,7 @@ import { Context } from "../../store/appContext";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const ProfileMyAccount = props => {
+export const ProfileMyAccount = ({ nonprofit }) => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 
@@ -23,10 +23,14 @@ export const ProfileMyAccount = props => {
 			}
 		});
 
-	console.log(id);
+	// actions.login(user, id);
+
+	const loggedValue = React.useMemo(() => store.loggedin);
+	console.log(store.loggedin);
+	console.log(loggedValue);
 	return (
 		<>
-			<div className="container-fluid ">
+			<div className="container">
 				<div className="h-100 p-5 bg-light border rounded-3">
 					<div className="m-2 page-title d-flex justify-content-between">
 						{/* title */}
@@ -71,4 +75,8 @@ export const ProfileMyAccount = props => {
 			</div>
 		</>
 	);
+};
+
+ProfileMyAccount.propTypes = {
+	nonprofit: PropTypes.object
 };

@@ -9,13 +9,19 @@ export const UserNonProfitFriends = props => {
 
 	return (
 		<>
-			<div className="container-fluid ">
+			<div className="container">
 				<div className="h-100 p-5 bg-light border rounded-3">
+<<<<<<< HEAD
 					{/* open orders table*/}
 
 					<div className="open-orders mb-5">
 						<h1>Open Orders</h1>
 						<h4 className="giveblue-font">Items you are currently bidding on!</h4>
+=======
+					<div className="closed-orders">
+						<h1>Closed Orders</h1>
+						<h4 className="giveblue-font">Bids you&apos;ve won and the Non-Profits you&apos;ve funded!</h4>
+>>>>>>> 3104f5b8b1fb68a9c53659e4bf88bf174313bf75
 						{/* Row 1 */}
 						<div className="row-one d-flex justify-content-between">
 							<div className="overview-block m-2 p-1 bg-light border rounded-3 col-6 d-flex">
@@ -59,9 +65,12 @@ export const UserNonProfitFriends = props => {
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 
 					{/* Closed Orders */}
 
+=======
+>>>>>>> 3104f5b8b1fb68a9c53659e4bf88bf174313bf75
 					<div className="closed-orders">
 						<h1>Closed Orders</h1>
 						<h4 className="giveblue-font">Bids you&apos;ve won and the Non-Profits you&apos;ve funded!</h4>

@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const UserProfileHome = () => {
 	const params = useParams();
@@ -103,7 +104,7 @@ export const UserProfileHome = () => {
 										</tbody>
 									</table>
 								</div>
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
+								{/* <div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Current Bids</h3>
 									<div className="items-carousel container-fluid d-flex flex-wrap">
 										<div className="card">
@@ -150,6 +151,97 @@ export const UserProfileHome = () => {
 													View item
 												</button>
 											</Link>
+									<table className="table">
+										<thead className="thead-dark">
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Item</th>
+												<th scope="col">Closing Date</th>
+												<th scope="col">Non Profit Funded</th>
+												<th scope="col">Current Bid</th>
+												<th scope="col">Your Bid</th>
+												<th scope="col">Bid Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>cool shirt</td>
+												<td>10-Dec-21</td>
+												<td>Gotham City Cleaners</td>
+												<td>$320</td>
+												<td className="text-success">$320</td>
+												<td>You have the highest bid</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>Iron Throne</td>
+												<td>12-Dec-21</td>
+												<td>Real Good Company</td>
+												<td>$1010</td>
+												<td className="text-danger">$825</td>
+												<td>
+													<Link to="/shop/5">
+														<button type="button" className="btn btn-two py-2 my-2">
+															View item
+														</button>
+													</Link>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>cool shoes</td>
+												<td>16-Dec-21</td>
+												<td>Really Real Good Company</td>
+												<td>$200</td>
+												<td className="text-danger">$140</td>
+												<td>
+													<Link to="/shop/5">
+														<button type="button" className="btn btn-two py-2 my-2">
+															View item
+														</button>
+													</Link>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div> */}
+							{/* Third Row */}
+							<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
+								<h3>Current Bids</h3>
+								<div className="items-carousel container-fluid d-flex flex-wrap">
+									<div className="card">
+										<img
+											className="card-img-top"
+											src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+											alt="Card image cap"
+										/>
+										<div className="card-body">
+											<h5 className="card-title">Awesome Shirt</h5>
+										</div>
+										<button type="button" className="btn btn-two py-2 my-2">
+											View item
+										</button>
+									</div>
+									<div className="card">
+										<img
+											className="card-img-top"
+											src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+											alt="Card image cap"
+										/>
+										<div className="card-body">
+											<h5 className="card-title">Awesome Shirt</h5>
+										</div>
+									</div>
+									<div className="card ">
+										<img
+											className="card-img-top"
+											src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+											alt="Card image cap"
+										/>
+										<div className="card-body">
+											<h5 className="card-title">Awesome Shirt</h5>
 										</div>
 									</div>
 								</div>
