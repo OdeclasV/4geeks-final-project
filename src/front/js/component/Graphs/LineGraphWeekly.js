@@ -14,8 +14,8 @@ export const LineGraphWeekly = () => {
 						{
 							label: "Current Week",
 							data: [2, 0, 6, 2, 8, 0, 1],
-							backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-							borderColor: ["rgba(255, 99, 132, 1)"],
+							backgroundColor: ["rgba(70, 167, 127, 1)"],
+							borderColor: ["rgba(70, 167, 127, 1)"],
 							borderWidth: 1
 						}
 						// {

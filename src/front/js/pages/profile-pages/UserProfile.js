@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../store/appContext";
 
 import { useHistory } from "react-router";
@@ -13,9 +13,12 @@ import { SideBar } from "../../component/profiles/SideBar";
 
 // import { BarGraph } from "../../component/BarGraph";
 
+// create use state hook Profile
+// const { profile, setProfile } = useState("dashboard");
+
 export const UserProfile = props => {
 	const params = useParams();
-	const history = useHistory();
+	// const history = useHistory();
 
 	const { store, actions } = useContext(Context);
 
@@ -34,7 +37,7 @@ export const UserProfile = props => {
 			}
 		});
 
-	console.log(activeUser);
+	// console.log(activeUser);
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
@@ -51,7 +54,7 @@ export const UserProfile = props => {
 	return (
 		<div className="d-flex">
 			<SideBar user={activeUser} userId={id} />
-			{/* <BarGraph /> */}
+
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

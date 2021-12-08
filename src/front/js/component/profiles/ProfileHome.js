@@ -47,18 +47,24 @@ export const ProfileHome = () => {
 						<div className="">
 							{/* First Row */}
 							<div className="row-one d-flex row">
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-5">
-									<h3>Total Funds Raised:</h3>
-									<h2>{formatter.format(activeNonprofit ? activeNonprofit.total_profits : 0)}</h2>
-									<h4 className="text-success">
-										{" "}
-										<i className="fas fa-arrow-up" />
-										5.27%
-									</h4>
-									<p>Since last month</p>
+								<div className="overview-block p-4 m-2 bg-light border rounded-3 col">
+									<div className="row">
+										<h3 className="col">Total Funds Raised:</h3>
+										<h2 className="col">
+											{formatter.format(activeNonprofit ? activeNonprofit.total_profits : 0)}
+										</h2>
+									</div>
+									<div className="row">
+										<p className="col">Since last month</p>
+										<h4 className="text-success col">
+											{" "}
+											<i className="fas fa-arrow-up m-2" />
+											5.27%
+										</h4>
+									</div>
 								</div>
 
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-5">
+								<div className="overview-block p-2 m-2 bg-light border rounded-3 col">
 									<h3>Total Donations Recieved:</h3>
 									<h2>
 										{activeNonprofit
@@ -69,29 +75,31 @@ export const ProfileHome = () => {
 									</h2>
 									<h4 className="text-danger">
 										{" "}
-										<i className="fas fa-arrow-down" />
+										<i className="fas fa-arrow-down m-2" />
 										3.42%
 									</h4>
 									<p>Since last month</p>
 								</div>
 							</div>
+
 							{/* Second Row */}
 							<div className="row row-two d-flex">
-								<div className="overview-block col-5 m-2 p-2 bg-light border rounded-3">
+								<div className="overview-block col m-2 p-2 bg-light border rounded-3">
 									<h3>Funds Compared to last Month</h3>
 									<LineGraph />
 								</div>
-								<div className="overview-block col-5 m-2 p-2 bg-light border rounded-3">
+								<div className="overview-block col m-2 p-2 bg-light border rounded-3">
 									<h3>Last Weeks Donations:</h3>
 									<LineGraphWeekly />
 								</div>
 							</div>
+
 							{/* Third Row */}
 							<div className="row row-three d-flex">
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-4">
 									<h3>Wishlist Items</h3>
-									<p>{activeNonprofit ? activeNonprofit.wish_list_items : ""}</p>
-									<div className="form-check">
+									<h4>{activeNonprofit ? activeNonprofit.wish_list_items : ""}</h4>
+									{/* <div className="form-check">
 										<input
 											className="form-check-input"
 											type="checkbox"
@@ -109,11 +117,12 @@ export const ProfileHome = () => {
 											type="checkbox"
 											value=""
 											id="flexCheckChecked"
+											checked
 										/>
 										<label className="form-check-label" htmlFor="flexCheckChecked">
 											Furniture
 										</label>
-									</div>
+									</div> */}
 								</div>
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-7">
 									<h3>Recent Items Recieved</h3>

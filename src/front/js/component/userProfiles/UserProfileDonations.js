@@ -9,7 +9,7 @@ export const UserProfileDonations = props => {
 		<div className="container-fluid ">
 			<div className="h-100 p-5 bg-light border rounded-3">
 				{/* items donated table */}
-				<div className="items-donated-block">
+				<div className="items-donated-block mb-5">
 					<h1>Items Donated</h1>
 					<h4 className="giveblue-font">Items you have donated</h4>
 					<table className="table">

@@ -215,8 +215,6 @@
 // poduct page
 
 .product-img-block {
-    
-    
     object-fit: cover;
     background-color:#FFFFFF;
     overflow: hidden;
@@ -224,12 +222,30 @@
     border-radius: 10px;
 }
 
-.product-info-block {
-    width: 50%;
-    height: 500px;
+.product-info-box {
+    
+    background-color:#FFFFFF;
+    border: #195b9e solid 2px;
+    border-radius: 10px;
+}
+
+.product-details-box {
     background-color:#FFFFFF;
     margin-top:10px;
     border: #195b9e solid 2px;
     border-radius: 10px;
 }
 
+.parallax {
+    /* The image used */
+    background-image: url("https://i.ibb.co/1vt25Kp/giordano-rossoni-4-Ad-YDht1nls-unsplash.jpg");
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

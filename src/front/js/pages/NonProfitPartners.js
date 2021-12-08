@@ -21,7 +21,10 @@ export const NonProfitPartners = () => {
 					// 		<p className="card-text item-price">{nonprofit.description}</p>
 					// 	</div> */}
 					// </div>
-					<div className="card mb-3" style={{ maxWidth: "540px", height: "150px" }} key={nonprofit.id}>
+					<div
+						className="card mb-3 shadow-sm"
+						style={{ maxWidth: "540px", height: "150px" }}
+						key={nonprofit.id}>
 						<div className="row g-0">
 							<div className="col-md-4">
 								<img

@@ -29,6 +29,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				totalfundsdonated: 385.0,
 				donations: 12,
 				nonprofitfriends: "good non-profit, gooder non-profit"
+			},
+			user: {
+				email: "esther@tester.com",
+				id: 1,
+				last_name: "Tester",
+				name: "Esther",
+				nonprofit_friends: null
 			}
 		},
 		actions: {

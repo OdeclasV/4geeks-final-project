@@ -93,9 +93,6 @@ export const Navbar = props => {
 							""
 						)}
 					</ul>
-					{/* 
-				<LoginButton />
-				<SignUpButton /> */}
 				</div>
 			</nav>
 		</div>

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../store/appContext";
+import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
 
@@ -108,25 +109,32 @@ export const UserProfileHome = () => {
 										<div className="card">
 											<img
 												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+												src="https://i.ibb.co/w4SD762/products-03.jpg"
 												alt="Card image cap"
 											/>
 											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
+												<h5 className="card-title">Tesla Cyberquad</h5>
 											</div>
-											<button type="button" className="btn btn-two py-2 my-2">
-												View item
-											</button>
+											<Link to="/shop/2">
+												<button type="button" className="btn btn-two py-2 my-2">
+													View item
+												</button>
+											</Link>
 										</div>
 										<div className="card">
 											<img
 												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+												src="https://i.ibb.co/ZMx5t3R/Goku-shirt-01.jpg"
 												alt="Card image cap"
 											/>
 											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
+												<h5 className="card-title">Dragon Ball Z Shirt</h5>
 											</div>
+											<Link to="/">
+												<button type="button" className="btn btn-two py-2 my-2">
+													View item
+												</button>
+											</Link>
 										</div>
 										<div className="card ">
 											<img
@@ -137,6 +145,11 @@ export const UserProfileHome = () => {
 											<div className="card-body">
 												<h5 className="card-title">Awesome Shirt</h5>
 											</div>
+											<Link to="/">
+												<button type="button" className="btn btn-two py-2 my-2">
+													View item
+												</button>
+											</Link>
 										</div>
 									</div>
 								</div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../store/appContext";
 
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
@@ -9,6 +10,7 @@ export const UserSideBar = ({ username }) => {
 
 	const [dropdown, setDropdown] = useState(false);
 	const [active, setActive] = useState(false);
+	const { store, actions } = useContext(Context);
 
 	let show = "";
 	let activeOption = "";
@@ -23,10 +25,10 @@ export const UserSideBar = ({ username }) => {
 
 	return (
 		<div className="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark col-2">
-			<a className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+			<Link className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 				<svg className="bi me-2" width="40" height="32" />
 				<span className="fs-4">{username}</span>
-			</a>
+			</Link>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
 				<li
@@ -35,16 +37,13 @@ export const UserSideBar = ({ username }) => {
 					// 	setActive(!active);
 					// }}
 				>
-					<a
-						href="#"
+					<Link
+						to="/profile/user/"
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
-						aria-current="page"
-						onClick={() => {
-							history.push("/profile/user");
-						}}>
+						aria-current="page">
 						<i className="fa fa-home" />
 						<span className="ms-2">Dashboard</span>
-					</a>
+					</Link>
 				</li>
 				<li
 					className="m-2 p-2"
@@ -52,48 +51,30 @@ export const UserSideBar = ({ username }) => {
 					// 	setActive(!active);
 					// }}
 				>
-					<a
-						href="#"
-						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
-						onClick={() => {
-							history.push("/profile/user/donations");
-						}}>
+					<Link
+						to={`/profile/user/${store.user.id}/donations`}
+						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}>
 						<i className="fa fa-columns" />
 						<span className="ms-2">Donations</span>
-					</a>
+					</Link>
 				</li>
 				<li className="m-2 p-2">
-					<a
-						href="#"
-						className="nav-link text-white"
-						onClick={() => {
-							history.push("/profile/user/my-orders");
-						}}>
+					<Link to="/profile/user/my-orders" className="nav-link text-white">
 						<i className="fa fa-clipboard-list" />
 						<span className="ms-2">Orders</span>
-					</a>
+					</Link>
 				</li>
 				<li className="m-2 p-2">
-					<a
-						href="#"
-						className="nav-link text-white"
-						onClick={() => {
-							history.push("/profile/user/myaccount");
-						}}>
+					<Link to="/profile/user/myaccount" className="nav-link text-white">
 						<i className="fa fa-cog" />
 						<span className="ms-2">My Account</span>
-					</a>
+					</Link>
 				</li>
 				<li className="m-2 p-2">
-					<a
-						href="#"
-						className="nav-link text-white"
-						onClick={() => {
-							history.push("/");
-						}}>
+					<Link to="/" className="nav-link text-white">
 						<i className="fas fa-sign-out-alt" />
 						<span className="ms-2">Log Out</span>
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</div>

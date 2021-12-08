@@ -80,11 +80,13 @@ export const Home = () => {
 						</button>
 					</div>
 				</div>
-				<div className="nonprofit-partners m-1">
-					<h1 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
-						Nonprofit Partners
-					</h1>
-					<NonProfitPartners />
+				<div className="third-index">
+					<div className="nonprofit-partners m-1 giveblue-font">
+						<h1 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
+							Nonprofit Partners
+						</h1>
+						<NonProfitPartners />
+					</div>
 				</div>
 			</div>
 		</>
