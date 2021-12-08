@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 export const UserProfileDonations = props => {
 	const params = useParams();
 	return (
-		<div className="container-fluid ">
+		<div className="container">
 			<div className="h-100 p-5 bg-light border rounded-3">
 				{/* items donated table */}
 				<div className="items-donated-block">

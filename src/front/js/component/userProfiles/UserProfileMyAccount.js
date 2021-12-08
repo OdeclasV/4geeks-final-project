@@ -25,7 +25,7 @@ export const UserProfileMyAccount = props => {
 
 	return (
 		<>
-			<div className="container-fluid ">
+			<div className="container">
 				<div className="h-100 p-5 bg-light border rounded-3">
 					<div className="m-2 page-title d-flex justify-content-between">
 						{/* title */}

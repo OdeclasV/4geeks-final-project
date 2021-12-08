@@ -34,9 +34,9 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
-				<li className="m-2 p-2">
+				<li className="m-4 p-4">
 					<a
-						href=""
+						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						aria-current="page"
 						onClick={() => {
@@ -44,51 +44,54 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 								? history.push(`/profile/user/${userId}`)
 								: history.push(`/profile/nonprofit/${nonprofitId}`);
 						}}>
-						<i className="fa fa-home" />
+						<i className="fas fa-home" />
 						<span className="ms-2">Dashboard</span>
 					</a>
 				</li>
-				<li className="m-2 p-2">
+				<li className="m-4 p-4">
 					<a
+						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
 							user
 								? history.push(`/profile/user/${userId}/donations`)
 								: history.push(`/profile/nonprofit/${nonprofitId}/donations`);
 						}}>
-						<i className="fa fa-columns" />
+						<i className="fas fa-donate" />
 						<span className="ms-2">Donations</span>
 					</a>
 				</li>
 				{user ? (
-					<li className="m-2 p-2">
+					<li className="m-4 p-4">
 						<a
 							style={{ cursor: "pointer" }}
 							className="nav-link text-white"
 							onClick={() => {
 								history.push(`/profile/user/${userId}/my-orders`);
 							}}>
-							<i className="fa fa-clipboard-list" />
+							<i className="fas fa-tags" />
 							<span className="ms-2">Orders</span>
 						</a>
 					</li>
 				) : (
 					""
 				)}
-				<li className="m-2 p-2">
+				<li className="m-4 p-4">
 					<a
-						href=""
+						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
 						onClick={() => {
-							user ? history.push(`/profile/user/${userId}/myaccount`) : "";
+							user
+								? history.push(`/profile/user/${userId}/myaccount`)
+								: history.push(`/profile/nonprofit/${nonprofitId}/myaccount`);
 						}}>
-						<i className="fa fa-cog" />
+						<i className="fas fa-cog" />
 						<span className="ms-2">My Account</span>
 					</a>
 				</li>
-				<li className="m-2 p-2">
+				<li className="m-4 p-4">
 					<a
-						href="#"
+						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
 						onClick={() => {
 							history.push("/");

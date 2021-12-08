@@ -9,12 +9,11 @@ export const UserNonProfitFriends = props => {
 
 	return (
 		<>
-			<div className="container-fluid ">
+			<div className="container">
 				<div className="h-100 p-5 bg-light border rounded-3">
 					<div className="closed-orders">
 						<h1>Closed Orders</h1>
 						<h4 className="giveblue-font">Bids you&apos;ve won and the Non-Profits you&apos;ve funded!</h4>
-
 						{/* Row 1 */}
 						<div className="row-one d-flex justify-content-between">
 							<div className="overview-block m-2 p-1 bg-light border rounded-3 col-6 d-flex">
@@ -54,9 +53,6 @@ export const UserNonProfitFriends = props => {
 							</div>
 						</div>
 					</div>
-
-					{/* open orders table*/}
-
 					<div className="closed-orders">
 						<h1>Open Orders</h1>
 						<h4 className="giveblue-font">Items you are currently bidding on!</h4>
@@ -106,63 +102,7 @@ export const UserNonProfitFriends = props => {
 								</div>
 							</div>
 						</div>
-						<table className="table">
-							<thead className="thead-dark">
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Item</th>
-									<th scope="col">Closing Date</th>
-									<th scope="col">Non Profit Funded</th>
-									<th scope="col">Current Bid</th>
-									<th scope="col">Your Bid</th>
-									<th scope="col">Bid Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>cool shirt</td>
-									<td>10-Dec-21</td>
-									<td>Gotham City Cleaners</td>
-									<td>$320</td>
-									<td className="text-success">$320</td>
-									<td>You have the highest bid</td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Iron Throne</td>
-									<td>12-Dec-21</td>
-									<td>Real Good Company</td>
-									<td>$1010</td>
-									<td className="text-danger">$825</td>
-									<td>
-										<Link to="/shop/5">
-											<button type="button" className="btn btn-two py-2 my-2">
-												View item
-											</button>
-										</Link>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">3</th>
-									<td>cool shoes</td>
-									<td>16-Dec-21</td>
-									<td>Really Real Good Company</td>
-									<td>$200</td>
-									<td className="text-danger">$140</td>
-									<td>
-										<Link to="/shop/5">
-											<button type="button" className="btn btn-two py-2 my-2">
-												View item
-											</button>
-										</Link>
-									</td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
-
-					<div className="">{/* First Row */}</div>
 				</div>
 			</div>
 		</>

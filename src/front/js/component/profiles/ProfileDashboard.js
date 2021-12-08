@@ -53,7 +53,7 @@ export const ProfileDashboard = ({ nonprofit }) => {
 	console.log(getMonthName(12));
 
 	return (
-		<div className="container-fluid ">
+		<div className="container">
 			<div className="h-100 p-5 bg-light border rounded-3">
 				<h1>Donations Received</h1>
 				<table className="table">
