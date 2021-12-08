@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
 
-export const ProfileDashboard = props => {
+export const ProfileDashboard = ({ nonprofit }) => {
 	const { store, actions } = useContext(Context);
 	let { id } = useParams();
 
@@ -21,28 +21,36 @@ export const ProfileDashboard = props => {
 			}
 		});
 
-	// activeNonprofit
-	// 	? activeNonprofit.items_received.map(item => {
-	// 			console.log(item.category);
-	// 			console.log(item.item_name);
-	// 			console.log(item.posted_date);
-	// 			console.log(item.donated_by);
-	// 	  })
-	// 	: console.log("none");
-
-	//let userDonation = store.users && store.users.filter(user => user.id == item.donated_by);
-
-	const getUserNames = itemId => {
-		// store.users && store.users.filter(user => user.id == itemId);
-		store.users &&
-			store.users.map(user => {
-				if (user.id == itemId) {
-					return user;
-				}
-			});
+	// const shorthMonthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	const getMonthName = month => {
+		switch (month) {
+			case 1:
+				return "Jan";
+			case 2:
+				return "Feb";
+			case 3:
+				return "Mar";
+			case 4:
+				return "Apr";
+			case 5:
+				return "May";
+			case 6:
+				return "Jun";
+			case 7:
+				return "Jul";
+			case 8:
+				return "Aug";
+			case 9:
+				return "Sep";
+			case 10:
+				return "Oct";
+			case 11:
+				return "Nov";
+			case 12:
+				return "Dec";
+		}
 	};
-
-	console.log(getUserNames(3));
+	console.log(getMonthName(12));
 
 	return (
 		<div className="container-fluid ">
@@ -70,52 +78,38 @@ export const ProfileDashboard = props => {
 						</tr>
 
 						{activeNonprofit
-							? activeNonprofit.items_received.map(item => {
-									let itemCount = 0;
-									return (
-										<tr key={item.id}>
-											<th scope="row">{(itemCount += 1)}</th>
-											<td>{item.category}</td>
-											<td>{item.posted_date}</td>
-											<td>{getUserNames(item.donated_by)}</td>
-											<td>20-Dec-2021</td>
-											<td>8AM - 12PM</td>
-										</tr>
-									);
-							  })
+							? activeNonprofit.items_received
+									.filter(item => item.donation_type == "donation")
+									.map(item => {
+										return (
+											<tr key={item.id}>
+												<th scope="row">1</th>
+												<td>{item.category}</td>
+												<td>{`${new Date(item.posted_date).getDate()}-${getMonthName(
+													new Date(item.posted_date).getMonth() + 1
+												)}-${new Date(item.posted_date).getFullYear()}`}</td>
+												<td>
+													{store.users
+														? store.users.map(user => {
+																if (user.id == item.donated_by) {
+																	return user.name;
+																}
+														  })
+														: ""}
+												</td>
+												<td>20-Dec-2021</td>
+												<td>8AM - 12PM</td>
+											</tr>
+										);
+									})
 							: console.log("none")}
-						{/* {/* <tr>
-							<th scope="row">1</th>
-							<td>cool shirt</td>
-							<td>21-Nov-21</td>
-							<td>George</td>
-							<td>15-Dec-2021</td>
-							<td>8AM - 12PM</td>
-							{/* <td>
-								<label htmlFor="pickup-date">Select Date:</label>
-								<input type="date" id="pickup-date" name="pickup-date" />
-								<input type="submit" />
-							</td> */}
-						{/* </tr> */}
-						{/* <tr>
-							<th scope="row">2</th>
-							<td>cool pants</td>
-							<td>22-Nov-21</td>
-							<td>Gian</td>
-							<td>20-Dec-2021</td>
-							<td>12PM- 4PM</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>cool shoes</td>
-							<td>23-Nov-21</td>
-							<td>Gil</td>
-							<td>20-Dec-2021</td>
-							<td>8AM - 12PM</td>
-						</tr> */}
 					</tbody>
 				</table>
 			</div>
 		</div>
 	);
+};
+
+ProfileDashboard.propTypes = {
+	nonprofit: PropTypes.object
 };

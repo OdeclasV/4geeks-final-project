@@ -29,6 +29,9 @@ export const ProfileHome = () => {
 			}
 		});
 
+	console.log(store.loggedin);
+	console.log(store.userType);
+
 	//activeNonprofit ? console.log(activeNonprofit.items_received) : console.log("none");
 	activeNonprofit ? activeNonprofit.items_received.map(item => console.log(item.item_name)) : console.log("none");
 	return (

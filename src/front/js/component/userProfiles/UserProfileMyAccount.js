@@ -8,6 +8,21 @@ export const UserProfileMyAccount = props => {
 	const params = useParams();
 	const { store, actions } = useContext(Context);
 
+	let { id } = useParams();
+
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeUser;
+
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.users &&
+		store.users.filter(user => {
+			if (user.id == id) {
+				activeUser = user;
+			}
+		});
+
 	return (
 		<>
 			<div className="container-fluid ">
@@ -25,19 +40,23 @@ export const UserProfileMyAccount = props => {
 							<h4>
 								<strong>Name:</strong>
 							</h4>
-							<h4>
-								{store.currentuser.name} {store.currentuser.last_name}
-							</h4>
+							<h4>{activeUser ? `${activeUser.name} ${activeUser.last_name}` : ""}</h4>
 							<br />
 							<h4>
 								<strong>Email:</strong>
 							</h4>
-							<p>{store.currentuser.email}</p>
+							<p>{activeUser ? activeUser.email : ""}</p>
 							<br />
 							<h4>
 								<strong>Non Profit Friends:</strong>
 							</h4>
-							<p>{store.currentuser.nonprofitfriends}</p>
+							<p>
+								{activeUser
+									? activeUser.nonprofit_friends != null
+										? activeUser.nonprofit_friends
+										: "No friends yet"
+									: ""}
+							</p>
 							<button type="submit" className="btn btn-one">
 								Change Password
 							</button>

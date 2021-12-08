@@ -50,7 +50,6 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 				</li>
 				<li className="m-2 p-2">
 					<a
-						href=""
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
 							user
@@ -64,7 +63,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 				{user ? (
 					<li className="m-2 p-2">
 						<a
-							href=""
+							style={{ cursor: "pointer" }}
 							className="nav-link text-white"
 							onClick={() => {
 								history.push(`/profile/user/${userId}/my-orders`);
@@ -81,9 +80,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 						href=""
 						className="nav-link text-white"
 						onClick={() => {
-							user
-								? history.push(`/profile/user/${userId}/myaccount`)
-								: history.push(`/profile/nonprofit/${nonprofitId}/myaccount`);
+							user ? history.push(`/profile/user/${userId}/myaccount`) : "";
 						}}>
 						<i className="fa fa-cog" />
 						<span className="ms-2">My Account</span>
@@ -107,7 +104,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 
 SideBar.propTypes = {
 	user: PropTypes.object,
-	userId: PropTypes.number,
+	userId: PropTypes.string,
 	nonprofit: PropTypes.object,
-	nonprofitId: PropTypes.number
+	nonprofitId: PropTypes.string
 };

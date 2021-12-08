@@ -78,20 +78,31 @@ export const ProductPage = () => {
 								/>
 							</div>
 							<div>
-								<Link to="/bid-placed">
-									<button
-										type="button"
-										className="btn btn-two container-fluid col-8 py-2 my-2"
-										data-bs-toggle="modal"
-										data-bs-target="#placeBid"
-										onClick={() => {
-											setShow("true");
-											console.log(store.items[id].id);
-											actions.updateBid(store.items[id].id, currentBid);
-										}}>
-										Place Bid
-									</button>
-								</Link>
+								{store.loggedin != 0 ? (
+									<Link to="/bid-placed">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal"
+											data-bs-target="#placeBid"
+											onClick={() => {
+												setShow("true");
+												console.log(store.items[id].id);
+												actions.updateBid(store.items[id].id, currentBid);
+											}}>
+											Place Bid
+										</button>
+									</Link>
+								) : (
+									<Link to="/login">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal">
+											Login to Place a Bid
+										</button>
+									</Link>
+								)}
 							</div>
 							{/* Product Description bottom */}
 							<div className="product-details-row">
