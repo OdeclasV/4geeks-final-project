@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { Timer } from "../component/Timer";
 import { TimerProductPage } from "../component/TimerProductPage";
@@ -10,22 +11,51 @@ import { TimerProductPage } from "../component/TimerProductPage";
 export const ProductPage = () => {
 	const [product, setProduct] = useState([]);
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	const [show, setShow] = useState("false");
 	let { id } = useParams();
 
 	const [newBid, setNewBid] = useState(0);
-	console.log(store.items);
+	//console.log(store.items);
 
 	const [currentBid, setCurrentBid] = useState(store.items[id] && store.items[id].current_price + 1);
 	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
+
+	id > store.items.length - 1 ? console.log("true") : console.log("false");
 
 	return (
 		<>
 			<div className="container-fluid">
 				<div className="h-100 p-4 bg-light border rounded-3">
 					<div className="row d-flex mb-3">
-						<p className="text-start giveblue-font col">SHOP</p>
-						<p className="text-end giveblue-font col">NEXT ITEM</p>
+						{id != 0 ? (
+							<p
+								className="text-start giveblue-font col"
+								onClick={() => {
+									history.push(`/shop/${parseInt(id) - 1}`);
+									setCurrentBid(store.items[id] && store.items[id - 1].current_price + 1);
+								}}>
+								PREVIOUS ITEM
+							</p>
+						) : (
+							//empty p tag on purpose to prevent NEXT ITEM from taking whole width
+							<p className="text-start giveblue-font col" />
+						)}
+
+						{//id less than last item index in list
+						id < store.items.length - 1 ? (
+							<p
+								className="text-end giveblue-font col"
+								onClick={() => {
+									history.push(`/shop/${parseInt(id) + 1}`);
+									setCurrentBid(store.items[id] && store.items[parseInt(id) + 1].current_price + 1);
+								}}>
+								NEXT ITEM
+							</p>
+						) : (
+							//empty p tag on purpose to prevent NEXT ITEM from taking whole width
+							<p className="text-start giveblue-font col" />
+						)}
 					</div>
 					<div className="row">
 						<div className="d-flex justify-content-center">
@@ -88,7 +118,6 @@ export const ProductPage = () => {
 											data-bs-target="#placeBid"
 											onClick={() => {
 												setShow("true");
-												console.log(store.items[id].id);
 												actions.updateBid(store.items[id].id, currentBid);
 											}}>
 											Place Bid
