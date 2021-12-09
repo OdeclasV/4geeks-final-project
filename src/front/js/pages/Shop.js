@@ -9,8 +9,20 @@ export const Shop = () => {
 
 	// list of dropdowns and their options to render
 	const dropdowns = [
-		{ name: "Filter", options: ["clothing", "books", "furniture"] },
-		{ name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
+		{
+			name: "Filter",
+			options: [
+				"clothing",
+				"books",
+				"furniture",
+				"art",
+				"electronics",
+				"toys",
+				"cars",
+				"jewelry and watches"
+			].sort()
+		}
+		// { name: "Sort By", options: ["Low To High", "Buy", "Bid"] }
 	];
 
 	return (

@@ -3,6 +3,10 @@ body {
 	background-color: #f1f1f1;
 }
 
+p, h1, h2, h3, h4 {
+    color: #212121;
+}
+
 // gradient animated background
 // body {
 // 	background: linear-gradient(-45deg, #A3CCCE, #D1EDEC, #aed3e0, #98e6d3);
@@ -40,7 +44,7 @@ body {
     text-decoration: none;
 }
 .nav-menu-link:hover {
-    color: #2541B2;
+    color: #21c187;
 }
 
 
@@ -53,3 +57,26 @@ body {
 	border-color: red;
 }
 
+// nav tabs
+
+// .nav-tabs {
+//     background-color: #5bb99a;
+//     color: #eeeeee;
+// }
+
+// .nav-link {
+//     color: #212121;
+// }
+
+// .nav-link .active {
+//     color: #5bb99a;
+// }
+
+// .nav-tabs:hover {
+//     color: #212121;
+// }
+
+// .nav-link:hover {
+//     background-color: #175b9d !important;
+//     color: #ffffff;
+// }

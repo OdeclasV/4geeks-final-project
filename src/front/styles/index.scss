@@ -28,14 +28,14 @@
 
 .btn-dark {
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd
+    background-color: #285ae8;
+    border-color: #285ae8;
 }
 
 .btn-dark:hover {
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd
+    background-color: #285ae8;
+    border-color: #285ae8;
 }
 
 .nav-pills {
@@ -45,12 +45,12 @@
 
 .nav-pills {
     border-radius: 0px;
-    border-bottom: 1px solid #0d6efd40
+    border-bottom: 1px solid #285ae8
 }
 
 .nav-item {
     display: table-cell;
-    background: #0d6efd2e
+    background: #285ae8
 }
 
 .form {
@@ -83,7 +83,7 @@
 .btn-one:hover {
     text-decoration: none! important;
     color: #fff;
-    background: linear-gradient(-135deg, #43cea2, #185a9d);
+    background: linear-gradient(-135deg, #43cea2, #285ae8);
 	transition: transform 400ms ease-in;
     border: none;
 }
@@ -92,7 +92,7 @@
     text-decoration: none;
     color: #fff;
     background: rgba(59,173,227,1);
-    background: linear-gradient(45deg,#43cea2, #185a9d);
+    background: linear-gradient(45deg,#21c187, #285ae8);
     border: none;
 
     
@@ -101,7 +101,7 @@
 .btn-two:hover {
     text-decoration: none;
     color: #fff;
-    background: linear-gradient(-135deg, #43cea2, #185a9d);
+    background: linear-gradient(-135deg, #21c187, #285ae8);
 	transition: transform 100ms ease-in;
     border: none;
 }
@@ -109,7 +109,7 @@
 .btn-three {
     text-decoration: none;
     color: #fff;
-    background: #3E8E6D;
+    background: #21c187;
     border: none;
 
     
@@ -118,7 +118,7 @@
 .btn-three:hover {
     text-decoration: none;
     color: #fff;
-    background: #185a9d;
+    background: #285ae8;
 	transition: transform 400ms ease-in;
     border: none;
 }
@@ -127,7 +127,7 @@
 .btn-four {
     text-decoration: none;
     color: #fff;
-    background: #185a9d;
+    background: #285ae8;
     border: none;
 
     
@@ -136,7 +136,7 @@
 .btn-four:hover {
     text-decoration: none;
     color: #fff;
-    background: #3E8E6D;
+    background: #21c187;
 	transition: transform 400ms ease-in;
     border: none;
 }
@@ -144,7 +144,7 @@
 // shop item styling
 
 .giveblue-font {
-    color: #175b9d;
+    color: #285ae8;
 }
 // card glow border with gradient
 
@@ -171,7 +171,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, #43cea2, #185a9d);
+    background: linear-gradient(45deg, #21c187, #285ae8);
     z-index: -2;
     filter: blur(20px);
 }
@@ -214,22 +214,26 @@
 
 // poduct page
 
+// poduct page
+
 .product-img-block {
-    
-    
     object-fit: cover;
     background-color:#FFFFFF;
     overflow: hidden;
-    border: #195b9e solid 2px;
+    border: #285ae8 solid 2px;
     border-radius: 10px;
 }
 
-.product-info-block {
-    width: 50%;
-    height: 500px;
+.product-info-box {
+    
+    background-color:#FFFFFF;
+    border: #285ae8 solid 2px;
+    border-radius: 10px;
+}
+
+.product-details-box {
     background-color:#FFFFFF;
     margin-top:10px;
-    border: #195b9e solid 2px;
+    border: #285ae8 solid 2px;
     border-radius: 10px;
 }
-
