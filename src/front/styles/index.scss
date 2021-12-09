@@ -214,9 +214,9 @@
 
 // poduct page
 
+// poduct page
+
 .product-img-block {
-    
-    
     object-fit: cover;
     background-color:#FFFFFF;
     overflow: hidden;
@@ -224,12 +224,16 @@
     border-radius: 10px;
 }
 
-.product-info-block {
-    width: 50%;
-    height: 500px;
+.product-info-box {
+    
+    background-color:#FFFFFF;
+    border: #195b9e solid 2px;
+    border-radius: 10px;
+}
+
+.product-details-box {
     background-color:#FFFFFF;
     margin-top:10px;
     border: #195b9e solid 2px;
     border-radius: 10px;
 }
-
