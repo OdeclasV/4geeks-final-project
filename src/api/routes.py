@@ -208,7 +208,15 @@ def create_item():
 
     
     items = Item.query.all()
-    all_items = list(map(lambda x: x.serialize(), items))
+    def add_nonprofit(item):
+        item = item.serialize()
+        nonprofit = NonProfit.query.get(item["donate_to"])
+        nonprofit = nonprofit.serialize()
+        item["donate_to"] = nonprofit
+
+        return item
+
+    all_items = list(map(add_nonprofit, items))
 
     return jsonify(all_items), 200
 

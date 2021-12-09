@@ -166,7 +166,9 @@ export const ProductPage = () => {
 						</div>
 						<div className="col">
 							<h4 className="giveblue-font">Funds going to:</h4>
-							<p className="card-text item-condition">{store.items[id] && store.items[id].donate_to}</p>
+							<p className="card-text item-condition">
+								{store.items[id] && store.items[id].donate_to.name}
+							</p>
 						</div>
 					</div>
 				</div>
