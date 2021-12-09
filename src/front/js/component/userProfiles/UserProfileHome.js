@@ -215,24 +215,6 @@ export const UserProfileHome = () => {
 								</div>
 							</DragDropContext>
 						</div>
-						<div className="items-to-drag">
-							{boxes.map(box => {
-								return (
-									<div
-										className="overview-block p-2 m-2 bg-light border rounded-3 col-6"
-										key={box.id}>
-										<h3>{box.title}</h3>
-										<h2>{formatter.format(store.currentuser.totalfundsdonated)}</h2>
-										<h4 className="text-success">
-											{" "}
-											<i className="fas fa-arrow-up" />
-											5.27%
-										</h4>
-										<p>Since last month</p>
-									</div>
-								);
-							})}
-						</div>
 					</div>
 				</div>
 			</div>
