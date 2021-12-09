@@ -83,9 +83,7 @@ export const Home = () => {
 					</div>
 				</div>
 				<div className="row flex-lg-row align-items-center g-5 py-5 nonprofit-partners m-1">
-					<h3 className="display-5 fw-bold lh-1 mb-3" style={{ textAlign: "center" }}>
-						Nonprofit Friends
-					</h3>
+					<h3 className=" giveblue-font text-center display-5 fw-bold lh-1 mb-3">Nonprofit Friends</h3>
 					<NonProfitPartners />
 				</div>
 			</div>
