@@ -110,7 +110,7 @@ export const ProductPage = () => {
 									/>
 								</div>
 								<div>
-									<Link to="/bid-placed">
+									{/* <Link to="/bid-placed">
 										<button
 											type="button"
 											className="btn btn-two container-fluid col-8 py-2 my-2"
@@ -122,8 +122,7 @@ export const ProductPage = () => {
 											}}>
 											Place Bid
 										</button>
-									</Link>
-									{/* 											
+									</Link> */}
 									{store.loggedin != 0 ? (
 										<Link to="/bid-placed">
 											<button
@@ -148,7 +147,7 @@ export const ProductPage = () => {
 												Login to Place a Bid
 											</button>
 										</Link>
-									)} */}
+									)}
 								</div>
 							</div>
 						</div>

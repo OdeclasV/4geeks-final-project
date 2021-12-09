@@ -35,7 +35,7 @@ export const TimerProductPage = ({ endDate }) => {
 			return;
 		}
 		timerComponents.push(
-			<span>
+			<span style={{ fontWeight: "bold" }}>
 				{timeLeft[interval]} {interval}{" "}
 			</span>
 		);
