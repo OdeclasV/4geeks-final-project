@@ -105,11 +105,11 @@ export const SignUp = () => {
 							role="tabpanel"
 							aria-labelledby="pills-signup-nonprofit">
 							<form className="justify-content-md-center ">
-								<div className="mb-3 px-4">
+								<div className="mb-3">
 									<label className="form-label">NonProfit Name</label>
 									<input type="string" className="form-control" id="NonProfitName" />
 								</div>
-								<div className="mb-3 px-4">
+								<div className="mb-3">
 									<label className="form-label">Email</label>
 									<input
 										type="email"
@@ -121,9 +121,85 @@ export const SignUp = () => {
 										Well never share your email with anyone else.
 									</div>
 								</div>
-								<div className="mb-3 px-4">
+								<div className="mb-3">
 									<label className="form-label">Password</label>
 									<input type="password" className="form-control" id="NonProfitPassword" />
+								</div>
+
+								<div className="mb-3">
+									<label className="form-label">Check All Items You Accept</label>
+									<div className="row px-3">
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckDefault"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckDefault">
+												Clothes
+											</label>
+										</div>
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckChecked"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckChecked">
+												Furniture
+											</label>
+										</div>
+									</div>
+									<div className="row px-3">
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckDefault"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckDefault">
+												Electronics
+											</label>
+										</div>
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckChecked"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckChecked">
+												Household
+											</label>
+										</div>
+									</div>
+									<div className="row px-3">
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckDefault"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckDefault">
+												Baby Products
+											</label>
+										</div>
+										<div className="form-check col-6">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												value=""
+												id="flexCheckChecked"
+											/>
+											<label className="form-check-label" htmlFor="flexCheckChecked">
+												Toys
+											</label>
+										</div>
+									</div>
 								</div>
 								<div className="text-center px-4">
 									<Link to="/profile/nonprofit">

@@ -4,16 +4,13 @@ import { Link } from "react-router-dom";
 
 export const AuctionFurniture = () => {
 	const [typeOfFurniture, settypeOfFurniture] = useState("Select a value");
+	const { store, actions } = useContext(Context);
+
 	const [condition, setCondition] = useState("Select a value");
-	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [itemName, setItemName] = useState("");
 	const [itemDescription, setItemDescription] = useState("");
-	const { store, actions } = useContext(Context);
 	const [selectedImage, setSelectedImage] = useState(null);
-
-	// let start_date = new Date(store.items[1].posted_date);
-	// let end_date = start_date.setDate(start_date.getDate() + 7);
-	// console.log(end_date);
 
 	const [auctionItem, setAuctionItem] = useState({
 		bid_count: 0,
@@ -23,15 +20,25 @@ export const AuctionFurniture = () => {
 		item_description: null,
 		donate_to: null,
 		donated_by: null,
-		donation_type: null,
+		donation_type: "auction",
 		image: null,
 		item_type: null,
 		original_price: null,
-		posted_date: null,
 		end_date: null,
 		num_of_bids: 0
 	});
 
+	const imageUploader = async the_image => {
+		const data = new FormData();
+		data.append("image", the_image);
+		data.append("key", "d05f626f3e944b28f9d8dff843aafe2c");
+		let response = await fetch("https://api.imgbb.com/1/upload", {
+			method: "POST",
+			body: data
+		});
+		let image_info = await response.json();
+		setAuctionItem({ ...auctionItem, image: image_info.data.url });
+	};
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
@@ -54,7 +61,6 @@ export const AuctionFurniture = () => {
 							<option value="chair">Chair</option>
 							<option value="sofa">Sofa</option>
 						</select>
-						{typeOfFurniture == "chair" ? <h3>Hello</h3> : ""}
 					</div>
 
 					<div className="form-group">
@@ -116,23 +122,6 @@ export const AuctionFurniture = () => {
 							/>
 						</div>
 					</div>
-					{/* <div className="form-group">
-						<label htmlFor="end_date" className="col-sm-3 control-label">
-							Price
-						</label>
-						<div className="col-sm-9">
-							<input
-								type="text"
-								className="form-control"
-								name="end_date"
-								id="end_date"
-								value={auctionItem.end_date}
-								onChange={e => {
-									setAuctionItem({ ...auctionItem, original_price: e.target.value });
-								}}
-							/>
-						</div>
-					</div> */}
 
 					<div className="form-group">
 						<label htmlFor="description" className="control-label mt-3">
@@ -153,21 +142,27 @@ export const AuctionFurniture = () => {
 					</div>
 
 					<div className="form-group mt-1">
-						{selectedImage && (
-							<div>
-								<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
-								<br />
-								<button onClick={() => setSelectedImage(null)}>Remove</button>
-							</div>
-						)}
-						<input
-							type="file"
-							name="myImage"
-							onChange={event => {
-								console.log(event.target.files[0]);
-								setSelectedImage(event.target.files[0]);
-							}}
-						/>
+						<label htmlFor="type of clothing" className="control-label mt-3 pr-3">
+							Upload Image
+						</label>
+						<div>
+							{selectedImage && (
+								<div>
+									<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+									<br />
+									<button onClick={() => setSelectedImage(null)}>Remove</button>
+								</div>
+							)}
+							<input
+								type="file"
+								name="myImage"
+								onChange={event => {
+									// console.log(event.target.files[0]);
+									setSelectedImage(event.target.files[0]);
+									imageUploader(event.target.files[0]);
+								}}
+							/>
+						</div>
 					</div>
 
 					<div className="form-group">
@@ -177,28 +172,29 @@ export const AuctionFurniture = () => {
 						<select
 							className="form-select"
 							aria-label="Default select example"
-							value={nonProfit}
+							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
-								setAuctionItem({ ...auctionItem, donate: e.target.value });
+								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
 						</select>
 					</div>
 
 					<div className="form-group">
 						<div className="submit-button">
 							<Link
-								to="/"
+								to="donation-placed"
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {
-									setAuctionItem({ ...auctionItem, posted_date: new Date() });
-									//setAuctionItem({ ...auctionItem, end_date: auctionItem.posted_date.getDate() + 7 });
 									actions.addAuctionItem(auctionItem);
 								}}>
 								Add Item

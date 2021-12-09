@@ -9,21 +9,36 @@ import { ProfileDashboard } from "../../component/profiles/ProfileDashboard";
 import { ProfileWishlist } from "../../component/profiles/ProfileWhislist";
 import { ProfileHome } from "../../component/profiles/ProfileHome";
 import { ProfileMyAccount } from "../../component/profiles/ProfileMyAccount";
-// import { BarGraph } from "../../component/BarGraph";
 
 export const NonProfitProfile = props => {
 	const params = useParams();
 	const history = useHistory();
 
+	let { id } = useParams();
+	//console.log(index);
+
 	const { store, actions } = useContext(Context);
+
+	// setting logged in nonprofit in order to
+	// use its info in the dashboard
+	let activeNonprofit;
+
+	// filters nonprofit array and selects
+	// nonprofit based on id
+	store.nonprofits &&
+		store.nonprofits.filter(nonprofit => {
+			if (nonprofit.id == id) {
+				activeNonprofit = nonprofit;
+			}
+		});
 
 	const clickedProfile = profile => {
 		if (profile == "donations") {
-			return <ProfileDashboard />;
+			return <ProfileDashboard nonprofit={activeNonprofit} />;
 		} else if (profile == "wishlist") {
 			return <ProfileWishlist />;
 		} else if (profile == "myaccount") {
-			return <ProfileMyAccount />;
+			return <ProfileMyAccount nonprofit={activeNonprofit} />;
 		} else {
 			return <ProfileHome />;
 		}
@@ -31,8 +46,7 @@ export const NonProfitProfile = props => {
 
 	return (
 		<div className="d-flex">
-			<SideBar username="Non-profit" />
-			{/* <BarGraph /> */}
+			<SideBar nonprofit={activeNonprofit} nonprofitId={id} />
 			{clickedProfile(params.profileoption)}
 		</div>
 	);

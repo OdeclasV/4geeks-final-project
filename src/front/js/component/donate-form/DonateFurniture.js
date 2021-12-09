@@ -8,6 +8,22 @@ export const DonateFurniture = () => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { store, actions } = useContext(Context);
 
+	const [donationItem, setDonationItem] = useState({
+		bid_count: 0,
+		category: "furniture",
+		condition: null,
+		donate_to: nonprofit,
+		donated_by: null,
+		donation_type: "donation",
+		image: null,
+		item_name: null,
+		item_type: null,
+		item_description: null,
+		original_price: 0,
+		posted_date: null,
+		end_date: null
+	});
+
 	return (
 		<>
 			<div className="d-flex justify-content-center align-items-center mt-5">
@@ -23,11 +39,12 @@ export const DonateFurniture = () => {
 							value={typeOfFurniture}
 							onChange={e => {
 								setTypeOfFurniture(e.target.value);
+								setDonationItem({ ...donationItem, item_type: e.target.value });
 							}}>
 							<option value="Select a value">Select a value</option>
-							<option value="t-shirt">Dining Table</option>
-							<option value="jacket">Chair</option>
-							<option value="pants">Sofa</option>
+							<option value="dining table">Dining Table</option>
+							<option value="chair">Chair</option>
+							<option value="sofa">Sofa</option>
 						</select>
 					</div>
 
@@ -42,22 +59,10 @@ export const DonateFurniture = () => {
 								className="form-control"
 								name="name"
 								id="name"
-								placeholder="Men's Patagonia Sweater"
-							/>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<label htmlFor="name" className="control-label mt-3">
-							Size
-						</label>
-						<div className="">
-							<input
-								type="text"
-								className="form-control"
-								name="name"
-								id="name"
-								placeholder="Small, Medium, Large / 72 inches x 36 inches"
+								placeholder="The Iron Throne"
+								onChange={e => {
+									setDonationItem({ ...donationItem, item_name: e.target.value });
+								}}
 							/>
 						</div>
 					</div>
@@ -68,7 +73,12 @@ export const DonateFurniture = () => {
 						</label>
 
 						<div className="">
-							<textarea className="form-control" />
+							<textarea
+								className="form-control"
+								onChange={e => {
+									setDonationItem({ ...donationItem, item_description: e.target.value });
+								}}
+							/>
 						</div>
 					</div>
 
@@ -100,20 +110,87 @@ export const DonateFurniture = () => {
 							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
+								setDonationItem({ ...donationItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
+						</select>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Delivery Method:
+						</label>
+						<div className="row mx-3">
+							<div className="form-check col">
+								<input
+									type="radio"
+									className="form-check-input"
+									id="radio1"
+									name="optradio"
+									value="option1"
+									checked
+								/>
+								Pick Up
+								<label className="form-check-label" htmlFor="radio1" />
+							</div>
+
+							<div className="form-check col">
+								<input
+									type="radio"
+									className="form-check-input"
+									id="radio2"
+									name="optradio"
+									value="option2"
+								/>
+								Drop Off
+								<label className="form-check-label" htmlFor="radio2" />
+							</div>
+						</div>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Available Dates:
+						</label>
+						{/* <input type="date" id="pickup-date" name="pickup-date" /> */}
+						<select className="form-select">
+							<option value="Select a value">Choose a Date</option>
+							<option value="t-shirt">Dec. 15, 2021</option>
+							<option value="jacket">Dec. 17, 2021</option>
+							<option value="pants">Dec. 18, 2021</option>
+							<option value="jacket">Dec. 20, 2021</option>
+							<option value="pants">Dec. 21, 2021</option>
+						</select>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="about" className="control-label mt-3">
+							Available Times:
+						</label>
+						{/* <input type="date" id="pickup-date" name="pickup-date" /> */}
+						<select className="form-select">
+							<option value="Select a value">Choose a Window</option>
+							<option value="t-shirt">8AM - 12PM</option>
+							<option value="jacket">12PM - 4PM</option>
+							<option value="pants">4PM - 8PM</option>
 						</select>
 					</div>
 
 					<div className="form-group">
 						<div className="submit-button">
-							<Link to="/">
-								<button type="submit" className="btn btn-two container mt-3">
-									Add Item
+							<Link to="/donation-placed">
+								<button
+									type="submit"
+									className="btn btn-two container mt-3"
+									onClick={() => actions.addAuctionItem(donationItem)}>
+									Donate Item
 								</button>
 							</Link>
 						</div>

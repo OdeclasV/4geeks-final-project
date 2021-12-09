@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const AuctionClothing = () => {
 	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
 	const [condition, setCondition] = useState("Select a value");
-	const [nonProfit, setNonProfit] = useState("Select a NonProfit");
+	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [itemName, setItemName] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [itemDescription, setItemDescription] = useState("");
@@ -20,9 +20,9 @@ export const AuctionClothing = () => {
 		item_description: null,
 		donate_to: null,
 		donated_by: null,
-		donation_type: null,
+		donation_type: "auction",
 		image: null,
-		item_type: "2",
+		item_type: null,
 		original_price: null,
 		posted_date: null,
 		end_date: null,
@@ -51,6 +51,7 @@ export const AuctionClothing = () => {
 						</label>
 
 						<select
+							required
 							className="form-select"
 							aria-label="Default select clothes"
 							value={typeOfClothes}
@@ -71,6 +72,7 @@ export const AuctionClothing = () => {
 						</label>
 
 						<select
+							required
 							className="form-select"
 							aria-label="Default select condition"
 							value={condition}
@@ -92,6 +94,7 @@ export const AuctionClothing = () => {
 
 						<div className="">
 							<input
+								required
 								type="text"
 								className="form-control"
 								name="name"
@@ -112,6 +115,7 @@ export const AuctionClothing = () => {
 						</label>
 						<div className="">
 							<input
+								required
 								type="text"
 								className="form-control"
 								name="price"
@@ -131,6 +135,7 @@ export const AuctionClothing = () => {
 
 						<div className="">
 							<textarea
+								required
 								className="form-control"
 								value={itemDescription}
 								onChange={e => {
@@ -142,49 +147,59 @@ export const AuctionClothing = () => {
 					</div>
 
 					<div className="form-group mt-1">
-						{selectedImage && (
-							<div>
-								<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
-								<br />
-								<button onClick={() => setSelectedImage(null)}>Remove</button>
-							</div>
-						)}
-						<input
-							type="file"
-							name="myImage"
-							onChange={event => {
-								// console.log(event.target.files[0]); why index 0?
-								setSelectedImage(event.target.files[0]);
-								imageUploader(event.target.files[0]);
-							}}
-						/>
+						<label htmlFor="type of clothing" className="control-label mt-3 pr-3">
+							Upload Image
+						</label>
+						<div>
+							{selectedImage && (
+								<div>
+									<img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+									<br />
+									<button onClick={() => setSelectedImage(null)}>Remove</button>
+								</div>
+							)}
+							<input
+								required
+								type="file"
+								name="myImage"
+								onChange={event => {
+									// console.log(event.target.files[0]); why index 0?
+									setSelectedImage(event.target.files[0]);
+									imageUploader(event.target.files[0]);
+								}}
+							/>
+						</div>
 					</div>
 
+					{/* <ChooseNonProfit /> */}
 					<div className="form-group">
 						<label htmlFor="description" className="control-label mt-3">
 							Choose Nonprofit
 						</label>
 						<select
+							required
 							className="form-select"
 							aria-label="Default select example"
-							value={nonProfit}
+							value={nonprofit}
 							onChange={e => {
 								setNonProfit(e.target.value);
 								setAuctionItem({ ...auctionItem, donate_to: e.target.value });
 							}}>
 							<option value="Select a NonProfit">Select a NonProfit</option>
-							<option value="the-cat-network">The Cat Network</option>
-							<option value="universal-aid-for-children">Universal Aid for Children</option>
-							<option value="global-empowerment-mission">Global Empowerment Mission</option>
-							<option value="camillus-house">Camillus House</option>
+							{store.nonprofits.map(nonprofit => {
+								return (
+									<option value={nonprofit.id} key={nonprofit.id}>
+										{nonprofit.name}
+									</option>
+								);
+							})}
 						</select>
-						{/* <ChooseNonProfit /> */}
 					</div>
 
 					<div className="form-group">
 						<div className="submit-button">
 							<Link
-								to="/"
+								to="/donation-placed"
 								type="submit"
 								className="btn btn-two container mt-3"
 								onClick={() => {

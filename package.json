@@ -82,6 +82,7 @@
 		"js": "^0.1.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.14.0",
+		"react-beautiful-dnd": "^13.1.0",
 		"react-chartjs-2": "^4.0.0",
 		"react-chartjs-3": "^2.7.7",
 		"react-dom": "^16.8.4",

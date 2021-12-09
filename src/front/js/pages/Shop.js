@@ -62,13 +62,15 @@ export const Shop = () => {
 						</div>
 					);
 				})}
-				<Link
-					className="giveblue-font text-decoration-none align-self-center m-2"
-					onClick={() => {
-						setfilterOption("");
-					}}>
-					Clear All
-				</Link>
+				<div className="m-1">
+					<button
+						className="btn btn-one"
+						onClick={() => {
+							setfilterOption("");
+						}}>
+						Clear All
+					</button>
+				</div>
 			</div>
 			<div className="shop-items">
 				<ul className="d-flex justify-content-around flex-wrap">

@@ -14,8 +14,34 @@ export const LoginSignup = ({ match, index }) => {
 	const history = useHistory();
 
 	const [userEmail, setUserEmail] = useState("");
-	let userSignIn = userEmail.includes("user.com");
-	let nonProfitSignIn = userEmail.includes("nonprofit.com");
+	// let userSignIn = userEmail.includes(allowedNonprofitEmails);
+	// //let nonProfitSignIn = userEmail.includes("");
+
+	// nonprofit and user validation for login
+	let allowednonProfit;
+	let allowedUser;
+
+	// creates array of all existing nonprofit emails
+	let allowedNonprofitEmails = store.nonprofits.map(nonprofit => {
+		return nonprofit.email;
+	});
+
+	// creates array of all existing user emails
+	let allowedUserEmails = store.users.map(user => {
+		return user.email;
+	});
+
+	// assigns index of specific nonprofit to allowedNonProfit
+	// this is needed to render right info in nonprofit dashboard
+	if (allowedNonprofitEmails.includes(userEmail)) {
+		allowednonProfit = store.nonprofits[allowedNonprofitEmails.indexOf(userEmail)].id;
+	}
+
+	// assigns index of specific user to allowedUser
+	// this is needed to render right info in user dashboard
+	if (allowedUserEmails.includes(userEmail)) {
+		allowedUser = store.users[allowedUserEmails.indexOf(userEmail)].id;
+	}
 
 	return (
 		<>
@@ -37,22 +63,32 @@ export const LoginSignup = ({ match, index }) => {
 							/>
 							<input type="password" className="form-control" placeholder="Password" />
 							{/* some kind of validation here if email and password match then use that profile index in link below */}
-							{userSignIn ? (
-								<Link to="/profile/user">
-									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
-										Login User
-									</button>
-								</Link>
-							) : nonProfitSignIn ? (
-								<Link to={`/profile/nonprofit/${index}`}>
-									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+							{allowednonProfit ? (
+								// users is sent to specific nonprofit, per their id
+								<Link to={`/profile/nonprofit/${allowednonProfit}`}>
+									<button
+										type="button"
+										className="btn btn-one btn-lg px-4 container-fluid"
+										onClick={() => actions.login("nonprofit", allowednonProfit)}>
 										Login Non Profit
 									</button>
 								</Link>
+							) : allowedUser ? (
+								// users is sent to specific user, per their id
+								<Link to={`/profile/user/${allowedUser}`}>
+									<button
+										type="button"
+										className="btn btn-one btn-lg px-4 container-fluid"
+										onClick={() => actions.login("user", allowedUser)}>
+										Login User
+									</button>
+								</Link>
 							) : (
-								<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
-									Login
-								</button>
+								<Link to="/">
+									<button type="button" className="btn btn-one btn-lg px-4 container-fluid">
+										Login
+									</button>
+								</Link>
 							)}
 						</div>
 

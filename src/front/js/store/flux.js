@@ -1,15 +1,16 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
+	const currentURL = "https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io";
+	// const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
 
 	return {
 		store: {
-			message: null,
-			//hardcoding these items here for the moment
 			items: [],
 			bids: [],
 			shoppingCartItems: [],
 			nonprofits: [],
 			users: [],
+			loggedin: 0, //uses user id
+			userType: "",
 			currentnonprofit: {
 				id: 1,
 				name: "good non-profit",
@@ -31,6 +32,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+			login: (userType, userID) => {
+				setStore({ loggedin: userID, userType: userType });
+			},
+			logout: () => {
+				setStore({
+					loggedin: 0
+				});
+			},
+			getUsers: () => {
+				fetch(`${currentURL}/api/user`)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ users: data });
+					})
+					.catch(err => console.error("Error:", err));
+			},
 			getItems: () => {
 				fetch(`${currentURL}/api/items`)
 					.then(response => {
@@ -40,8 +62,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
-						setStore({ items: data });
+						//console.log(data);
+						let shopOnlyItems = [];
+						data.filter(item => {
+							item.donation_type == "auction" ? shopOnlyItems.push(item) : shopOnlyItems;
+						});
+						setStore({ items: shopOnlyItems });
+						//console.log(getStore().items);
+						//console.log(shopOnlyItems);
+						// setStore({ items: data });
 					})
 					.catch(err => console.error("Error:", err));
 			},
@@ -55,10 +84,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
+						//console.log(data);
 						setStore({ bids: data });
 					});
 			},
+
 			getNonprofits: () => {
 				fetch(`${currentURL}/api/nonprofit`)
 					.then(response => {
@@ -73,15 +103,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			addToShoppingCart: (item, price, image) => {
-				let { shoppingCartItems } = getStore();
-				let items = { name: item, price: price, image: image };
-				// shoppingCartItems.push(items);
-				if (!shoppingCartItems.filter(element => element.name == item).length) {
-					setStore({ shoppingCartItems: [...shoppingCartItems, items] });
-				} // change to item.id
-			},
-
 			addAuctionItem: item => {
 				fetch(`${currentURL}/api/items`, {
 					method: "POST",
@@ -90,14 +111,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
+						setStore({ items: data });
 						console.log(data);
-						let { bids } = getStore();
-						setStore({ items: data[0] });
-						setStore({ bids: [...bids, data[1]] });
-						console.log(getStore().bids);
+						// setStore({ bids: [...bids, data[1]] });
+						// console.log(getStore().bids);
 					})
 					.catch(err => console.error("Error:", err));
 			},
+
+			// donateItem: item => {
+
+			// },
+
 			updateBid: (id, currentBid) => {
 				fetch(`${currentURL}/api/items/${id}`, {
 					method: "PUT",
@@ -107,37 +132,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 					.then(response => response.json())
-					.then(data => setStore({ items: data }))
+					.then(data => {
+						console.log(data);
+						let shopOnlyItems = [];
+						data.filter(item => {
+							item.donation_type == "auction" ? shopOnlyItems.push(item) : shopOnlyItems;
+						});
+						setStore({ items: shopOnlyItems });
+						//console.log(getStore().items);
+						//console.log(shopOnlyItems);
+						// setStore({ items: data });
+					})
 					.catch(err => console.error("Error:", err));
-			},
+			}
 
-			createBid: (id, minimunBid, currentPrice, numOfBids) => {
-				fetch(`${currentURL}/api/bid`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						item_id: id,
-						current_price: currentPrice,
-						num_of_bids: numOfBids
-					})
-				})
-					.then(response => {
-						if (response.ok) {
-							fetch(`${currentURL}/api/items`)
-								.then(response => {
-									if (!response.ok) {
-										throw new Error(response.statusText);
-									}
-									return response.json();
-								})
-								.then(data => {
-									console.log(data);
-									setStore({ items: data });
-								});
-						}
-					})
-					.catch(err => console.error("Error:", err));
-			},
+			// createBid: (id, minimunBid, currentPrice, numOfBids) => {
+			// 	fetch(`${currentURL}/api/bid`, {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({
+			// 			item_id: id,
+			// 			current_price: currentPrice,
+			// 			num_of_bids: numOfBids
+			// 		})
+			// 	})
+			// 		.then(response => {
+			// 			if (response.ok) {
+			// 				fetch(`${currentURL}/api/items`)
+			// 					.then(response => {
+			// 						if (!response.ok) {
+			// 							throw new Error(response.statusText);
+			// 						}
+			// 						return response.json();
+			// 					})
+			// 					.then(data => {
+			// 						//console.log(data);
+			// 						setStore({ items: data });
+			// 					});
+			// 			}
+			// 		})
+			// 		.catch(err => console.error("Error:", err));
+			// },
 
 			// updateBid: bid => {
 			// 	fetch(`${currentURL}/api/bid/${bid.id}`, {
@@ -162,12 +197,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		})
 			// 		.catch(err => console.error("Error:", err));
 			// },
-
-			addWishlistItem: item => {
-				let { items } = getStore();
-
-				setStore({ items: [...items, item] });
-			}
 		}
 	};
 };

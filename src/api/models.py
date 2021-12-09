@@ -32,9 +32,9 @@ class NonProfit(db.Model):
     description = db.Column(db.String(250), unique=False, nullable=True)
     nonprofit_logo = db.Column(db.String(250),unique=False, nullable=True )
     wish_list_items = db.Column(db.String(250), unique=False, nullable=True)
-    items_received = db.Column(db.String(250), unique=False, nullable=True)
+    items_received = db.relationship('Item', backref='nonprofit', lazy=True)
     total_profits = db.Column(db.Integer, unique=False, nullable=True)
-    donated_to = db.relationship('Item', backref='nonprofit', lazy=True)
+    #donated_to = db.relationship('Item', backref='nonprofit', lazy=True)
     transactions = db.relationship('Transaction', backref='nonprofit', lazy=True)
 
     def serialize(self):
@@ -46,7 +46,7 @@ class NonProfit(db.Model):
             "description": self.description,
             "nonprofit_logo": self.nonprofit_logo,
             "wish_list_items": self.wish_list_items,
-            "items_received": self.items_received,
+            "items_received": list(map(lambda item: item.serialize(), self.items_received)),
             "total_profits": self.total_profits
         }
 
@@ -96,6 +96,8 @@ class Bid(db.Model):
     created_date = db.Column(db.String(250), unique=False, nullable=True)
     num_of_bids = db.Column(db.String(250), unique=False, nullable=True)
     current_price = db.Column(db.Integer, unique=False, nullable=True)  # items' current price 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+
 
     def serialize(self):
         return {
@@ -104,7 +106,8 @@ class Bid(db.Model):
             "minimun_bid": self.minimun_bid,
             "created_date": self.created_date,
             "num_of_bids": self.num_of_bids,
-            "current_price": self.current_price
+            "current_price": self.current_price,
+            "user_id": self.user_id
         }
 
 class Transaction(db.Model):

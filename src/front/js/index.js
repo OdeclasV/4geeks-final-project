@@ -1,6 +1,7 @@
 //import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 //include bootstrap npm library into the bundle
 import "bootstrap/dist/css/bootstrap.min.css";

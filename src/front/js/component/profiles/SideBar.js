@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { useHistory } from "react-router";
+import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-export const SideBar = ({ username }) => {
+export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 	const history = useHistory();
+	const { store, actions } = useContext(Context);
 
 	const [dropdown, setDropdown] = useState(false);
 	const [active, setActive] = useState(false);
@@ -22,71 +25,73 @@ export const SideBar = ({ username }) => {
 	}
 
 	return (
-		<div className="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark col-2">
-			<a className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+		<div className="d-flex flex-column  flex-shrink-0 p-3 text-white bg-dark" style={{ width: "20%" }}>
+			<a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 				<svg className="bi me-2" width="40" height="32" />
-				<span className="fs-4">{username}</span>
+				<span className="fs-4">
+					{user ? `${user.name} ${user.last_name}` : nonprofit ? nonprofit.name : ""}
+				</span>
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
-				<li
-					className="m-2 p-2"
-					// onClick={() => {
-					// 	setActive(!active);
-					// }}
-				>
+				<li className="m-4 p-4">
 					<a
-						href="#"
+						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						aria-current="page"
 						onClick={() => {
-							history.push("/profile/nonprofit");
+							user
+								? history.push(`/profile/user/${userId}`)
+								: history.push(`/profile/nonprofit/${nonprofitId}`);
 						}}>
-						<i className="fa fa-home" />
+						<i className="fas fa-home" />
 						<span className="ms-2">Dashboard</span>
 					</a>
 				</li>
-				<li
-					className="m-2 p-2"
-					// onClick={() => {
-					// 	setActive(!active);
-					// }}
-				>
+				<li className="m-4 p-4">
 					<a
-						href="#"
+						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
 						onClick={() => {
-							history.push("/profile/nonprofit/donations");
+							user
+								? history.push(`/profile/user/${userId}/donations`)
+								: history.push(`/profile/nonprofit/${nonprofitId}/donations`);
 						}}>
-						<i className="fa fa-columns" />
+						<i className="fas fa-donate" />
 						<span className="ms-2">Donations</span>
 					</a>
 				</li>
-				<li className="m-2 p-2">
+				{user ? (
+					<li className="m-4 p-4">
+						<a
+							style={{ cursor: "pointer" }}
+							className="nav-link text-white"
+							onClick={() => {
+								history.push(`/profile/user/${userId}/my-orders`);
+							}}>
+							<i className="fas fa-tags" />
+							<span className="ms-2">Orders</span>
+						</a>
+					</li>
+				) : (
+					""
+				)}
+				<li className="m-4 p-4">
 					<a
-						href="#"
+						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
 						onClick={() => {
-							history.push("/profile/nonprofit/wishlist");
+							user
+								? history.push(`/profile/user/${userId}/myaccount`)
+								: history.push(`/profile/nonprofit/${nonprofitId}/myaccount`);
 						}}>
-						<i className="fa fa-clipboard-list" />
-						<span className="ms-2">Wishlist</span>
-					</a>
-				</li>
-				<li className="m-2 p-2">
-					<a
-						href="#"
-						className="nav-link text-white"
-						onClick={() => {
-							history.push("/profile/nonprofit/myaccount");
-						}}>
-						<i className="fa fa-cog" />
+						<i className="fas fa-cog" />
 						<span className="ms-2">My Account</span>
 					</a>
 				</li>
-				<li className="m-2 p-2">
+				<li className="m-4 p-4">
 					<a
-						href="#"
+						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
 						onClick={() => {
 							history.push("/");
@@ -101,5 +106,8 @@ export const SideBar = ({ username }) => {
 };
 
 SideBar.propTypes = {
-	username: PropTypes.string
+	user: PropTypes.object,
+	userId: PropTypes.string,
+	nonprofit: PropTypes.object,
+	nonprofitId: PropTypes.string
 };

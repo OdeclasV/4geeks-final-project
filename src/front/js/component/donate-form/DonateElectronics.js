@@ -2,15 +2,14 @@ import React, { useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Link } from "react-router-dom";
 
-export const DonateClothing = () => {
-	const [typeOfClothes, setTypeOfClothes] = useState("Select a value");
+export const DonateElectronics = () => {
 	const [nonprofit, setNonProfit] = useState("Select a NonProfit");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { store, actions } = useContext(Context);
 
 	const [donationItem, setDonationItem] = useState({
 		bid_count: 0,
-		category: "clothing",
+		category: "electronics",
 		condition: null,
 		donate_to: nonprofit,
 		donated_by: null,
@@ -30,7 +29,7 @@ export const DonateClothing = () => {
 				<div className="login-form overview-block">
 					<div className="form-group">
 						<label htmlFor="name" className="control-label mt-3">
-							Type of Clothing
+							Type of Electronic
 						</label>
 
 						<select
@@ -42,9 +41,9 @@ export const DonateClothing = () => {
 								setDonationItem({ ...donationItem, item_type: e.target.value });
 							}}>
 							<option value="Select a value">Select a value</option>
-							<option value="t-shirt">T-shirt</option>
-							<option value="jacket">Jacket</option>
-							<option value="pants">Pants</option>
+							<option value="t-shirt">Phone</option>
+							<option value="jacket">TV</option>
+							<option value="pants">Radio</option>
 						</select>
 					</div>
 

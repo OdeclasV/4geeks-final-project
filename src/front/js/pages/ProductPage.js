@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Timer } from "../component/Timer";
+import { TimerProductPage } from "../component/TimerProductPage";
 // import { ShopItem } from "../component/ShopItem";
 
 export const ProductPage = () => {
@@ -13,9 +14,9 @@ export const ProductPage = () => {
 	let { id } = useParams();
 
 	const [newBid, setNewBid] = useState(0);
+	console.log(store.items);
 
 	const [currentBid, setCurrentBid] = useState(store.items[id] && store.items[id].current_price + 1);
-	const [bidCount, setBidCount] = useState(0);
 	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
 
 	return (
@@ -24,11 +25,11 @@ export const ProductPage = () => {
 				<div className="h-100 p-4 bg-light border rounded-3">
 					<div className="row d-flex justify-content-between">
 						{/* Product Image */}
-						<div className="product-img-block col-6 p-5">
-							<img src={store.items[id] && store.items[id].image} />
+						<div className="product-img-block card-img-left d-block p-2 mx-lg-auto col-4 ">
+							<img className="w-100 h-auto" src={store.items[id] && store.items[id].image} />
 						</div>
 
-						<div className="product-info-box col-6 p-5">
+						<div className="product-info-box col-8 p-5">
 							{/* Product Description  Top */}
 							<div className="title-row">
 								<h1 className="">{store.items[id] && store.items[id].item_name}</h1>
@@ -36,8 +37,13 @@ export const ProductPage = () => {
 
 							<div className="giveblue-font timer-row align-self-center">
 								<p className="mb-1">Time left to bid</p>
-								<Timer endDate={store.items[id] && store.items[id].end_date} />
+								<TimerProductPage endDate={store.items[id] && store.items[id].end_date} />
 								{/* </div> */}
+							</div>
+
+							<div className="bid-count-row d-flex">
+								<p className="col-4">Number of Bids:</p>
+								<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
 							</div>
 
 							<div className="price-row d-flex">
@@ -49,7 +55,7 @@ export const ProductPage = () => {
 
 							<div className="bid-count-row d-flex">
 								<p className="col-4">Number of Bids:</p>
-								<p className="card-text item-price">{bidCount}</p>
+								<p className="card-text item-price">{store.items[id] && store.items[id].bid_count}</p>
 							</div>
 
 							<div className="place-bid-row d-flex mb-2">
@@ -72,19 +78,31 @@ export const ProductPage = () => {
 								/>
 							</div>
 							<div>
-								<button
-									type="button"
-									className="btn btn-two container-fluid col-8 py-2 my-2"
-									data-bs-toggle="modal"
-									data-bs-target="#placeBid"
-									onClick={() => {
-										setShow("true");
-										console.log(store.items[id].id);
-										setBidCount(bidCount + 1);
-										actions.updateBid(store.items[id].id, currentBid);
-									}}>
-									Place Bid
-								</button>
+								{store.loggedin != 0 ? (
+									<Link to="/bid-placed">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal"
+											data-bs-target="#placeBid"
+											onClick={() => {
+												setShow("true");
+												console.log(store.items[id].id);
+												actions.updateBid(store.items[id].id, currentBid);
+											}}>
+											Place Bid
+										</button>
+									</Link>
+								) : (
+									<Link to="/login">
+										<button
+											type="button"
+											className="btn btn-two container-fluid col-8 py-2 my-2"
+											data-bs-toggle="modal">
+											Login to Place a Bid
+										</button>
+									</Link>
+								)}
 							</div>
 							{/* Product Description bottom */}
 							<div className="product-details-row">
@@ -94,6 +112,10 @@ export const ProductPage = () => {
 								<h4>Condition:</h4>
 								<p className="card-text item-condition">
 									{store.items[id] && store.items[id].condition}
+								</p>
+								<h4>Funds going to:</h4>
+								<p className="card-text item-condition">
+									{store.items[id] && store.items[id].donate_to}
 								</p>
 							</div>
 						</div>

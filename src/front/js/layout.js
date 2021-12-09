@@ -20,6 +20,8 @@ import { SignUp } from "./pages/SignUp";
 import { UserProfile } from "./pages/profile-pages/UserProfile";
 import { ProductPage } from "./pages/ProductPage";
 import { NonProfitPartners } from "./pages/NonProfitPartners";
+import { BidPlaced } from "./pages/BidPlaced";
+import { DonationPlaced } from "./pages/DonationPlaced";
 
 //create your first component
 const Layout = () => {
@@ -65,19 +67,19 @@ const Layout = () => {
 						<Route exact path="/profile/nonprofit">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:profileoption">
+						<Route exact path="/profile/nonprofit/:id">
 							<NonProfitProfile />
 						</Route>
-						<Route exact path="/profile/nonprofit/:profileoption/:id">
+						<Route exact path="/profile/nonprofit/:id/:profileoption">
 							<NonProfitProfile />
 						</Route>
 						<Route exact path="/profile/user">
 							<UserProfile />
 						</Route>
-						<Route exact path="/profile/user/:profileoption">
+						<Route exact path="/profile/user/:id">
 							<UserProfile />
 						</Route>
-						<Route exact path="/profile/user/:profileoption/:id">
+						<Route exact path="/profile/user/:id/:profileoption">
 							<UserProfile />
 						</Route>
 						<Route exact path="/donateclothes">
@@ -96,6 +98,12 @@ const Layout = () => {
 							<LoginSignup />
 						</Route> */}
 						<Route exact path="/shop/:id" component={ProductPage} />
+						<Route exact path="/bid-placed">
+							<BidPlaced />
+						</Route>
+						<Route exact path="/donation-placed">
+							<DonationPlaced />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
