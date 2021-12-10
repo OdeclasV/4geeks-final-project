@@ -33,11 +33,11 @@ export const DonationType = () => {
 										setCategory(e.target.value);
 									}}>
 									<option value="Select a value">Select a value</option>
-									<option value="clothing">Clothes</option>
-									<option value="furniture">Furniture</option>
-									<option value="art">Electronics</option>
-									<option value="art">Household</option>
 									<option value="art">Baby Products</option>
+									<option value="clothing">Clothes</option>
+									<option value="art">Electronics</option>
+									<option value="furniture">Furniture</option>
+									<option value="art">Household</option>
 									<option value="art">Toys</option>
 								</select>
 							</div>

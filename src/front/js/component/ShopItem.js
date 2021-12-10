@@ -13,13 +13,21 @@ export const ShopItem = ({ item, index }) => {
 	const [numberOfBids, SetNumberOfBids] = useState(0);
 	const { store, actions } = useContext(Context);
 
+	const formatter = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+		minimumFractionDigits: 0
+	});
+
 	return (
 		<>
 			<div className="card m-1 overview-block" style={{ width: "20rem" }}>
 				<img className="card-img-top" src={item.image} alt="Card image cap" />
 				<div className="card-body">
 					<h3 className="card-title">{item.item_name}</h3>
-					<h5 className="card-text giveblue-font item-price">Top Bid: ${item.current_price}</h5>
+					<h5 className="card-text giveblue-font item-price">
+						Top Bid: {formatter.format(item.current_price)}
+					</h5>
 					<div className="text-center px-2">
 						<Link to={`/shop/${index}`}>
 							<button type="submit" className="btn btn-two btn-lg container-fluid my-2">

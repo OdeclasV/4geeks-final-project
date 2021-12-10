@@ -75,7 +75,8 @@ export const LoginSignup = ({ match, index }) => {
 								</Link>
 							) : allowedUser ? (
 								// users is sent to specific user, per their id
-								<Link to={`/profile/user/${allowedUser}`}>
+								// <Link to={`/profile/user/${allowedUser}`}>
+								<Link to="/shop">
 									<button
 										type="button"
 										className="btn btn-one btn-lg px-4 container-fluid"

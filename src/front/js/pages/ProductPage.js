@@ -18,10 +18,16 @@ export const ProductPage = () => {
 	const [newBid, setNewBid] = useState(0);
 	//console.log(store.items);
 
+	const formatter = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+		minimumFractionDigits: 0
+	});
+
 	const [currentBid, setCurrentBid] = useState(store.items[id] && store.items[id].current_price + 1);
 	const [price, setPrice] = useState(store.items[id] && store.items[id].current_price);
 
-	id > store.items.length - 1 ? console.log("true") : console.log("false");
+	//id > store.items.length - 1 ? console.log("true") : console.log("false");
 
 	return (
 		<>
@@ -83,7 +89,7 @@ export const ProductPage = () => {
 								<div className="price-row d-flex mb-3">
 									<h3 className="col-4">Current Price:</h3>
 									<h3 className="card-text item-price">
-										${store.items[id] && store.items[id].current_price}
+										{formatter.format(store.items[id] && store.items[id].current_price)}
 									</h3>
 								</div>
 
