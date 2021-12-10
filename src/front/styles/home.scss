@@ -59,24 +59,26 @@ p, h1, h2, h3, h4 {
 
 // nav tabs
 
-// .nav-tabs {
-//     background-color: #5bb99a;
-//     color: #eeeeee;
-// }
+.nav-tabs {
+    background-color: #aec1f3;
+    color: #eeeeee;
+}
 
-// .nav-link {
-//     color: #212121;
-// }
+.nav-link {
+    background-color: #aec1f3;
+    color: #ffffff;
+}
 
-// .nav-link .active {
-//     color: #5bb99a;
-// }
+.nav-link .active {
+    background-color: #ffffff;
+    color: #aec1f3;
+}
 
-// .nav-tabs:hover {
-//     color: #212121;
-// }
+.nav-tabs:hover {
+    color: #ffffff;
+}
 
-// .nav-link:hover {
-//     background-color: #175b9d !important;
-//     color: #ffffff;
-// }
+.nav-link:hover {
+    background-color: #285ae8 !important;
+    color: #ffffff;
+}

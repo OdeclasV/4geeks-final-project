@@ -13,9 +13,9 @@ export const LineGraphWeekly = () => {
 					datasets: [
 						{
 							label: "Current Week",
-							data: [2, 0, 6, 2, 8, 0, 1],
-							backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-							borderColor: ["rgba(255, 99, 132, 1)"],
+							data: [2, 0, 6, 2, 8, 0, 3],
+							backgroundColor: ["rgba(33, 193, 135, 0.5)"],
+							borderColor: ["rgba(33, 193, 135, 1)"],
 							borderWidth: 1
 						}
 						// {

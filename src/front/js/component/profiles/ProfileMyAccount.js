@@ -41,7 +41,7 @@ export const ProfileMyAccount = ({ nonprofit }) => {
 					</div>
 					<div className="d-flex justify-content-between">
 						{/* info area */}
-						<div className="p-2 m-2 border rounded-3 col-9">
+						<div className="p-2 m-2 border rounded-3 col-8">
 							<h4>
 								<strong>Company Name:</strong>
 							</h4>

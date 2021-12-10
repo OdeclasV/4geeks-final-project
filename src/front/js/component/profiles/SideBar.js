@@ -34,7 +34,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
-				<li className="m-4 p-4">
+				<li className="m-2">
 					<a
 						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
@@ -45,10 +45,10 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 								: history.push(`/profile/nonprofit/${nonprofitId}`);
 						}}>
 						<i className="fas fa-home" />
-						<span className="ms-2">Dashboard</span>
+						<span className="ms-4 sidebar-item ">Dashboard</span>
 					</a>
 				</li>
-				<li className="m-4 p-4">
+				<li className="m-2">
 					<a
 						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
@@ -58,11 +58,11 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 								: history.push(`/profile/nonprofit/${nonprofitId}/donations`);
 						}}>
 						<i className="fas fa-donate" />
-						<span className="ms-2">Donations</span>
+						<span className="ms-4 sidebar-item">Donations</span>
 					</a>
 				</li>
 				{user ? (
-					<li className="m-4 p-4">
+					<li className="m-2">
 						<a
 							style={{ cursor: "pointer" }}
 							className="nav-link text-white"
@@ -70,13 +70,13 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 								history.push(`/profile/user/${userId}/my-orders`);
 							}}>
 							<i className="fas fa-tags" />
-							<span className="ms-2">Orders</span>
+							<span className="ms-4 sidebar-item">Orders</span>
 						</a>
 					</li>
 				) : (
 					""
 				)}
-				<li className="m-4 p-4">
+				<li className="m-2">
 					<a
 						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
@@ -86,18 +86,19 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 								: history.push(`/profile/nonprofit/${nonprofitId}/myaccount`);
 						}}>
 						<i className="fas fa-cog" />
-						<span className="ms-2">My Account</span>
+						<span className="ms-4 sidebar-item">My Account</span>
 					</a>
 				</li>
-				<li className="m-4 p-4">
+				<li className="m-2">
 					<a
 						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
 						onClick={() => {
 							history.push("/");
+							actions.logout();
 						}}>
 						<i className="fas fa-sign-out-alt" />
-						<span className="ms-2">Log Out</span>
+						<span className="ms-4 sidebar-item">Log Out</span>
 					</a>
 				</li>
 			</ul>

@@ -9,7 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=True)
     name = db.Column(db.String(250), unique=False, nullable=True)
     last_name = db.Column(db.String(250), unique=False, nullable=True)
-    nonprofit_friends = db.Column(db.String(120), unique=False, nullable=True)
+    nonprofit_friends = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     donations = db.relationship('Item', backref='user', lazy=True)
     transactions = db.relationship('Transaction', backref='user', lazy=True)
 
@@ -19,6 +19,7 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "last_name": self.last_name,
+            "donations": list(map(lambda donation: donation.serialize(), self.donations)),
             "nonprofit_friends": self.nonprofit_friends
         }
 
@@ -61,7 +62,7 @@ class Item(db.Model):
     image = db.Column(db.String(250),unique=False, nullable=True )
     item_name = db.Column(db.String(100), unique=False, nullable=True)
     item_description = db.Column(db.String(100), unique=False, nullable=True)
-    donation_type = db.Column(db.String, unique=False, nullable=True)
+    donation_type = db.Column(db.String(250), unique=False, nullable=True)
     donated_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     donate_to = db.Column(db.Integer, db.ForeignKey('nonprofit.id'), nullable =True)
     bid_count = db.Column(db.Integer,unique=False, nullable=True)

@@ -32,7 +32,7 @@ const Layout = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
-		<div className="container-fluid">
+		<div className="">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
@@ -99,10 +99,10 @@ const Layout = () => {
 						</Route> */}
 						<Route exact path="/shop/:id" component={ProductPage} />
 						<Route exact path="/bid-placed">
-							<BidPlaced />
+							<BidPlaced loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/donation-placed">
-							<DonationPlaced />
+							<DonationPlaced loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -14,35 +14,25 @@ export const LineGraph = () => {
 					datasets: [
 						{
 							label: "Current Month",
-							data: [60, 25, 140, 120],
-							backgroundColor: [
-								"rgba(255, 99, 132, 0.2)",
-								"rgba(54, 162, 235, 0.2)",
-								"rgba(255, 206, 86, 0.2)",
-								"rgba(75, 192, 192, 0.2)"
-							],
-							borderColor: [
-								"rgba(255, 99, 132, 1)",
-								"rgba(54, 162, 235, 1)",
-								"rgba(255, 206, 86, 1)",
-								"rgba(75, 192, 192, 1)"
-							],
+							data: [200, 600, 500, 950],
+							backgroundColor: ["rgba(33, 193, 135, 0.5)"],
+							borderColor: ["rgba(33, 193, 135, 1)"],
 							borderWidth: 1
 						},
 						{
 							label: "Last  Month",
-							data: [25, 70, 30, 100],
+							data: [600, 300, 650, 500],
 							backgroundColor: [
-								"rgba(255, 99, 132, 0.2)",
-								"rgba(54, 162, 235, 0.2)",
-								"rgba(255, 206, 86, 0.2)",
-								"rgba(75, 192, 192, 0.2)"
+								"rgba(39, 90, 232, 0.5)"
+								// "rgba(54, 162, 235, 0.2)",
+								// "rgba(255, 206, 86, 0.2)",
+								// "rgba(75, 192, 192, 0.2)"
 							],
 							borderColor: [
-								"rgba(255, 99, 132, 1)",
-								"rgba(54, 162, 235, 1)",
-								"rgba(255, 206, 86, 1)",
-								"rgba(75, 192, 192, 1)"
+								"rgba(39, 90, 232, 1)"
+								// "rgba(54, 162, 235, 1)",
+								// "rgba(255, 206, 86, 1)",
+								// "rgba(75, 192, 192, 1)"
 							],
 							borderWidth: 1
 						}

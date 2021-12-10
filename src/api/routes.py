@@ -156,7 +156,15 @@ def update_nonprofit(id):
 def get_items():
 
     items = Item.query.all()
-    all_items = list(map(lambda x: x.serialize(), items))
+    def add_nonprofit(item):
+        item = item.serialize()
+        nonprofit = NonProfit.query.get(item["donate_to"])
+        nonprofit = nonprofit.serialize()
+        item["donate_to"] = nonprofit
+    
+        return item
+
+    all_items = list(map(lambda x: add_nonprofit(x), items))
 
     return jsonify(all_items), 200
 
@@ -164,7 +172,7 @@ def get_items():
 @api.route('/items', methods=['POST'])
 def create_item():
     body = request.get_json()
- 
+
     if "name" == None:
         return "error message", 404
     # if "email" in body:
@@ -208,7 +216,17 @@ def create_item():
 
     
     items = Item.query.all()
-    all_items = list(map(lambda x: x.serialize(), items))
+    def add_nonprofit(item):
+        item = item.serialize()
+        nonprofit = NonProfit.query.get(item["donate_to"])
+        nonprofit = nonprofit.serialize()
+        item["donate_to"] = nonprofit
+        
+        return item
+
+    all_items = list(map(lambda x: add_nonprofit(x), items))
+
+    # all_items = list(map(lambda x: x.serialize(), items))
 
     return jsonify(all_items), 200
 
