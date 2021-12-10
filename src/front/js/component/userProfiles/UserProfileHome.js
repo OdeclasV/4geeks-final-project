@@ -118,6 +118,7 @@ export const UserProfileHome = () => {
 										</table>
 									</div>
 									<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
+										<h3>Your Bids</h3>
 										<table className="table">
 											<thead className="thead-dark">
 												<tr>
@@ -133,22 +134,22 @@ export const UserProfileHome = () => {
 											<tbody>
 												<tr>
 													<th scope="row">1</th>
-													<td>cool shirt</td>
-													<td>10-Dec-21</td>
-													<td>Gotham City Cleaners</td>
-													<td>$320</td>
-													<td className="text-success">$320</td>
+													<td>Dragon Ball Z Shirt</td>
+													<td>14-Dec-21</td>
+													<td>Dragon Ball Finders</td>
+													<td>$300</td>
+													<td className="text-success">$300</td>
 													<td>You have the highest bid</td>
 												</tr>
 												<tr>
 													<th scope="row">2</th>
-													<td>Iron Throne</td>
-													<td>12-Dec-21</td>
-													<td>Real Good Company</td>
-													<td>$1010</td>
-													<td className="text-danger">$825</td>
+													<td>Yezzy</td>
+													<td>15-Dec-21</td>
+													<td>Muggles 4 Inclusion</td>
+													<td>$753</td>
+													<td className="text-danger">$680</td>
 													<td>
-														<Link to="/shop/5">
+														<Link to="/shop/3">
 															<button type="button" className="btn btn-two py-2 my-2">
 																View item
 															</button>
@@ -157,13 +158,13 @@ export const UserProfileHome = () => {
 												</tr>
 												<tr>
 													<th scope="row">3</th>
-													<td>cool shoes</td>
+													<td>Dining table set</td>
 													<td>16-Dec-21</td>
-													<td>Really Real Good Company</td>
-													<td>$200</td>
-													<td className="text-danger">$140</td>
+													<td>Kakariko Village Society</td>
+													<td>$500</td>
+													<td className="text-danger">$350</td>
 													<td>
-														<Link to="/shop/5">
+														<Link to="/shop/4">
 															<button type="button" className="btn btn-two py-2 my-2">
 																View item
 															</button>
@@ -176,25 +177,25 @@ export const UserProfileHome = () => {
 								</div>
 								{/* Third Row */}
 								<div className="container-fluid overview-block p-2 m-2 bg-light border rounded-3 ">
-									<h1>Open Orders</h1>
+									<h3>Open Orders</h3>
 									{/* <h4 className="giveblue-font">Items you are currently bidding on!</h4> */}
 									{/* Row 1 */}
 									<div className="row justify-content-between">
-										<div className="overview-block m-2 p-1 bg-light border rounded-3 col d-flex">
+										<div className="overview-block m-2 p-4 bg-light border rounded-3 col d-flex">
 											<img
 												className="col-4"
 												src="https://i.ibb.co/qYMb1h2/227888-002-PRM-1-7deec36c-3490-4ce6-8a4c-311fdf792d1f-695x695.jpg"
 												alt="Card image cap"
 											/>
 											<div className="mx-2 col-8">
-												<h3>Leather Jacket</h3>
+												<h3>Dragon Ball Z Shirt</h3>
 												<p>
-													<strong>Auction Ends:</strong> 13-Dec-2021
+													<strong>Auction Ends:</strong> 14-Dec-2021
 												</p>
-												<h5>Current Bid: $610</h5>
-												<h5 className="text-danger">Your Bid: $540</h5>
+												<h5>Current Bid: $300</h5>
+												<h5 className="text-succes">Your Bid: $300</h5>
 												<p>
-													<strong>Non-Profit Funded:</strong> Pokemon Guys
+													<strong>Non-Profit Funded:</strong> Dragon Ball Finders
 												</p>
 												<button type="button" className="btn btn-two py-2 my-2">
 													View item
@@ -209,14 +210,14 @@ export const UserProfileHome = () => {
 												alt="Card image cap"
 											/>
 											<div className="mx-2 col-8">
-												<h3>Iron Throne</h3>
+												<h3>Yezzy</h3>
 												<p>
-													<strong>Auction Ends:</strong> 11-Dec-2021
+													<strong>Auction Ends:</strong> 15-Dec-2021
 												</p>
-												<h5>Current Bid: $980</h5>
-												<h5 className="text-success">Your Bid: $980</h5>
+												<h5>Current Bid: $753</h5>
+												<h5 className="text-danger">Your Bid: $980</h5>
 												<p>
-													<strong>Non-Profit Funded:</strong> Pokemon Guys
+													<strong>Non-Profit Funded:</strong> Muggles 4 Inclusion
 												</p>
 												<button type="button" className="btn btn-two py-2 my-2">
 													View item

@@ -103,7 +103,7 @@ export const ProfileHome = () => {
 
 								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
 									<h3>Recent Items Recieved</h3>
-									<div className="items-carousel container-fluid d-flex flex-wrap">
+									<div className="items-carousel container-fluid d-flex flex-wrap ">
 										{activeNonprofit
 											? activeNonprofit.items_received.map(item => {
 													return (
@@ -114,7 +114,7 @@ export const ProfileHome = () => {
 																alt="Card image cap"
 															/>
 															<div className="card-body">
-																<h5 className="card-title">{item.item_name}</h5>
+																<p className="card-title">{item.item_name}</p>
 															</div>
 														</div>
 													);

@@ -166,7 +166,9 @@ export const ProductPage = () => {
 					<div className="product-details-box p-4 mt-5 shadow-sm row">
 						<div className="col">
 							<h4 className="giveblue-font">Description</h4>
-							<p>{store.items[id] && store.items[id].item_description}</p>
+							<p className="card-text item-condition">
+								{store.items[id] && store.items[id].item_description}
+							</p>
 						</div>
 						<div className="col">
 							<h4 className="giveblue-font">Condition:</h4>

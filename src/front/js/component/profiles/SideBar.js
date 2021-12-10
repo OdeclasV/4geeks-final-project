@@ -48,7 +48,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 						<span className="ms-4 sidebar-item">Dashboard</span>
 					</a>
 				</li>
-				<li className="my-2 mb-3">
+				<li className="my-2 mb-5">
 					<a
 						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
@@ -62,7 +62,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 					</a>
 				</li>
 				{user ? (
-					<li className="my-2 mb-3">
+					<li className="my-2 mb-5">
 						<a
 							style={{ cursor: "pointer" }}
 							className="nav-link text-white"
@@ -76,7 +76,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 				) : (
 					""
 				)}
-				<li className="my-2 mb-3">
+				<li className="my-2 mb-5">
 					<a
 						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
@@ -89,7 +89,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 						<span className="ms-4 sidebar-item">My Account</span>
 					</a>
 				</li>
-				<li className="my-2 mb-3">
+				<li className="my-2 mb-5">
 					<a
 						style={{ cursor: "pointer" }}
 						className="nav-link text-white"
