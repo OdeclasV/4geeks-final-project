@@ -1,6 +1,7 @@
 // // solid background
 body {
 	background-color: #f1f1f1;
+   
 }
 
 p, h1, h2, h3, h4 {
@@ -89,5 +90,10 @@ h2, h3, h4 {
 
 .footer {
     background-color: #21c187;
-  
+    bottom:0;
+    // position: relative;
+    // margin-top: -150px; /* negative value of footer height */
+    // height: 150px;
+    // clear:both;
+    // padding-top:20px;
 }

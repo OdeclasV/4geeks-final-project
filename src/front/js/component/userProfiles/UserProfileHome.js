@@ -44,8 +44,8 @@ export const UserProfileHome = () => {
 
 	return (
 		<>
-			<div className="container">
-				<div className="h-100 p-5 rounded-3">
+			<div className="d-flex p-4">
+				<div className="h-100 p-2 rounded-3">
 					<div className="dashboard-page">
 						{/* title section */}
 						<div className="title-area container-fluid p-2">
@@ -175,40 +175,52 @@ export const UserProfileHome = () => {
 									</div>
 								</div>
 								{/* Third Row */}
-								<div className="overview-block p-2 m-2 bg-light border rounded-3 col-8">
-									<h3>Current Bids</h3>
-									<div className="items-carousel container-fluid d-flex flex-wrap">
-										<div className="card">
+								<div className="container-fluid overview-block p-2 m-2 bg-light border rounded-3 ">
+									<h1>Open Orders</h1>
+									{/* <h4 className="giveblue-font">Items you are currently bidding on!</h4> */}
+									{/* Row 1 */}
+									<div className="row justify-content-between">
+										<div className="overview-block m-2 p-1 bg-light border rounded-3 col d-flex">
 											<img
-												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+												className="col-4"
+												src="https://i.ibb.co/qYMb1h2/227888-002-PRM-1-7deec36c-3490-4ce6-8a4c-311fdf792d1f-695x695.jpg"
 												alt="Card image cap"
 											/>
-											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
+											<div className="mx-2 col-8">
+												<h3>Leather Jacket</h3>
+												<p>
+													<strong>Auction Ends:</strong> 13-Dec-2021
+												</p>
+												<h5>Current Bid: $610</h5>
+												<h5 className="text-danger">Your Bid: $540</h5>
+												<p>
+													<strong>Non-Profit Funded:</strong> Pokemon Guys
+												</p>
+												<button type="button" className="btn btn-two py-2 my-2">
+													View item
+												</button>
 											</div>
-											<button type="button" className="btn btn-two py-2 my-2">
-												View item
-											</button>
 										</div>
-										<div className="card">
+
+										<div className="overview-block m-2 p-4 bg-light border rounded-3 col d-flex">
 											<img
-												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
+												className="col-4"
+												src="https://i.ibb.co/qYMb1h2/227888-002-PRM-1-7deec36c-3490-4ce6-8a4c-311fdf792d1f-695x695.jpg"
 												alt="Card image cap"
 											/>
-											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
-											</div>
-										</div>
-										<div className="card ">
-											<img
-												className="card-img-top"
-												src="https://cdn.shopify.com/s/files/1/0559/6715/4340/products/365354_420x525.jpg?v=1633403005"
-												alt="Card image cap"
-											/>
-											<div className="card-body">
-												<h5 className="card-title">Awesome Shirt</h5>
+											<div className="mx-2 col-8">
+												<h3>Iron Throne</h3>
+												<p>
+													<strong>Auction Ends:</strong> 11-Dec-2021
+												</p>
+												<h5>Current Bid: $980</h5>
+												<h5 className="text-success">Your Bid: $980</h5>
+												<p>
+													<strong>Non-Profit Funded:</strong> Pokemon Guys
+												</p>
+												<button type="button" className="btn btn-two py-2 my-2">
+													View item
+												</button>
 											</div>
 										</div>
 									</div>

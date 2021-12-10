@@ -32,7 +32,7 @@ const Layout = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	return (
-		<div className="">
+		<div className="min-vh-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
