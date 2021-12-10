@@ -1,5 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const currentURL = "https://3001-aqua-anteater-lbzo25xi.ws-us21.gitpod.io";
+	const currentURL = "https://3001-aqua-anteater-lbzo25xi.ws-us23.gitpod.io";
 	// const currentURL = "https://3001-emerald-platypus-o3dep63n.ws-us21.gitpod.io";
 
 	return {
@@ -75,6 +75,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error("Error:", err));
 			},
 
+			addAuctionItem: item => {
+				fetch(`${currentURL}/api/items`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(item)
+				})
+					.then(response => response.json())
+					.then(data => {
+						let shopOnlyItems = [];
+						data.filter(item => {
+							item.donation_type == "auction" ? shopOnlyItems.push(item) : shopOnlyItems;
+						});
+						setStore({ items: shopOnlyItems });
+						console.log(data);
+						// setStore({ bids: [...bids, data[1]] });
+						// console.log(getStore().bids);
+					})
+					.catch(err => console.error("Error:", err));
+			},
+
 			getBids: () => {
 				fetch(`${currentURL}/api/items`)
 					.then(response => {
@@ -102,26 +122,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ nonprofits: data });
 					});
 			},
-
-			addAuctionItem: item => {
-				fetch(`${currentURL}/api/items`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(item)
-				})
-					.then(response => response.json())
-					.then(data => {
-						setStore({ items: data });
-						console.log(data);
-						// setStore({ bids: [...bids, data[1]] });
-						// console.log(getStore().bids);
-					})
-					.catch(err => console.error("Error:", err));
-			},
-
-			// donateItem: item => {
-
-			// },
 
 			updateBid: (id, currentBid) => {
 				fetch(`${currentURL}/api/items/${id}`, {

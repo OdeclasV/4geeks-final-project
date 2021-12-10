@@ -95,6 +95,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 						className="nav-link text-white"
 						onClick={() => {
 							history.push("/");
+							actions.logout();
 						}}>
 						<i className="fas fa-sign-out-alt" />
 						<span className="ms-2">Log Out</span>
