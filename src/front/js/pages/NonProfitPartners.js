@@ -21,14 +21,14 @@ export const NonProfitPartners = () => {
 					// 		<p className="card-text item-price">{nonprofit.description}</p>
 					// 	</div> */}
 					// </div>
-					<div className="card mb-3 container" key={nonprofit.id}>
+					<div className="card d-flex p-4" key={nonprofit.id}>
 						<div className="row g-0">
 							<div className="col-md-4">
 								<img
 									src={nonprofit.nonprofit_logo}
 									className="img-fluid rounded-start"
 									alt={nonprofit.name}
-									style={{ height: "100px", width: "100px", marginTop: "15px" }}
+									// style={{ height: "100%" }}
 								/>
 							</div>
 							<div className="col-md-8">

@@ -7,6 +7,10 @@ p, h1, h2, h3, h4 {
     color: #212121;
 }
 
+h2, h3, h4 {
+    font-family: 'Rubik';
+}
+
 // gradient animated background
 // body {
 // 	background: linear-gradient(-45deg, #A3CCCE, #D1EDEC, #aed3e0, #98e6d3);
@@ -81,4 +85,9 @@ p, h1, h2, h3, h4 {
 .nav-link:hover {
     background-color: #285ae8 !important;
     color: #ffffff;
+}
+
+.footer {
+    background-color: #21c187;
+  
 }
