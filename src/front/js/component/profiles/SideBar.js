@@ -34,7 +34,7 @@ export const SideBar = ({ user, userId, nonprofit, nonprofitId }) => {
 			</a>
 			<hr />
 			<ul className="nav nav-pills flex-column mb-auto">
-				<li className="my-2 mb-3">
+				<li className="my-2 mb-5">
 					<a
 						style={{ cursor: "pointer" }}
 						className={active ? "nav-link text-white " + activeOption : "nav-link text-white"}
