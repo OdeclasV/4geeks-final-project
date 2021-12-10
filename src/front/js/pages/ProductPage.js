@@ -60,46 +60,41 @@ export const ProductPage = () => {
 					<div className="row">
 						<div className="d-flex justify-content-center">
 							{/* Product Image */}
-							<div className="product-img-block card-img-left d-block p-2 mx-lg-auto col-4 ">
+							<div className="product-img-block card-img-left d-block p-2 mx-lg-auto col-4">
 								<img className="w-100 h-auto" src={store.items[id] && store.items[id].image} />
 							</div>
 
 							<div className="col-1" />
 
-							<div className="product-info-box col-7 p-5">
+							<div className="product-info-box col-7 p-5 ">
 								{/* Product Description  Top */}
-								<div className="title-row">
+								<div className="title-row mb-4">
 									<h1 className="">{store.items[id] && store.items[id].item_name}</h1>
 								</div>
 
-								<div className="giveblue-font timer-row align-self-center">
-									<p className="mb-1">Time left to bid</p>
-									<TimerProductPage endDate={store.items[id] && store.items[id].end_date} />
+								<div className="giveblue-font timer-row align-self-center mb-3">
+									<h4 className="mb-1">Time left to bid</h4>
+									<h3 className="giveblue-font ">
+										<TimerProductPage endDate={store.items[id] && store.items[id].end_date} />
+									</h3>
 									{/* </div> */}
 								</div>
 
-								<div className="bid-count-row d-flex">
-									<p className="col-4">Number of Bids:</p>
-									<p className="card-text item-price">
-										{store.items[id] && store.items[id].bid_count}
-									</p>
-								</div>
-
-								<div className="price-row d-flex">
-									<h3 className="col-4">Current Price</h3>
+								<div className="price-row d-flex mb-3">
+									<h3 className="col-4">Current Price:</h3>
 									<h3 className="card-text item-price">
 										${store.items[id] && store.items[id].current_price}
 									</h3>
 								</div>
 
-								<div className="place-bid-row d-flex mb-2">
-									<label htmlFor="minimum-bid" className="control-label col-4">
+								<div className="place-bid-row flex-row d-flex mb-4">
+									<h4 htmlFor="minimum-bid" className="control-label col-4">
 										Minimum Bid:
-									</label>
+									</h4>
 
 									<input
 										type="number"
-										className="form-control"
+										className="form-control min-bid-input"
 										name="price"
 										id="bid"
 										value={parseInt(currentBid)}
@@ -109,7 +104,15 @@ export const ProductPage = () => {
 										}}
 									/>
 								</div>
-								<div>
+
+								{/* <div className="bid-count-row d-flex mb-4">
+									<p className="col-4">Number of Bids:</p>
+									<p className="card-text item-price">
+										{store.items[id] && store.items[id].bid_count}
+									</p>
+								</div> */}
+
+								<div className="d-flex justify-content-center">
 									{/* <Link to="/bid-placed">
 										<button
 											type="button"
@@ -127,7 +130,7 @@ export const ProductPage = () => {
 										<Link to="/bid-placed">
 											<button
 												type="button"
-												className="btn btn-two container-fluid col-8 py-2 my-2"
+												className="btn btn-two container-fluid p-3 my-2"
 												data-bs-toggle="modal"
 												data-bs-target="#placeBid"
 												onClick={() => {
@@ -142,7 +145,7 @@ export const ProductPage = () => {
 										<Link to="/login">
 											<button
 												type="button"
-												className="btn btn-two container-fluid col-8 py-2 my-2"
+												className="btn btn-two container-fluid p-3 my-2"
 												data-bs-toggle="modal">
 												Login to Place a Bid
 											</button>

@@ -101,8 +101,8 @@ export const UserProfileHome = () => {
 											<tbody>
 												<tr>
 													<th scope="row">1</th>
-													<td>cool shirt</td>
-													<td>Good Company</td>
+													<td>Iron Throne</td>
+													<td>Gotham City Cleaners</td>
 												</tr>
 												<tr>
 													<th scope="row">2</th>

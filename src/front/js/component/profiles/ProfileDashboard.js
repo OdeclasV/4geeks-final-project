@@ -59,7 +59,6 @@ export const ProfileDashboard = ({ nonprofit }) => {
 				<table className="table">
 					<thead className="thead-dark">
 						<tr>
-							<th scope="col">#</th>
 							<th scope="col">Item</th>
 							<th scope="col">Date</th>
 							<th scope="col">Donor</th>
@@ -69,12 +68,11 @@ export const ProfileDashboard = ({ nonprofit }) => {
 					</thead>
 					<tbody>
 						<tr>
-							<th scope="row">1</th>
-							<td>cool shoes</td>
-							<td>23-Nov-21</td>
-							<td>Severus S.</td>
-							<td>20-Dec-2021</td>
-							<td>12AM - 4PM</td>
+							<td>Jean Jacket</td>
+							<td>10-Dec-21</td>
+							<td>Esther T.</td>
+							<td>17-Dec-2021</td>
+							<td>12PM - 4PM</td>
 						</tr>
 
 						{activeNonprofit
@@ -83,7 +81,6 @@ export const ProfileDashboard = ({ nonprofit }) => {
 									.map(item => {
 										return (
 											<tr key={item.id}>
-												<th scope="row">1</th>
 												<td>{item.category}</td>
 												<td>{`${new Date(item.posted_date).getDate()}-${getMonthName(
 													new Date(item.posted_date).getMonth() + 1

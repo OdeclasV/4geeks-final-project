@@ -69,16 +69,18 @@ export const UserProfileDonations = props => {
 								<th scope="col">Item</th>
 								<th scope="col">Date</th>
 								<th scope="col">Non Profit Funded</th>
-								<th scope="col">Amount</th>
+								<th scope="col">Original Amount</th>
+								<th scope="col">Final Amount</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<th scope="row">1</th>
-								<td>cool shirt</td>
-								<td>21-Nov-21</td>
-								<td>Good Company</td>
-								<td>$260</td>
+								<td>Iron Throne</td>
+								<td>21-Dec-21</td>
+								<td>Gotham City Cleaners</td>
+								<td>$800</td>
+								<td>$801</td>
 							</tr>
 							<tr>
 								<th scope="row">2</th>
@@ -86,6 +88,7 @@ export const UserProfileDonations = props => {
 								<td>22-Nov-21</td>
 								<td>Real Good Company</td>
 								<td>$100</td>
+								<td>$350</td>
 							</tr>
 							<tr>
 								<th scope="row">3</th>
@@ -93,6 +96,7 @@ export const UserProfileDonations = props => {
 								<td>23-Nov-21</td>
 								<td>Really Real Good Company</td>
 								<td>$450</td>
+								<td>$480</td>
 							</tr>
 						</tbody>
 					</table>
